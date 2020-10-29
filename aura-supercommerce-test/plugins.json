@@ -1,0 +1,62 @@
+[
+
+	{
+		"client_name": "Default",
+		"assigned_admin": "Stephen, pccn-connor",
+		"client_url": "http://localhost/wordpress_projects/wordpress",
+		"plugins": [
+			{
+				"ID": 1,
+				"Name": "Plugin 1",
+				"PluginSlug": "plugin_1",
+				"Activated": true,
+				"LatestVersion": "1.0.0"
+
+			},
+			{
+				"ID": 2,
+				"Name": "Plugin 2",
+				"PluginSlug": "plugin_2",
+				"Activated": false,
+				"LatestVersion": "1.0.0"
+			},
+			{
+				"ID": 3,
+				"Name": "Plugin 3",
+				"PluginSlug": "plugin_3",
+				"Activated": true,
+				"LatestVersion": "1.0.0"
+			}
+		]
+	},
+	{
+		"client_name": "Mr White",
+		"assigned_admin": "Stephen",
+		"client_url": "https://mrwhitessites.com",
+		"plugins": [
+			{
+				"ID": 1,
+				"Name": "Plugin 1",
+				"PluginSlug": "plugin_1",
+				"Activated": true,
+				"LatestVersion": "1.0.0"
+			},
+			{
+				"ID": 2,
+				"Name": "Plugin 2",
+				"PluginSlug": "plugin_2",
+				"Activated": true,
+				"LatestVersion": "1.0.0"
+			},
+			{
+				"ID": 3,
+				"Name": "Plugin 3",
+				"PluginSlug": "plugin_3",
+				"Activated": true,
+				"LatestVersion": "1.0.0"
+			}
+		]
+	}
+
+
+]

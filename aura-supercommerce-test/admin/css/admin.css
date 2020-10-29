@@ -1,0 +1,698 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.toplevel_page_aura-supercommerce #wpcontent,
+.aura-supercommerce_page_aura-status #wpcontent,
+.aura-supercommerce_page_aura-dual-engine #wpcontent {
+	padding-left: 0;
+}
+
+#aura-body.wrap {
+	margin: 0;
+}
+
+
+.block-heading {
+	background: #ffffff;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    /* align-content: center; */
+    align-items: center;
+}
+
+#aura-body.wrap #message {
+	flex-basis: 100%;
+}
+
+
+.block-heading h1.wp-heading-inline {
+	padding: 0 10px 0 40px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.8rem;
+	color: #0173aa;
+	font-weight: 500;
+	text-transform: uppercase;
+	margin: 0 0 0 auto;
+}
+
+.aura-tabs.wp-tab-bar {
+	margin-top: 0;
+	margin-bottom: 0;
+	background: #0173aa;
+	padding: 35px 2% 0 10%;
+}
+
+.aura-tabs.wp-tab-bar li {
+	padding: 20px 3.2vw;
+    display: inline-block;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+}
+
+.aura-tabs.wp-tab-bar li.wp-tab-active {
+	background-color: white;
+	border-bottom: none;
+	border: none;
+}
+
+.aura-tabs.wp-tab-bar li.wp-tab-active a {
+	color: #0173aa;
+}
+
+.aura-tabs.wp-tab-bar li a {
+	color: white;
+}
+
+.aura-super .panel-heading {
+	padding: 0 0 0 10%;
+}
+
+.aura-super .panel-heading h2 {
+	font-size: 1.8rem;
+	color: #0173aa;
+	margin: 30px 0 2px;
+}
+
+.aura-super .panel-heading h4 {
+	font-size: 1rem;
+	color: rgb(125 134 138 / 70%);
+	margin-bottom: 18px;
+}
+
+.aura-super.wrap,
+.plugin-pnl {
+	display: flex;
+	flex-wrap: wrap;
+	max-height: none;
+	padding: 0;
+}
+
+.aura-super .wrap {
+	width: 100%;
+	margin: 0;
+}
+
+.aura-super .tab-content {
+	padding: 35px 25px;
+    background: #e4e4e4;
+}
+
+.aura-super .tab-content .tab-inner {
+	background: #ffffff;
+}
+
+.aura-super .col__inner {
+	border-right: 1px solid #ff66331f;
+}
+
+.aura-super.wrap.wp-tab-panel {
+	margin: 0;
+	border: none;
+}
+
+.aura-super .plugin-pnl {
+	padding: 20px;
+}
+
+.aura-super .col.col-lg-4.col-md-6.col-sm-12 {}
+
+.aura-super .col.col-lg-6 {
+	width: 50%;
+}
+
+.aura-super .col.col-lg-4 {
+	width: 33.333%;
+}
+
+/*.plugin-pnl__bg,
+.plugin-pnl__status,
+.plugin-pnl__features,
+.plugin-pnl__text {
+	width: 50%;
+}
+
+.plugin-pnl__bg {
+	width: 80%;
+}
+
+.plugin-pnl__status {
+	width: 20%;
+}*/
+
+.plugin-pnl.no-licence {
+	opacity: 0.4;
+}
+.plugin-pnl-border {
+	border: 1px solid #e4e4e4;
+	width: 100%;
+}
+.plugin-pnl__row {
+	display: flex;
+	width: 100%;
+	padding: 20px 20px;
+	    box-sizing: border-box;
+}
+
+.plugin-pnl__row:nth-child(2){
+	background: #f7f7f7;
+}
+
+
+
+.aura-super .plugin-pnl__bg {
+	flex: 0 0 auto;
+	background-size: cover;
+	box-shadow: inset 0 0 0 100vw rgb(255 102 51 / 58%);
+	padding: 20px 0 20px 0;
+	width: 150px;
+    height: 105px;
+    border-radius: 100%;
+}
+
+.plugin-pnl__title {
+	flex: 1 1 auto;
+	align-self: center;
+	max-width: 30%;
+}
+
+.plugin-pnl__title .version-title {
+	font-size: 1rem;
+	display: inline-block;
+	margin-left: 25px;
+	color: #a3a9b7;
+}
+
+
+.plugin-pnl__title h2 {
+
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: capitalize;
+    font-family: 'Montserrat', sans-serif;
+    color: #0173aa;
+    margin: 5px 0;
+    padding: 0 15px 0 40px;
+}
+
+.plugin-pnl__title h4 {
+	font-family: 'Montserrat', sans-serif;
+	color: #0173aa;
+	text-transform: uppercase;
+	padding: 0 15px 0 30px;
+
+}
+
+.plugin-pnl__status {
+	padding: 0 22px;
+	display: flex;
+	align-items: center;
+}
+
+.pnl__status-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #0173aa;
+	margin-right: 25px;
+}
+
+@media (max-width: 1220px){
+	.plugin-pnl__row {
+		flex-wrap: wrap;
+	}
+	.plugin-pnl__status {
+    	flex-wrap: wrap;
+    	width: 100%;
+    	margin: 20px 0;
+	}
+	.plugin-pnl__title {
+		max-width: 100%;
+	}
+}
+
+
+.plugin-pnl__status .text__status {
+	text-align: right;
+
+}
+.plugin-pnl__status .text__status span {
+
+	display: inline-block;
+    font-size: 1.1rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 60px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
+
+
+.tab-inner-subtitle h4 {
+	font-size: 1.1rem;
+	margin: 0;
+	padding: 35px 3% 15px 7%;
+	font-weight: 500;
+	color: #a3a9b7;
+}
+
+.tab-inner-subtitle .active-green {
+	color: #16c747;
+}
+
+.tab-inner-subtitle .live-orange {
+	color: #e4a124;
+}
+
+
+.plugin-pnl__status .text__status.active,
+.plugin-pnl__status .text__status.inactive {
+	margin-right: 15px;
+}
+
+.plugin-pnl__status .text__status.active span {
+	background: #b6f8c8;
+	color: #16c747;
+}
+.plugin-pnl__status .text__status.inactive span {
+	background: #e6e6e6;
+	    color: #949494;
+	
+}
+.plugin-pnl__status .text__status.licence span {
+	background: #fad898;
+	color: #e4a124;
+	
+}
+.plugin-pnl__status .text__status.unlicenced span {
+	background: #ffa0a0;
+	color: white;
+	
+}
+.plugin-pnl__status .text__status.options {
+	margin-top: 0;
+	margin-left: 15px;
+}
+.plugin-pnl__status .text__status.options span {
+	color: rgb(1 115 170 / 55%);
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+.plugin-pnl__features,
+.plugin-pnl__text {
+	flex: 1 1 50%;
+    padding-right: 20px;
+    padding: 0px 30px;
+}
+
+
+
+.plugin-pnl__features h2,
+.plugin-pnl__text h2 {
+	font-family: 'Montserrat', sans-serif;
+	    font-size: 1.3rem;
+	    font-weight: 300;
+	    color: #13bb42;
+	    font-weight: 500;
+}
+
+@media (max-width: 699px){
+	.plugin-pnl__status .text__status {
+		width: 100%;
+		margin-right: 0!important;
+		text-align: center; 
+		margin: 6px 0;
+	}
+	.plugin-pnl__title {
+		margin: 20px 0 10px;
+	}
+	.plugin-pnl__title h2 {
+		padding-left: 15px;
+		text-align: center;
+	}
+	.aura-super .plugin-pnl__bg {
+	    width: 113px;
+	    margin: 0 auto;
+	    height: 69px;
+	}
+}
+
+#post-body ul.wp-tab-bar {
+	float: left;
+	width: 120px;
+	text-align: right;
+	/* Negative margin for the sake of those without JS: all tabs display */
+	margin: 0 -120px 0 5px;
+	padding: 0;
+}
+
+.tab-inner.key-info {
+	padding: 30px;
+}
+
+.operations.aura-form.basic.align-left {
+	justify-content: flex-start;
+}
+.tab-inner.key-info .key-status {
+	font-size: 1.7rem;
+	font-weight: 500;
+	color: #0173b2;
+	padding: 12px 20px;
+}
+.tab-inner.key-info .key-title {
+	    align-self: center;
+	    margin-right: 15px;
+}
+
+.snippet-switch.row__switch {
+    padding: 25px 25px 15px;
+    display: flex;
+    background-color: #ffffff;
+    border: 2px solid #dcdcdc;
+    border-bottom: none;
+}
+
+.snippet-switch.row__switch:nth-child(even) {
+	background-color: #efefef;
+}
+
+.snippet-switch.row__switch .col__switch:first-child {
+	flex: 1 1 18%;
+}
+
+.snippet-switch.row__switch .col__switch:nth-child(2) {
+	flex: 1 1 35%;
+}
+
+.snippet-switch.row__switch .col__switch.snippet-title {
+	
+}
+
+.snippet-switch.row__switch .col__switch.snippet-desc {
+	color: rgb(78 78 78);
+	font-size: 1rem;
+}
+
+.snippet-switch.row__switch .col__switch.snippet-desc p {
+	font-weight: 400;
+	font-size: 1rem;
+}
+
+.snippet-switch.row__switch .col__switch.snippet-desc h5 {
+	font-weight: 400;
+}
+.snippet-switch.row__switch .col__switch.snippet-desc h5 span {
+	font-weight: bold;
+}
+
+
+h2.snippet-heading {
+	font-size: 1.2rem;
+	padding: 6px 20px;
+}
+
+.aura-super .forms-wrap {
+	padding: 20px 20px 15px 0;
+}
+
+.aura-form.basic input[type="submit"] {
+	background: rgb(96 174 255);
+    color: rgb(3 101 204);
+    padding: 9px 35px;
+    border: none;
+    margin: 8px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: .3s;
+    text-transform: uppercase;
+}
+.aura-form.basic input[type="submit"].button-off {
+	background: #808080;
+}
+
+.aura-form.basic input[type="submit"]:hover {
+	cursor: pointer;
+	background: rgb(3 101 204);
+	color: white;
+}
+
+.aura-form.basic input[type="submit"].button-off:hover {
+	background: #000000;
+}
+
+.aura-form.basic i.fa {
+	align-self: center;
+    background: #dcdcdc;
+    padding: 11px;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.operations.aura-form.basic {
+	background: #ffffff;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.operations.aura-form.basic h2 {
+	flex: 1 1 auto;
+	color: white;
+	font-size: 1.2rem;
+	padding: 6px 20px;
+}
+
+.aura-form.basic:not(.operations) {
+	padding: 15px;
+}
+
+.aura-licence.status {
+	display: inline-block;
+    padding: 11px 50px 12px;
+    margin-left: 20px;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    background: #0173aa;
+    color: white;
+    text-align: center;
+}
+
+.aura-licence.status h3 {
+	margin: 10px;
+	    color: white;
+}
+
+
+
+/* Customize the label (the container) */
+.container {
+	color: #00486a;
+	font-weight: 600;
+	display: block;
+	position: relative;
+	padding-left: 50px;
+	margin: 13px 0;
+	cursor: pointer;
+	font-size: 1.5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #9c9b9b;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #17ce47;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #37d861;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+.tab-content.status-rows .tab-inner {
+	padding: 30px 9%;
+}
+.tab-content.status-rows h1 {
+	text-transform: uppercase;
+    font-weight: 600;
+    color: #ff6633;
+    font-size: 2rem;
+}
+.tab-content.status-rows h2 {
+	font-size: 1.5rem;
+	color: #0173aa;
+	text-decoration: underline;
+	margin-top: 3.4rem;
+}
+.tab-content.status-rows h3 {
+    background: #0173b2;
+     color: white;
+     padding: 20px;
+     font-size: 1.5rem;
+     font-weight: 400;
+}
+.tab-content.status-rows .postbox {
+    padding: 8px 25px;
+}
+
+.tab-content.status-rows .postbox.status-pass {
+	background: #e5f5eb;
+}
+
+.tab-content.status-rows .postbox.status-fail {
+	background: #ffe4e4;
+}
+
+
+.tab-content.status-rows .postbox p {
+	font-size: 1.1rem;
+}
+
+.tab-content.status-rows .postbox ul {
+	list-style-type: disc;
+	margin-left: 15px;
+}
+.tab-content.status-rows .postbox li {
+	font-size: 1rem;
+	padding: 3px 0;
+}
+
+#post-body ul.wp-tab-bar li {
+	padding: 8px;
+}
+
+#post-body ul.wp-tab-bar li.wp-tab-active {
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-webkit-border-top-right-radius: 0px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-top-right-radius: 0px;
+}
+
+div.wp-tab-panel-active {
+	display:block;
+}
+
+div.wp-tab-panel-inactive {
+ 	display:none;
+}
+
+#post-body div.wp-tab-panel {
+	margin: 0 5px 0 125px;
+}
+ 
+.has-right-sidebar #side-sortables .wp-tab-bar li {
+	display: inline;
+	line-height: 1.35em;
+}
+
+.no-js #side-sortables .wp-tab-bar li.hide-if-no-js {
+ 	display: none;
+}
+
+#side-sortables .wp-tab-bar a {
+	text-decoration: none;
+}
+
+#side-sortables .wp-tab-bar {
+	margin: 8px 0 3px;
+}
+
+#side-sortables .wp-tab-bar {
+	margin-bottom: 3px;
+}
+
+#post-body .wp-tab-bar li.wp-tab-active {
+	border-style: solid none solid solid;
+	border-width: 1px 0 1px 1px;
+	margin-right: -1px;
+}
+
+#post-body ul.wp-tab-bar {
+	float: left;
+	width: 120px;
+	text-align: right;
+	/* Negative margin for the sake of those without JS: all tabs display */
+	margin: 0 -120px 0 5px;
+	padding: 0;
+}
+
+#post-body ul.wp-tab-bar li {
+	padding: 8px;
+	display: block;
+}
+
+#post-body ul.wp-tab-bar li a {
+	text-decoration: underline;
+}
+
+#post-body ul.wp-tab-bar li.wp-tab-active {
+ 	-webkit-border-top-left-radius: 3px;
+ 	-webkit-border-bottom-left-radius: 3px;
+ 	border-top-left-radius: 3px;
+ 	border-bottom-left-radius: 3px;
+}
+
+#post-body div.wp-tab-panel {
+	margin: 0 5px 0 125px;
+}
+
+#post-body ul.wp-tab-bar li.wp-tab-active a {
+	font-weight: bold;
+	text-decoration: none;
+}
