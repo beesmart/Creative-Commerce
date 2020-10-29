@@ -1,28 +1,19 @@
-=== Craetive Commerce ===
-Contributors: Paul Taylor, Stephen Collins, Connor Douglas 
-Tags: eCommerce, Digital Zest
+=== Creative Commerce Conversion ===
+Contributors: Digital Zest
+Tags: eCommerce
+Requires at least: 4.9
+Tested up to: 5.2
+Requires PHP: 7.2
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
-
-*  Creative Commerce
-*  Creative Agent
-*  Creative Conversion
-*  Creative Dual Engine
-*  Creative Publicity
-*  Creative Stock Maximiser
-*  Creative Time Saver
-*  Creative Trade Booster
-
-(Plugins will be prefixed with Aura due to brand change)
+The Creative Commerce Conversion is a plugin ...
 
 
 == Description ==
 
-The Creative Commerce bundle is a suite of plugins which enable a variety of additional functions in Wordpress & WooCommerce.
-
+The Creative Commerce Conversion enables a variety of additional functions in Wordpress & WooCommerce.
 
 
 == Installation ==
@@ -46,5 +37,10 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 = 1.0 =
 * Initial Version
 
-
-
+ 
+== Upgrade Notice ==
+ 
+= 1.0 =
+Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+ 
+ 
