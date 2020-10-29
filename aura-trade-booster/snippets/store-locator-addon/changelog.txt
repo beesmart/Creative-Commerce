@@ -1,0 +1,13 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [Unreleased]
+
+## [1.0] 
+- First Version
+
+
+
+## [1.01]
+### Fixed
+- Fixed a PHP version issue relating to WooCommerce functions

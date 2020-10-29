@@ -1,0 +1,5 @@
+
+== Changelog ==
+
+= 1.0.0 - 2020-09-15 =
+* Notice - This is the first entry in the changelog and registers it as installed. #TICKETREFHERE

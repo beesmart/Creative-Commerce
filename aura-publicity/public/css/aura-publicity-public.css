@@ -1,0 +1,14 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+ .publicity-wall-col {
+ 	width: 50%;
+ 	float: left;
+
+ }
+
+  .publicity-wall-col:first-of-type {
+  	 	padding-right: 9%;
+  }

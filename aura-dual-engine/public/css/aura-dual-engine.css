@@ -1,0 +1,12 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+
+
+ body.trade-logged-in:not(.admin-bar) .products.bundled_products,
+ body.trade-logged-in:not(.admin-bar) .woocommerce-cart-form__cart-item.cart_item.bundled_table_item {
+ 	display: none;
+ }
+

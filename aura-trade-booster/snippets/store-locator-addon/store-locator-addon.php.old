@@ -1,0 +1,272 @@
+<?php
+
+/**
+ * Snippet Name: Store Locator Add-On
+ * Version: 1.0.0
+ * Description: Assorted Legacy functions
+ * Dependency: WP Memberships
+ *
+ * @link              https://auracreativemedia.co.uk
+ * @since             1.0.0
+ * @package           Aura_Time_Saver
+ *
+**/
+
+
+include_once(plugin_dir_path(__FILE__) . "includes/custom-file.php");
+
+function aslc_check_address() {
+    return get_option('wpsl_address_type');
+}
+
+add_action('woocommerce_new_order', 'aslc_action_woocommerce_saved_order_items_frontend'); //frontend
+
+function aslc_action_woocommerce_saved_order_items_frontend($order_id) {
+    $order = new WC_Order($order_id); // Order id
+    $customer_user_id = $order->customer_user;
+    $user_meta = get_userdata($customer_user_id);
+    $user_roles = $user_meta->roles;
+//    if (in_array('tradecust', $user_roles)) {
+        $address_used = aslc_check_address();
+        $address = $order->get_address($address_used);
+        foreach ($address as $key => $add) {
+            $items['_' . $address_used . '_' . $key] = $add;
+        }
+        $compare = aslc_compare_address($items, $address_used, $customer_user_id, $order_id);
+//    }
+}
+
+add_action('woocommerce_saved_order_items', 'aslc_action_woocommerce_saved_order_items', 10, 2); //backend
+
+function aslc_action_woocommerce_saved_order_items($order_id, $items) {
+
+    $customer_user_id = $items['customer_user'];
+    $user_meta = get_userdata($customer_user_id);
+    $user_roles = $user_meta->roles;
+//    if (in_array('tradecust', $user_roles)) {
+        $address_used = aslc_check_address();
+        $compare = aslc_compare_address($items, $address_used, $customer_user_id, $order_id);
+//    }
+}
+
+function aslc_compare_address($items, $address_used, $customer_user_id, $order_id) {  
+    $order = new WC_Order( $order_id );
+    global $wpsl_admin;
+     $order_address = $order->get_billing_address_1();
+     $order_address2 = $order->get_billing_address_2();
+     $order_city = $order->get_billing_city();
+     $order_postcode = $order->get_billing_postcode();
+     $order_country = $order->get_billing_country();
+     $order_state = $order->get_billing_state();
+    $args = array(
+        'author' => $customer_user_id,
+        'post_type' => 'wpsl_stores',
+    );
+    $current_user_posts = get_posts($args);
+    $count = 0;  
+    if (!empty($current_user_posts)) {
+        foreach ($current_user_posts as $store) {
+            $store_id = $store->ID;
+            $address = get_post_meta($store_id, 'wpsl_address', true);
+            $address2 = get_post_meta($store_id, 'wpsl_address2', true);
+            $city = get_post_meta($store_id, 'wpsl_city', true);
+            $state = get_post_meta($store_id, 'wpsl_state', true);
+            $zip = get_post_meta($store_id, 'wpsl_zip', true);
+            $country = get_post_meta($store_id, 'wpsl_country', true);
+            if ($order_address == $address && $order_address2 == $address2 && $order_city == $city && $order_state == $state && $order_postcode == $zip && $order_country == $country) {
+                $count++;
+            }
+        }
+    }
+    
+    if ($count <= 0) {       
+        $store_title = $order->get_billing_company();
+        $post = array(
+            'post_title' => $store_title,
+            'post_status' => 'publish',
+            'post_name' => $store_title,
+            'post_type' => 'wpsl_stores',
+        );
+        $post_id = wp_insert_post($post);
+
+        update_post_meta($post_id, 'wpsl_address', $order_address);
+        update_post_meta($post_id, 'wpsl_address2', $order_address2);
+        update_post_meta($post_id, 'wpsl_city', $order_city);
+        update_post_meta($post_id, 'wpsl_state', $order_state);
+        update_post_meta($post_id, 'wpsl_zip', $order_postcode);
+        update_post_meta($post_id, 'wpsl_country', $order_country);
+
+        $address = $order_address . ' ' . $order_address2 . ' ' . $order_city . ' ' . $order_state . ' ' . $order_postcode . ' ' . $order_country;
+        $response = wpsl_call_geocode_api($address);
+        $coordinates = json_decode($response['body'], true);
+        $latitude = $coordinates['results'][0]['geometry']['location']['lat'];
+        $longitude = $coordinates['results'][0]['geometry']['location']['lng'];
+        update_post_meta($post_id, 'wpsl_lat', $latitude);
+        update_post_meta($post_id, 'wpsl_lng', $longitude);
+        update_post_meta($post_id, 'wpsl_users', $customer_user_id);
+
+        update_user_meta($customer_user_id, $address_used . '_latitude', $latitude);
+        update_user_meta($customer_user_id, $address_used . '_longitude', $longitude);
+      
+    }
+    update_user_meta($customer_user_id, 'user_last_order_date', date('Y-m-d'));
+    update_user_meta($customer_user_id, 'last_order_id', $order_id);
+    delete_autoload_transient();
+   
+    return true;
+}
+
+function delete_autoload_transient() {
+
+    global $wpdb;
+
+    $option_names = $wpdb->get_results("SELECT option_name AS transient_name FROM " . $wpdb->options . " WHERE option_name LIKE ('\_transient\_wpsl\_autoload\_%')");
+
+    if ($option_names) {
+        foreach ($option_names as $option_name) {
+            $transient_name = str_replace("_transient_", "", $option_name->transient_name);
+
+            delete_transient($transient_name);
+        }
+    }
+    return true;
+}
+
+add_filter('wpsl_meta_box_fields', 'aslc_custom_meta_box_fields');
+
+function aslc_custom_meta_box_fields($meta_fields) {
+    $args = array(
+        'role' => 'tradecust',
+        'order' => 'ASC'
+    );
+    $customer = get_users($args);
+    $name[] = 'select';
+    foreach ($customer as $key => $value) {
+        $name[$value->ID] = $value->data->user_login;
+    }
+    $meta_fields[__('Location', 'wpsl')]['users'] = array(
+                'label' => __('Store User', 'wpsl'),
+                'type' => 'dropdown',
+                'options' => $name
+    );
+    return $meta_fields;
+}
+
+add_action('admin_footer', 'aslc_autofill_store');
+
+function aslc_autofill_store() {
+    ?>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery(document).on('change', '#wpsl-users', function () {
+                var user_id = jQuery('#wpsl-users').val();
+                if (user_id > 0) {
+                    jQuery.ajax({
+                        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                        type: 'POST',
+                        data: {action: 'get_user_store_information', user_id: user_id},
+                        success: function (result) {
+                            var data = jQuery.parseJSON(result);
+                            jQuery('#wpsl-address').val(data.address1);
+                            jQuery('#wpsl-address2').val(data.address2);
+                            jQuery('#wpsl-city').val(data.city);
+                            jQuery('#wpsl-state').val(data.state);
+                            jQuery('#wpsl-country').val(data.country);
+                            jQuery('textarea#post-title-0').val(data.company);
+                            jQuery('#title').val(data.company);
+                            jQuery('#wpsl-zip').val(data.postcode);
+                            jQuery('#wpsl-lat').val(data.latitude);
+                            jQuery('#wpsl-lng').val(data.longitude);
+                            jQuery('#title-prompt-text').hide();
+
+                        }
+                    });
+                } else {
+                    jQuery('#wpsl-address').val('');
+                    jQuery('#wpsl-address2').val('');
+                    jQuery('#wpsl-city').val('');
+                    jQuery('#wpsl-state').val('');
+                    jQuery('#wpsl-country').val('');
+                    jQuery('textarea#post-title-0').val('');
+                    jQuery('#wpsl-zip').val('');
+                    jQuery('#wpsl-lat').val('');
+                    jQuery('#wpsl-lng').val('');
+                    jQuery('#title').val('');
+                    jQuery('#title-prompt-text').show();
+                }
+            });
+
+
+        });
+    </script>
+    <?php
+}
+
+add_action('wp_ajax_get_user_store_information', 'aslc_get_user_store_information');
+
+function aslc_get_user_store_information() {
+    $user_id = $_POST['user_id'];
+    $check_address = aslc_check_address();
+    $company = get_user_meta($user_id, $check_address . '_company', true);
+    $address1 = get_user_meta($user_id, $check_address . '_address_1', true);
+    $address2 = get_user_meta($user_id, $check_address . '_address_2', true);
+    $city = get_user_meta($user_id, $check_address . '_city', true);
+    $state = get_user_meta($user_id, $check_address . '_state', true);
+    $country = get_user_meta($user_id, $check_address . '_country', true);
+    $postcode = get_user_meta($user_id, $check_address . '_postcode', true);
+    $latitude = get_user_meta($user_id, $check_address . '_latitude', true);
+    $longitude = get_user_meta($user_id, $check_address . '_longitude', true);
+    if (empty($latitude) && empty($longitude)) {
+        $address = $address1 . ' ' . $address2 . ' ' . $city . ' ' . $state . ' ' . $postcode . ' ' . $country;
+        $response = wpsl_call_geocode_api($address);
+        $coordinates = json_decode($response['body'], true);
+        $latitude = $coordinates['results'][0]['geometry']['location']['lat'];
+        $longitude = $coordinates['results'][0]['geometry']['location']['lng'];
+        update_user_meta($user_id, $check_address . '_latitude', $latitude);
+        update_user_meta($user_id, $check_address . '_longitude', $longitude);
+    }
+    echo json_encode(array('company' => $company, 'address1' => $address1, 'address2' => $address2, 'city' => $city, 'state' => $state, 'country' => $country, 'postcode' => $postcode, 'latitude' => $latitude, 'longitude' => $longitude));
+    exit;
+}
+
+add_filter('wpsl_store_meta', 'aslc_wpsl_store_meta', 10, 2);
+
+function aslc_wpsl_store_meta($meta_data, $store_id) {
+    $user_id = get_post_meta($store_id, 'wpsl_users', true);
+    if (!empty($user_id)) {
+        $last_order_date = get_user_meta($user_id, 'user_last_order_date', true);
+        $last_order_id = get_user_meta($user_id, 'last_order_id', true);
+
+        if (!empty($last_order_date) && !empty($last_order_id)) {
+            $order = wc_get_order((int) $last_order_id);
+            //$order_date = $order->get_date_created('edit')->format('Y-m-d');
+             $order_date1 = $order->order_date;
+             $order_date = date('Y-m-d',strtotime($order_date1));
+            $current_date = date('Y-m-d');
+            $diff = abs(strtotime($current_date) - strtotime($order_date));
+            $years = floor($diff / (365 * 60 * 60 * 24));
+            $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+            $year_months = $years * 12;
+            $total_months = $year_months + $months;
+
+            if ($total_months <= 6) {
+                $meta_data['alternateMarkerUrl'] = plugin_dir_url(__FILE__) . 'img/marker/green@2x.png';
+            } else if ($total_months > 6 && $total_months <= 12) {
+                $meta_data['alternateMarkerUrl'] = plugin_dir_url(__FILE__) . 'img/marker/orange@2x.png';
+            } else if ($total_months > 12 && $total_months <= 18) {
+                $meta_data['alternateMarkerUrl'] = plugin_dir_url(__FILE__) . 'img/marker/red@2x.png';
+            } else if ($total_months > 18 && $total_months <= 24) {
+                $meta_data['alternateMarkerUrl'] = plugin_dir_url(__FILE__) . 'img/marker/gray@2x.png';
+            } else if ($total_months > 24) {
+                $meta_data['alternateMarkerUrl'] = plugin_dir_url(__FILE__) . 'img/marker/gray@2x.png';
+            }
+        } else {
+            $meta_data['alternateMarkerUrl'] = plugin_dir_url(__FILE__) . 'img/marker/blue@2x.png';
+        }
+    } else {
+        $meta_data['alternateMarkerUrl'] = plugin_dir_url(__FILE__) . 'img/marker/blue@2x.png';
+    }
+
+    return $meta_data;
+}
+?>

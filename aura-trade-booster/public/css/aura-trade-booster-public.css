@@ -1,0 +1,9 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+
+.wc-shipping-multiple-addresses.shop_table  .address-select {
+ 	width: 100%;
+ }

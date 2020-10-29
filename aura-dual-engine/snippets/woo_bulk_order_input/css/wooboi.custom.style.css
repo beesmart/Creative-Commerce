@@ -1,0 +1,19 @@
+
+.wooboi_table_container{ width: 70%;}
+.wooboi_table_container .wooboi_product{ width: 56%;}
+.wooboi_table_container .wooboi_quantity{ width: 28%;}
+.wooboi_table_container .wooboi_price{ width: 28%;}
+
+table.wooboi_table_container th {
+    background-color: #f8f8f8;
+}
+table.wooboi_table_container th {
+    font-weight: 600;
+}
+table.wooboi_table_container td, table.wooboi_table_container th {
+    padding: 1em 1.41575em;
+    text-align: left;
+    vertical-align: top;
+}
+
+.wooboi_add_more, .wooboi_add_more_total{text-align: right!important;}
