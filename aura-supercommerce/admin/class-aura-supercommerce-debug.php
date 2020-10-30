@@ -215,6 +215,8 @@ class Aura_Supercommerce_Debug {
 		$none_found = true;
 		$mem_plans = array();
 
+		if ($wc_mem_discounts) :
+
 		foreach ($wc_mem_discounts as $plan) {
 			
 			if(!$plan['object_ids'] && $plan['active'] === 'yes') {
@@ -225,6 +227,8 @@ class Aura_Supercommerce_Debug {
 			}
 
 		}
+
+		endif;
 
 		if ($none_found) : return false; endif;
 

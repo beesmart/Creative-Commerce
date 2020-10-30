@@ -156,6 +156,7 @@ class Aura_Conversion_Custom {
 		if ($existing_snippets) : ?>
 
 			<form class="aura-form basic" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="GET">
+				<div class="selectAll-container"><input type="checkbox" id="aura-snipppets-selectAll" value="selectAll"> Select / Deselect All</div>
 
 			<?php
 			foreach ($existing_snippets as $value) { 

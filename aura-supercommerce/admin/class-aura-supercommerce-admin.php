@@ -265,9 +265,14 @@ class Aura_Supercommerce_Admin {
 
 		$aura_licence_checker = new aura_licence_checker;
 		$admins = $aura_licence_checker->check_licence_admins();
-	    $privileged_users = unserialize($admins->priv_users);
+	
+		if (is_object($admins)) :
+	    	$privileged_users = unserialize($admins->priv_users);
 
-		return $privileged_users;
+	    	return $privileged_users;
+	    	
+	    endif;
+
 	}
 
 

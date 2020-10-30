@@ -17,4 +17,21 @@ jQuery(document).ready( function($) {
 		else
 			$('a', this).first().click();
 	});
+
+	jQuery('#aura-snipppets-selectAll').click(function() {
+
+	   if(this.checked) {
+
+		    jQuery(':checkbox').each(function() {
+		           this.checked = true;       
+		    });
+
+	    } else {
+
+		    jQuery(':checkbox').each(function() {
+		           this.checked = false;               
+		    });
+		}
+	});
+	
 });

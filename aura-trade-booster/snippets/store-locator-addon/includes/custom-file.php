@@ -1,10 +1,6 @@
 <?php
 
 
-include_once(plugin_dir_path(__FILE__) . "../aura-store-locator-customization.php");
-
-
-
 add_filter( 'wpsl_settings_tab','aslc_add_custom_settings');
 
 function aslc_add_custom_settings($tabs)

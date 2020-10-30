@@ -202,12 +202,13 @@
 		    						<div class="postbox <?php if (!$mem_data) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
 
 		    						<?php
-
-		    							foreach ($mem_data as $value) {
-		    								if($value) : 
-		    									echo '<p>Warning! <a href="' . get_edit_user_link($value) . '"> Trade Customer: ' . get_userdata($value)->user_login . ' does not appear to have a membership attached</a></p>'; 
-		    								endif;
-		    							}
+		    						if ($mem_data) :
+	    								foreach ($mem_data as $value) {
+	    									if($value) : 
+	    										echo '<p>Warning! <a href="' . get_edit_user_link($value) . '"> Trade Customer: ' . get_userdata($value)->user_login . ' does not appear to have a membership attached</a></p>'; 
+	    									endif;
+	    								}
+	    							endif;
 		    					
 		    						 
 		    						?>
@@ -228,10 +229,12 @@
 		    					if ($agent_plugin_exists) :
 
 			    					$agent_data = $this::tradecust_no_attached_agents(); 
-			    					foreach ($agent_data as $value) {
-			    						$user = get_user_by('id', $value);
-			    						echo "<a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . ", ";
-			    					}
+			    					if ($agent_data) :
+				    					foreach ($agent_data as $value) {
+				    						$user = get_user_by('id', $value);
+				    						echo "<a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . ", ";
+				    					}
+			    					endif;
 
 		    					endif; 
 
@@ -248,11 +251,12 @@
 		    					if ($agent_plugin_exists) :
 
 			    					$agent_data_users = $this::agents_no_attached_customers(); 
-
-			    					foreach ($agent_data_users as $value) {
-			    						$user = get_user_by('id', $value);
-			    						echo "<a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . ", ";
-			    					}
+									if ($agent_data) :
+				    					foreach ($agent_data_users as $value) {
+				    						$user = get_user_by('id', $value);
+				    						echo "<a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . ", ";
+				    					}
+			    					endif;
 		    					endif; 
 
 		    					?>

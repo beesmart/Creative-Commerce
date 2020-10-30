@@ -23,7 +23,7 @@ The Creative Commerce is a foundational plugin that underpins the following:
 
 == Description ==
 
-The Creative Commerce Foundation enables a variety of additional functions in Wordpress & WooCommerce.
+The Creative Commerce Foundation enables a variety of additional functions in Wordpress & WooCommerce. Test
 
 
 == Installation ==
