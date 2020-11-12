@@ -180,6 +180,15 @@ class Aura_Supercommerce {
 
 	}
 
+
+	/**
+	 * Register all of the hooks related to the debug and status area functionality
+	 * of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+
 	private function define_debug_hooks() {
 
 		$plugin_debug = new Aura_Supercommerce_Debug( $this->get_plugin_name(), $this->get_version() );
@@ -192,6 +201,8 @@ class Aura_Supercommerce {
 
 	}
 
+
+
 	/**
 	 * Register all of the hooks related to the custom and Snippet functionality
 	 * of the plugin.
@@ -200,6 +211,7 @@ class Aura_Supercommerce {
 	 * @access   private
 	 * @uses     AURA_SUPERCOMMERCE_SLUG to accomdoate child plugins calling class methods from their own files.
 	 */
+	
 	private function define_custom_hooks() {
 
 		$plugin_custom = new Aura_Supercommerce_Custom( $this->get_plugin_name(), $this->get_version(), AURA_SUPERCOMMERCE_SLUG );

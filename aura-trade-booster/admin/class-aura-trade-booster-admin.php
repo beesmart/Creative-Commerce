@@ -158,7 +158,7 @@ class Aura_Trade_Booster_Admin {
 
 		if ( $show_admin_screens ) {
 		
-	     add_submenu_page( 'aura-supercommerce', 'aura_trade_booster', 'Trade Booster', 'manage_options', 'aura_trade_booster', array( $this, 'admin_page_display' ), 999 );
+	     add_submenu_page( 'aura-supercommerce', 'Trade Booster', 'Trade Booster', 'manage_options', 'aura_trade_booster', array( $this, 'admin_page_display' ), 999 );
 
 	 	}
 

@@ -157,7 +157,7 @@ class Aura_Agent_Admin {
 
 		if ( $show_admin_screens ) {
 		
-	     add_submenu_page( 'aura-supercommerce', 'aura_agent', 'Agent', 'manage_options', 'aura_agent', array( $this, 'admin_page_display' ), 999 );
+	     add_submenu_page( 'aura-supercommerce', 'Agent', 'Agent', 'manage_options', 'aura_agent', array( $this, 'admin_page_display' ), 999 );
 
 	 	}
 

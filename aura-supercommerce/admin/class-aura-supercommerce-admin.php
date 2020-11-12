@@ -235,6 +235,17 @@ class Aura_Supercommerce_Admin {
 
 	}
 
+
+	/**
+	 * Creates a new user capability called manage_debug. 
+	 *
+	 * We'll use this to assign to our super admins who can see the debug page. Other admins will not be able to
+	 *
+	 * @since    1.0.0
+	 *
+	 */
+
+
 	public function assign_debug_capability(){
 
 		$users_to_add_cap = $this->get_privileged_users();
@@ -322,11 +333,13 @@ class Aura_Supercommerce_Admin {
 				if ($show_admin_screens) { ?>
 					<li class="wp-tab-active"><a href="#tabs-1">Snippets</a></li>
 					<li><a href="#tabs-2">Products</a></li>
-					<li><a href="#tabs-3">Licence</a></li>
+					<li><a href="#tabs-3">Tasks</a></li>
+					<li><a href="#tabs-4">Licence</a></li>
 				<?php } else { ?>
 
 					<li class="wp-tab-active"><a href="#tabs-2">Products</a></li>
-					<li><a href="#tabs-3">Licence</a></li> 
+					<li><a href="#tabs-3">Tasks</a></li>
+					<li><a href="#tabs-4">Licence</a></li> 
 				<?php
 
 				}
@@ -341,11 +354,21 @@ class Aura_Supercommerce_Admin {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/admin-display-snippets.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/admin-display-plugins.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/admin-display-assistance.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/admin-display-licence.php'; 
 	
 	}
 
 	
+
+	/**
+	 * A helper function which we use to see if a plugin is active or not
+	 *
+	 * @since    1.0.0
+	 * @param $plugin_slug String - the plugin slug for indentification
+	 * @return Boolean
+	 *
+	 */
 
 	public function check_child_plugin_exists( $plugin_slug ){
 

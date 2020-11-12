@@ -150,7 +150,7 @@ class Aura_Conversion_Admin {
 
 		if ( $show_admin_screens ) {
 		
-	     add_submenu_page( 'aura-supercommerce', 'aura_conversion', 'Conversion', 'manage_options', 'aura_conversion', array( $this, 'admin_page_display' ), 999 );
+	     add_submenu_page( 'aura-supercommerce', 'Conversion', 'Conversion', 'manage_options', 'aura_conversion', array( $this, 'admin_page_display' ), 999 );
 
 	 	}
 

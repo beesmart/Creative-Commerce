@@ -60,6 +60,13 @@ class Aura_Supercommerce_Debug {
 
 
 
+	/**
+	 * Setup our Debug and Status pages for displaying HTML that outputs useful warnings and notices for admins and web managers.
+	 *
+	 * @since    1.0.0
+	*/
+
+
 	public function admin_menu_debug_page(){
 	    add_submenu_page( 'aura-supercommerce', 'Debug', 'Debug', 'manage_debug', 'debug', array( $this, 'admin_show_debug_page' ) );
 	}
@@ -75,16 +82,18 @@ class Aura_Supercommerce_Debug {
 			
 	}
 
-
 	public function user_show_status_page(){
 	
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/admin-display-status.php'; 
 			
 	}
 
+
 	/**
-	 * Add a new dashboard widget.
-	 */
+	 * Add dashboard widgets for status and a link to a helpdesk.
+	 * @since    1.0.0
+	*/
+
 	public function aurasc_add_dashboard_status_widgets() {
 	    wp_add_dashboard_widget( 'dashboard_widget_status', 'Creative Commerce Status', array( $this, 'dashboard_widget_status_callback') );
 	}
@@ -94,11 +103,14 @@ class Aura_Supercommerce_Debug {
 	}
 
 
-	 
-
+		
 	/**
-	 * Output the contents of the dashboard widget
-	 */
+	 * Output the dashboard widgets HTML and content
+	 *
+	 * @since    1.0.0
+	*/
+
+
 	public function dashboard_widget_status_callback( $post, $callback_args ) {
 
 
@@ -120,10 +132,9 @@ class Aura_Supercommerce_Debug {
 
 	}
 
-	/**
-	 * Output the contents of the dashboard widget
-	 */
+
 	public function dashboard_widget_helpdesk_callback( $post, $callback_args ) {
+
 		echo '<h2><span class="dashicons dashicons-editor-help" style="font-size: 34px;
     display: inline-block;
     width: 37px;
@@ -135,9 +146,22 @@ class Aura_Supercommerce_Debug {
 	    echo '<a href="https://helpdesk.digitalzest.co.uk/" target="_Blank"><button class="button-primary">Click here for  Help Desk</button></a>';
 	}
 
-	// functions that deal with the nags one by one
 
-	// function that runs all the nags to check if they return true
+
+	/**
+	 * The following functions are used by the status page, they define whether a check or test is passed. These checks will only run if the required dependency is installed.
+	 *
+	 * @since    1.0.0
+	*/
+
+	/**
+	 * If a required Attribute 'pa_pack-size' is not found, remind the user to create this as it's key to product bundles functioning.
+	 *
+	 * @since    1.0.0
+	 * @return   Boolean
+	*/
+
+
 	public function status_req_attr_exist(){
 
 		$taxonomy_exist = taxonomy_exists( 'pa_pack-size' );
@@ -151,6 +175,13 @@ class Aura_Supercommerce_Debug {
 			return false;
 		}
 	}
+
+	/**
+	 * Similar to status_req_attr_exist, this function checks if the relevant terms within the req. attribute exist as it's key to product bundles functioning.
+	 *
+	 * @since    1.0.0
+	 * @return   Boolean
+	*/
 
 	public function status_req_terms_exist(){
 
@@ -168,6 +199,13 @@ class Aura_Supercommerce_Debug {
 	}
 
 
+	/**
+	 * If an admin user has created a product bundle version of a product, which means you now have 2 versions of a product, a pack and a single. We need to make sure they have
+	 * assigned a term to the singkle version called 'single-item'. This is to ensure visibility
+	 *
+	 * @since    1.0.0
+	 * @return   Array | Boolean - Array contains product data of products which failed the check, else return False because there are no problem products
+	*/
 
 	public function status_unassigned_attr_exist(){
 
@@ -207,6 +245,15 @@ class Aura_Supercommerce_Debug {
 
 	}
 
+	/**
+	 * A problem identified previosuly is that Global price settings in WooCommerce Memberships can be unexpected/unintended, applying sweeping rules to all products. Therefore we check to see if there are any 
+	 * global plans. If so provide a warning. 
+	 * It may be intentional so it may be the warning can be disregarded.
+	 *
+	 * @since    1.0.0
+	 * @return   Array | Boolean - Array contains membership plan data of plans which are flagged as having globally applying rules, else return False
+	*/
+
 	public function global_membership_price_tier_exists(){
 
 
@@ -235,6 +282,14 @@ class Aura_Supercommerce_Debug {
 		return $mem_plans;
 
 	}
+
+
+	/**
+	 * Query the database postmeta for any products with missing images
+	 *
+	 * @since    1.0.0
+	 * @return   Array | Boolean - Array contains post data which are flagged as having a missing featured image, else return False because there are no offending products
+	*/
 
 	public function missing_product_images_exist(){
 
@@ -266,6 +321,13 @@ class Aura_Supercommerce_Debug {
 	}
 
 
+	/**
+	 * Checks if any trade customers are without a membership plan assigned. In almost all cases they should have. We iterate the trade customer role users and check if they have a membership.
+	 *
+	 * @since    1.0.0
+	 * @return   Array | Boolean - Array contains user data which are flagged as having a no membership plan, else return False because there are no offending users
+	*/
+
 	public function tradecust_no_attached_membership(){
 
 		$user_query = new WP_User_Query( array( 'role' => 'tradecust' ) );
@@ -293,6 +355,12 @@ class Aura_Supercommerce_Debug {
 
 	}
 
+	/**
+	 * Checks if any trade customers are without an agent assigned. Not all customers should have so this is a notice not a warning.
+	 * @since    1.0.0
+	 * @return   Array - Array contains user data which are flagged as having a no agent
+	*/
+
 	public function tradecust_no_attached_agents(){
 
 		$user_data = array();
@@ -318,6 +386,14 @@ class Aura_Supercommerce_Debug {
 		endif;
 	}
 
+
+	/**
+	 * Checks if agents are without ANY customers attached.
+	 *
+	 * @since    1.0.0
+	 * @return   Array - Agent User Id's - those who don't have any customers on their profile.
+	*/
+
 	public function agents_no_attached_customers(){
 
 		$agent_ids = array();
@@ -335,15 +411,18 @@ class Aura_Supercommerce_Debug {
 
 		return $agent_ids;
 
-		// now that we have all agent ID's loop over users to see if there are any agent ids which never appear in the user list
-
-		//loop trade custs, stick in an array: all unique _agent_user ids, map on array to see if the value agent is exists
-
-
 		endif;
-
-
 	}
+
+
+
+	/**
+	 * Counts the various status flags, splitting them into positive and negative flags. Used by the dashboard widget
+	 *
+	 * @since    1.0.0
+	 * @return   Int - A number which shows how many status warnings/notices a user has.
+	*/
+
 
 	public function display_counted_status_issues(){
 
@@ -381,6 +460,14 @@ class Aura_Supercommerce_Debug {
 
 	}
 
+
+	/**
+	 * Use our dependency data from our CONST, to check which dependecies are activated or missing. Then output this as HTML feedback on the status page. Special shoutout to FMA plugin which has a unique naming structure and requires it's own conditional.
+	 *
+	 * @since    1.0.0
+	 * @return   HTML - Echo HTML feedback based on whether a dep. is or isn't installed/activated.
+	*/
+
 	public function check_plugin_dependencies(){
 
 		foreach (AURA_SUPERCOMMERCE_PLUGINS as $plugin_name => $data ) {
@@ -396,7 +483,7 @@ class Aura_Supercommerce_Debug {
 
 			 	foreach ($data['dependencies'] as $value) {
 			 		
-			 		if ( !function_exists('is_plugin_active') || ( !is_plugin_active( $value . '/' . $value . '.php') && !is_plugin_active( $value . '/init.php')) ) {
+			 		if ( !function_exists('is_plugin_active') || ( !is_plugin_active( $value . '/' . $value . '.php') && !is_plugin_active( $value . '/init.php') && !is_plugin_active( $value . '/fmeaddon-add-registration-attributes.php')) ) {
 
 			 			echo "<a href='" . get_site_url() . "/wp-admin/plugin-install.php?s=" . $value . "&tab=search&type=term'><span class='disabled-red' style='color: red; text-transform: capitalize; padding-left: 6px;'><i class='fa fa-times'></i> " . $value . '</span></a>';
 

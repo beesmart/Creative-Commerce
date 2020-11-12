@@ -13,6 +13,15 @@
 **/
 
 
+/**
+ *
+ * @link              http://hookr.io/filters/woocommerce_product_single_add_to_cart_text/
+ * @param             $label - String - Add to cart
+ * @return            $label - String 
+ *
+**/
+
+
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'connor_custom_add_cart_button_single_product' );
  
 function connor_custom_add_cart_button_single_product( $label ) {

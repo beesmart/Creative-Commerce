@@ -4,7 +4,7 @@
 
 ?>
 
-<div class="wp-tab-panel aura-super wrap" id="tabs-3" style="display: none;">
+<div class="wp-tab-panel aura-super wrap" id="tabs-4" style="display: none;">
 	<div class="wrap"> 
 
 		<div class="panel-heading">

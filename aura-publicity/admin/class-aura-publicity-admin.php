@@ -156,7 +156,7 @@ class Aura_Publicity_Admin {
 
 		if ( $show_admin_screens ) {
 		
-	     add_submenu_page( 'aura-supercommerce', 'aura_publicity', 'Publicity', 'manage_options', 'aura_publicity', array( $this, 'admin_page_display' ), 999 );
+	     add_submenu_page( 'aura-supercommerce', 'Publicity', 'Publicity', 'manage_options', 'aura_publicity', array( $this, 'admin_page_display' ), 999 );
 
 	 	}
 

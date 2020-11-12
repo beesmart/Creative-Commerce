@@ -3,7 +3,7 @@
 /**
  * Snippet Name: Echo Membership in Body Class
  * Version: 1.0.0
- * Description: Adds a CSS class to the body HTML tag - Facilitates the use of Trade/Retail specific CSS
+ * Description: Adds a CSS class to the body HTML tag on Front end and Admin - Facilitates the use of Trade/Retail specific CSS
  * Dependency: WP Memberships
  *
  * @link              https://auracreativemedia.co.uk
@@ -31,3 +31,28 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 	add_filter('body_class', 'membership_body_class');
 
 } 
+
+
+
+add_filter( 'admin_body_class', 'aura_admin_body_classes' );
+
+function aura_admin_body_classes( $classes ) {
+
+
+
+	$aura_sc_admin = new Aura_Supercommerce_Admin('aura-supercommerce', '1.0.0');
+	$is_admin = $aura_sc_admin->check_current_is_privileged_user();
+    
+    if ($is_admin) :
+   	
+   		return "$classes priv_admin";
+
+   	else :
+
+   		return $classes;
+
+   	endif;
+
+
+}
+

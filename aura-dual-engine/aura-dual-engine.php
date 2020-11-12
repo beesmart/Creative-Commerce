@@ -40,7 +40,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'AURA_DUAL_ENGINE_VERSION', '1.0.0' );
 define( 'AURA_DUAL_ENGINE_SLUG', 'aura-dual-engine' );
-define( 'AURA_DUAL_ENGINE_TITLE', 'Aura Dual Engine' );
+define( 'AURA_DUAL_ENGINE_TITLE', 'Dual Engine' );
 
 
 //require_once ABSPATH . '/wp-content/plugins/pluginname/pluginfunctions.php';

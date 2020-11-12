@@ -157,7 +157,7 @@ class Aura_dual_engine_Admin {
 
 		if ( $show_admin_screens ) {
 		
-	    	add_submenu_page( 'aura-supercommerce', 'aura-dual-engine', 'Dual Engine', 'manage_options', 'aura-dual-engine', array( $this, 'admin_page_display' ), 999 );
+	    	add_submenu_page( 'aura-supercommerce', 'Dual Engine', 'Dual Engine', 'manage_options', 'aura-dual-engine', array( $this, 'admin_page_display' ), 999 );
 	 	}
 	}
 	

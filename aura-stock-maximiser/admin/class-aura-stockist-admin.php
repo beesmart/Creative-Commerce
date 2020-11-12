@@ -150,7 +150,7 @@ class Aura_Stockist_Admin {
 
 		if ( $show_admin_screens ) {
 		
-	     add_submenu_page( 'aura-supercommerce', 'aura_stockist', 'Stockist', 'manage_options', 'aura_stockist', array( $this, 'admin_page_display' ), 999 );
+	     add_submenu_page( 'aura-supercommerce', 'Stockist Max', 'Stockist', 'manage_options', 'aura_stockist', array( $this, 'admin_page_display' ), 999 );
 
 	 	}
 
