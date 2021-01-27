@@ -1,0 +1,5 @@
+<ul>
+  <li>WP Store locator to help manage B2B customer engagement</li>
+  <li>Advanced notifications for warehousing</li>
+  <li>Multiple delivery locations - very useful for B2B customers</li>
+</ul>

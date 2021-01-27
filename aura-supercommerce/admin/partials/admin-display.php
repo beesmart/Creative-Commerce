@@ -14,7 +14,7 @@
 
 <div id="aura-body" class="wrap">
 	<div class="block-heading">
-		<img src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/acm-logo.png' ?>" alt="">
+		<img src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/dz-logo.png' ?>" alt="">
 		<h1 class="wp-heading-inline"><?php _e('Creative Commerce', $this->plugin_name); ?></h1>
 	</div>
 		

@@ -1,0 +1,1 @@
+The addition of Agents allows websites to host an agent user who can create orders on behalf of Trade customers, additional functionality is being developed to further increase engagement between agent and shop owner.

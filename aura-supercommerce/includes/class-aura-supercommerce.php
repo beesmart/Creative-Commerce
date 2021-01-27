@@ -56,7 +56,7 @@ class Aura_Supercommerce {
 		if ( defined( 'AURA_SUPERCOMMERCE_VERSION' ) ) {
 			$this->version = AURA_SUPERCOMMERCE_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.0.1';
 		}
 		$this->plugin_name = 'aura-supercommerce';
 
@@ -176,6 +176,9 @@ class Aura_Supercommerce {
 		$this->loader->add_action( 'admin_post_delete_transients', $plugin_admin, 'delete_transients');
 
 		$this->loader->add_action( 'upgrader_process_complete', $plugin_admin, 'aura_upgrade_completed', 10, 2);
+
+		$this->loader->add_action( 'login_enqueue_scripts', $plugin_admin, 'my_login_logo');
+
 
 
 	}

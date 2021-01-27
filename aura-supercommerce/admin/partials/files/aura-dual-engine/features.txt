@@ -1,0 +1,7 @@
+<ul>
+  <li>Visibility options to control to ensure the customer sees only relevant products</li>
+  <li>Category cart minimums, allowing you to set that, an X number of items must be in cart</li>
+  <li>Bulk order input page for Trade customers</li>
+  <li>Minimum order amount, set a threshold for an order value amount</li>
+  <li>Better category overview allows admins to better control which products are visible</li>
+</ul>

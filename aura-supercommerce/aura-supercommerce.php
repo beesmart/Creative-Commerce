@@ -2,19 +2,19 @@
 
 /**
  *
- * @link              https://auracreativemedia.co.uk
+ * @link              httpss://auracreativemedia.co.uk
  * @since             1.0.0
  * @package           Aura_Supercommerce
  *
  * @wordpress-plugin
  * Plugin Name:       Creative Commerce
- * Plugin URI:        https://digitalzest.co.uk/
+ * Plugin URI:        httpss://digitalzest.co.uk/
  * Description:       Plugin Management and Hub for Aura Products
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Digital Zest
- * Author URI:        https://digitalzest.co.uk/
+ * Author URI:        httpss://digitalzest.co.uk/
  * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       aura-supercommerce
  * Domain Path:       /languages
  */
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
 */
 
 
-define( 'AURA_SUPERCOMMERCE_VER', '1.0.0' );
+define( 'AURA_SUPERCOMMERCE_VER', '1.0.1' );
 define( 'AURA_SUPERCOMMERCE_SLUG', 'aura-supercommerce' );
 define( 'AURA_SUPERCOMMERCE_PLUGINS', 
 	array( 
@@ -44,56 +44,56 @@ define( 'AURA_SUPERCOMMERCE_PLUGINS',
 			'id' => 2,
 			'title' => 'Foundation',
 			'slug' => 'aura-supercommerce',
-			'image_URL' => 'https://auracreativemedia.co.uk/wp-content/uploads/2019/04/Aura-website-header.jpg',
+			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
 			'dependencies' => ""
 		),  
 		'aura-dual-engine' => array(
 			'id' => 3,
 			'title' => 'Dual Engine',
 			'slug' => 'aura-dual-engine',
-			'image_URL' => 'https://auracreativemedia.co.uk/wp-content/uploads/2019/04/Aura-website-header.jpg',
+			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
 			'dependencies' => array('fma-additional-registration-attributes', 'woocommerce-memberships', 'woocommerce-role-based-methods', 'woocommerce-table-rate-shipping', 'woocommerce-product-bundles')
 		),
 		'aura-time-saver' => array(
 			'id' => 4,
 			'title' => 'Time Saver Tech',
 			'slug' => 'aura-time-saver',
-			'image_URL' => 'https://auracreativemedia.co.uk/wp-content/uploads/2019/04/Aura-website-header.jpg',
+			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
 			'dependencies' => array('woocommerce-xero', 'stock-locations-for-woocommerce', 'yith-woocommerce-barcodes-premium')
 		),
 		'aura-publicity' => array(
 			'id' => 5,
 			'title' => 'Publicity Machine',
 			'slug' => 'aura-publicity',
-			'image_URL' => 'https://auracreativemedia.co.uk/wp-content/uploads/2019/04/Aura-website-header.jpg',
+			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
 			'dependencies' => ""
 		),
 		'aura-conversion' => array(
 			'id' => 6,
 			'title' => 'Conversion',
 			'slug' => 'aura-conversion',
-			'image_URL' => 'https://auracreativemedia.co.uk/wp-content/uploads/2019/04/Aura-website-header.jpg',
+			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
 			'dependencies' => array('automatewoo')
 		),
 		'aura-trade-booster' => array(
 			'id' => 7,
 			'title' => 'Trade Booster',
 			'slug' => 'aura-trade-booster',
-			'image_URL' => 'https://auracreativemedia.co.uk/wp-content/uploads/2019/04/Aura-website-header.jpg',
+			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
 			'dependencies' => array('wp-store-locator', 'woocommerce-advanced-notifications', 'woocommerce-shipping-multiple-addresses')
 		),
 		'aura-agent' => array(
 			'id' => 8,
 			'title' => 'Agent Perfection',
 			'slug' => 'aura-agent',
-			'image_URL' => 'https://auracreativemedia.co.uk/wp-content/uploads/2019/04/Aura-website-header.jpg',
+			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
 			'dependencies' => array('woo-agent-order-management')
 		),
 		'aura-stock-maximiser' => array(
 			'id' => 9,
 			'title' => 'Stockist Maximiser',
 			'slug' => 'aura-stock-maximiser',
-			'image_URL' => 'https://auracreativemedia.co.uk/wp-content/uploads/2019/04/Aura-website-header.jpg',
+			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
 			'dependencies' => ""
 		),
 	) 

@@ -1,0 +1,1 @@
+The Dual Engine adds additional B2B functionality to assist stores which wish to sell their products to both Trade and Retail customers. The plugin ensures that Trade and Retail will recieve tailored experiences as well as providing some useful featues for the site administrator and shop owner.

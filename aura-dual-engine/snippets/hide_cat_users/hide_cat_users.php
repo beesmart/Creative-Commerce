@@ -189,15 +189,21 @@ function exclude_related_products( $related_posts, $product_id, $args ){
 
     $exclude_these_products = array();
 
-    if ($all_ids) :
-      foreach ( $all_ids as $id ) {
-         $exclude_these_products[] = $id;
-      }
-    endif;
+      if ($all_ids) :
+        foreach ( $all_ids as $id ) {
+           $exclude_these_products[] = $id;
+        }
+      endif;
     endif;
   
+    if(!empty($exclude_these_products)) :
+      
+        return array_diff( $related_posts, $exclude_these_products );
+
+    else : return $related_posts;
     
-    return array_diff( $related_posts, $exclude_these_products );
+    endif;
+
 }
 
 

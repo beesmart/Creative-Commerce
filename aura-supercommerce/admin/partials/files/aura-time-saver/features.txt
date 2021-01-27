@@ -1,0 +1,6 @@
+<ul>
+  <li>Xero Integration (you'll need an existing Xero account)</li>
+  <li>Barcode assignment, useful for both you and your distubutors</li>
+  <li>Stock locations for warehousing</li>
+  <li>COMING SOON: Picking lists for order barcodes</li>
+</ul>

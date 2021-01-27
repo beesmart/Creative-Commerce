@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       Creative Commerce - Time Saver
  * Plugin URI:        https://digitalzest.co.uk/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       Features which will help your business liberate time from your already busy workdays. With Xero Integration you're accounts will be in good shape. 
+ * Version:           1.0.1
  * Author:            Digital Zest
  * Author URI:        https://digitalzest.co.uk/
  * License:           GPL-2.0+
@@ -40,7 +40,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 
-define( 'AURA_TIME_SAVER_VERSION', '1.0.0' );
+define( 'AURA_TIME_SAVER_VERSION', '1.0.1' );
 define( 'AURA_TIME_SAVER_SLUG', 'aura-time-saver' );
 define( 'AURA_TIME_SAVER_TITLE', 'Time Saver' );
 

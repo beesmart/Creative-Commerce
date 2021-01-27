@@ -1,0 +1,5 @@
+<ul>
+  <li>Creates a password protected Publicity page</li>
+  <li>COMING SOON: Media Release Templates</li>
+  <li>COMING SOON: Publicity Collelatral</li>
+</ul>

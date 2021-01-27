@@ -1,0 +1,6 @@
+<ul>
+  <li>Agent Users can be created and assigned to Trade users</li>
+  <li>Agent users can create orders on behalf of Trade users</li>
+  <li>COMING SOON: Commission Status and Reports</li>
+  <li>COMING SOON: Woo Xero Agent Reference Addon</li>
+</ul>

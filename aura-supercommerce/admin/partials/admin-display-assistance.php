@@ -37,11 +37,7 @@
 
 				?>
 
-				<?php
-
-				if ($dualeng_plugin_exists):
-
-				?>
+				
 
 				<div class="col col-lg-4">
 					<h1>Foundation</h1>
@@ -49,6 +45,12 @@
 					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>admin.php?page=wc-settings&tab=email"><i class="fas fa-envelope"></i> Default Notification Emails</a></div>
 
 				</div>
+
+				<?php
+
+				if ($dualeng_plugin_exists):
+
+				?>
 
 				<div class="col col-lg-4">
 
@@ -60,16 +62,41 @@
 					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=wc_user_memberships"><i class="fas fa-users"></i> Create/Edit Memberships</a></div>
 					
 				</div>
+
+				<?php 
+
+				endif; 
+
+				if ($publicity_plugin_exists):
+
+				?>
 				
 				<div class="col col-lg-4">
 					<h1>Publicity</h1>
 					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/publicity"><i class="far fa-newspaper"></i> Publicity Page</a></div>
 				</div>
 
+
+				<?php 
+
+				endif; 
+
+				if ($time_plugin_exists):
+
+				?>
+
 				<div class="col col-lg-4">
 					<h1>Time Saver</h1>
 					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/product-barcodes/"><i class="fas fa-barcode"></i> Barcodes Page</a></div>
 				</div>
+
+				<?php 
+
+				endif; 
+
+				if ($trade_plugin_exists):
+
+				?>
 
 				<div class="col col-lg-4">
 					<h1>Trade Booster</h1>
@@ -78,9 +105,9 @@
 				</div>
 
 
+				<?php 
 
-
-				<?php endif; ?>
+				endif;  ?>	
 
 			</div>
 		</div>

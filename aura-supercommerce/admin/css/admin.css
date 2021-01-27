@@ -3,6 +3,12 @@
  * included in this file.
  */
 
+ body:not(.priv_admin) #wpbody-content .wrap .error,
+ body:not(.priv_admin) #wpbody-content .wrap .notice {
+ 	display: none;
+ } 
+
+
 .toplevel_page_aura-supercommerce #wpcontent,
 .aura-supercommerce_page_aura-status #wpcontent,
 .aura-supercommerce_page_aura-dual-engine #wpcontent {
@@ -21,6 +27,10 @@
     flex-wrap: wrap;
     /* align-content: center; */
     align-items: center;
+}
+
+.block-heading img {
+	max-width: 240px;
 }
 
 #aura-body.wrap #message {
@@ -195,7 +205,7 @@
 .aura-super .plugin-pnl__bg {
 	flex: 0 0 auto;
 	background-size: cover;
-	box-shadow: inset 0 0 0 100vw rgb(255 102 51 / 58%);
+	/*box-shadow: inset 0 0 0 100vw rgb(255 102 51 / 58%); */
 	padding: 20px 0 20px 0;
 	width: 150px;
     height: 105px;
@@ -775,7 +785,7 @@ div.wp-tab-panel-inactive {
 
     
 #adminmenu .kpui-menu-heading  div.wp-menu-name {
-	background: #f9cc96;
+	background: #f2e75b;
 }
 
 /*#adminmenu li {
@@ -789,3 +799,50 @@ div.wp-tab-panel-inactive {
 #nua-feedback.postbox {
 	display: none;
 }
+
+.wp-admin #the-list tr.type-product.status-pending {
+	opacity: 0.7;
+	background: #ffe2e2;
+}
+
+
+.aura-tabs li a {
+	display: flex;
+	align-items: center;
+}
+
+.ac-tab-icons {
+  position:relative;
+  height:48px;
+  width:48px;
+  margin:0 auto;
+  margin-right: 15px;
+}
+
+.aura-tabs li a span {
+ 	 margin-top: -8px;
+}
+
+.ac-tab-icons img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.ac-tab-icons img.active {
+	opacity:0;
+	display: none;
+}
+
+.wp-tab-active .ac-tab-icons img.inactive {
+    opacity:0;
+    display: none;
+}
+.wp-tab-active .ac-tab-icons img.active {
+	display: inline-block;
+	opacity: 1;
+}
+

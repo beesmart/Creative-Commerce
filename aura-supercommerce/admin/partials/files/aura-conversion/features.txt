@@ -1,0 +1,6 @@
+<ul>
+  <li>Populate workflows with AutomateWoo and stop losing sales</li>
+  <li>Birthday emails for customers</li>
+  <li>Personalized Coupons</li>
+  <li>COMING SOON: DashCommerce - Intelligence and insights for e-commerce</li>
+</ul>

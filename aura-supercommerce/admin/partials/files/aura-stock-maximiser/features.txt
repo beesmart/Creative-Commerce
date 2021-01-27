@@ -1,0 +1,4 @@
+<ul>
+  <li>COMING SOON: Populate your site with Stockist data</li>
+  <li>COMING SOON: Follow up emails to build communication and trust</li>
+</ul>

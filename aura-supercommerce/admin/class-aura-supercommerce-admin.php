@@ -92,6 +92,8 @@ class Aura_Supercommerce_Admin {
 		wp_enqueue_style( $this->plugin_name . '_gfont', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap', array(), 'all' );
 		wp_enqueue_style( $this->plugin_name . 'fawesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), 'all' );
 		
+		
+		wp_enqueue_style('aura_supercommerce_dashicons',  plugin_dir_url( __FILE__ ) . 'css/aura-supercommerce.css');
 
 	}
 
@@ -145,7 +147,7 @@ class Aura_Supercommerce_Admin {
 
 	 
 	public function plugin_setup_menu_backend(){
-	    add_menu_page( 'Creative Commerce Page', 'Creative Commerce', 'manage_options', 'aura-supercommerce', array( $this, 'admin_page_display' ) );  
+	    add_menu_page( 'Creative Commerce Page', 'Creative Commerce', 'manage_options', 'aura-supercommerce', array( $this, 'admin_page_display' ), 'dashicons-cclogo' ); 
 	}
 
 	 
@@ -327,19 +329,63 @@ class Aura_Supercommerce_Admin {
 
 		?>
 	
+		
 		<ul class="aura-tabs wp-tab-bar">
 
 			<?php 
 				if ($show_admin_screens) { ?>
-					<li class="wp-tab-active"><a href="#tabs-1">Snippets</a></li>
-					<li><a href="#tabs-2">Products</a></li>
-					<li><a href="#tabs-3">Tasks</a></li>
-					<li><a href="#tabs-4">Licence</a></li>
+					<li class="wp-tab-active">
+						<a href="#tabs-1">
+							<div class="ac-tab-icons">
+								<img class="inactive" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Snippets_no_hover.png' ?>" />
+								<img class="active" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Snippets_on_hover.png' ?>" />
+							</div> <span>Snippets</span>
+						</a>
+					</li>
+					<li><a href="#tabs-2">
+						<div class="ac-tab-icons">
+								<img class="inactive" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Products_no_hover.png' ?>" />
+								<img class="active" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Products_on_hover.png' ?>" />
+							</div> 
+						<span>Products</span>
+					</a>
+					</li>
+					<li><a href="#tabs-3">
+						<div class="ac-tab-icons">
+								<img class="inactive" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Snippets_no_hover.png' ?>" />
+								<img class="active" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Snippets_on_hover.png' ?>" />
+							</div> 
+						<span>Tasks</span>
+					</a>
+					</li>
+					<li><a href="#tabs-4">
+						<div class="ac-tab-icons">
+								<img class="inactive" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Licence_no_hover.png' ?>" />
+								<img class="active" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Licence_on_hover.png' ?>" />
+							</div> 
+						<span>Licence</span>
+					</a>
+					</li>
 				<?php } else { ?>
 
-					<li class="wp-tab-active"><a href="#tabs-2">Products</a></li>
-					<li><a href="#tabs-3">Tasks</a></li>
-					<li><a href="#tabs-4">Licence</a></li> 
+					<li class="wp-tab-active"><a href="#tabs-2">
+						<div class="ac-tab-icons">
+								<img class="inactive" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Products_no_hover.png' ?>" />
+								<img class="active" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Products_on_hover.png' ?>" />
+							</div> 
+							<span>Products</span></a></li>
+					<li><a href="#tabs-3">
+						<div class="ac-tab-icons">
+							<img class="inactive" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Snippets_no_hover.png' ?>" />
+							<img class="active" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Snippets_on_hover.png' ?>" />
+						</div> 
+						<span>Tasks</span></a></li>
+					<li><a href="#tabs-4">
+						<div class="ac-tab-icons">
+							<img class="inactive" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Licence_no_hover.png' ?>" />
+							<img class="active" src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/Licence_on_hover.png' ?>" />
+						</div> 
+						<span>Licence</span></a></li> 
 				<?php
 
 				}
@@ -423,6 +469,32 @@ class Aura_Supercommerce_Admin {
 	 }
 
 	}
+
+	/**
+	 * Replace the default WordPress logo on wp-login.php
+	 *
+	 * @return HTML/CSS
+	 */
+
+	public function my_login_logo() { 
+
+		$site_icon = get_site_icon_url( 320 );
+		if (empty($site_icon)) : $site_icon = plugins_url() . '/aura-supercommerce/admin/partials/images/logo-fallback.png'; endif;
+
+		?>
+
+	    <style type="text/css">
+	        #login h1 a, .login h1 a {
+	            background-image: url(<?php echo $site_icon; ?>);
+				height:65px;
+				width:320px;
+				background-size: contain;
+				background-repeat: no-repeat;
+	        	padding-bottom: 30px;
+	        }
+	    </style>
+
+	<?php }
 	
 
 

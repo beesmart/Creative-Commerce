@@ -1,8 +1,7 @@
 <ul>
-  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-  <li>Quisque ad litora torquent per conubia nostra</li>
-  <li>Quisque volutpat litora torquent per conubia nostra</li>
-  <li>Quisque volutpat condimentum velit. torquent per conubia nostra</li>
-  <li>Quisque volutpat condimentum velit. conubia nostra</li>
-  <li>Lorem ipsum dolor sit</li>
+  <li>Improved order screen feedback - Admin Columns</li>
+  <li>Additional sales capture with 'Already in Cart - Add Again' button</li>
+  <li>Additional taxonomies to suit your store</li>
+  <li>Custom product display fields</li>
+  <li>Various WooCommerce additions and bugfixes</li>
 </ul>

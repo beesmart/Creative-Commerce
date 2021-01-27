@@ -35,8 +35,6 @@
 		    			</div>
 		    			<div class="tab-content status-rows">
 		    				<div class="tab-inner">
-		    						
-
 
 		    						<?php 
 
@@ -49,7 +47,13 @@
 		    						$time_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-time-saver' );
 		    						$trade_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-trade-booster' );
 
+		    						$is_admin = $aura_sc_admin->check_current_is_privileged_user();
+
 		    						?>
+
+		    						<?php 
+
+		    						if ($is_admin) : ?>
 
 		    						<h1>Foundation</h1>
 
@@ -57,15 +61,18 @@
 		    						
 		    						<?php
 		    							$this->check_plugin_dependencies();
+
+		    							if(empty($this->check_plugin_dependencies())) :
+		    								echo 'Great! No Depedencies Exist.';
+		    							endif;
 		    						?>
 
-		    						<h2>Order Errors</h2>
-		    						maybe if an order returns an error it shows on there for us? I.E Order # - Invalid x
 		    						<?php
+
+		    						endif;
 		    							
 		    						if ($dualeng_plugin_exists) :
 
-		    					
 		    						?>
 
 		   
@@ -229,11 +236,18 @@
 		    					if ($agent_plugin_exists) :
 
 			    					$agent_data = $this::tradecust_no_attached_agents(); 
-			    					if ($agent_data) :
-				    					foreach ($agent_data as $value) {
+			    					if ($agent_data) : ?>
+
+			    						<ul>
+
+				    					<?php foreach ($agent_data as $value) {
 				    						$user = get_user_by('id', $value);
-				    						echo "<a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . ", ";
-				    					}
+				    						echo "<li><a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . "</li>";
+				    					}  ?>
+
+				    					</ul>
+
+				    					<?php
 			    					endif;
 
 		    					endif; 
@@ -241,27 +255,37 @@
 		    					?>
 
 		    					</div>
+
+		    					<?php
+
+		    					if ($agent_plugin_exists) : ?>
 
 		    					<h3>Agents with no attached Trade Users</h3>
 
 		    					<div class="postbox">
 
-		    					<?php
+			    				<?php	$agent_data_users = $this::agents_no_attached_customers(); 
+									if ($agent_data) : ?>
 
-		    					if ($agent_plugin_exists) :
+			    						<ul>
 
-			    					$agent_data_users = $this::agents_no_attached_customers(); 
-									if ($agent_data) :
-				    					foreach ($agent_data_users as $value) {
+				    					<?php foreach ($agent_data_users as $value) {
 				    						$user = get_user_by('id', $value);
-				    						echo "<a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . ", ";
-				    					}
-			    					endif;
-		    					endif; 
+				    						echo "<li><a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . "</li>";
+				    					} ?>
+				    					
+				    					</ul>
+
+				    					<?php
+			    					endif; ?>
+
+			    					</div>
+
+		    					<?php endif; 
 
 		    					?>
 
-		    					</div>
+		    					
 		    				
 		    				</div>
 		    			</div>

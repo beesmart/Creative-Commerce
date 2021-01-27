@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       Creative Commerce - Trade Booster
  * Plugin URI:        https://digitalzest.co.uk/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       Get the most out of your B2B Trade users with a set of handy additions and tools.
+ * Version:           1.0.1
  * Author:            Digital Zest
  * Author URI:        https://digitalzest.co.uk/
  * License:           GPL-2.0+
@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 
-define( 'AURA_TRADE_BOOSTER_VERSION', '1.0.0' );
+define( 'AURA_TRADE_BOOSTER_VERSION', '1.0.1' );
 define( 'AURA_TRADE_BOOSTER_SLUG', 'aura-trade-booster' );
 define( 'AURA_TRADE_BOOSTER_TITLE', 'Trade-Booster' );
 

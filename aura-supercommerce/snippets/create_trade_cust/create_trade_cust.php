@@ -13,7 +13,7 @@
 **/
 
 
-add_action('init', 'cloneRole', 99);
+add_action('init', 'cloneRole', 999);
 
 function cloneRole() {
 
