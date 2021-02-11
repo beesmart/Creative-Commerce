@@ -302,7 +302,7 @@ class Aura_Supercommerce_Admin {
 		
 		if (is_object($trade_status)) :
 	    	
-	    	$trade_status = unserialize($trade_status->trade_only);
+	    	$trade_status = $trade_status->trade_only;
 
 	    	return $trade_status;
 	    	

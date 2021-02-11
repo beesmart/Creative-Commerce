@@ -7,7 +7,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 
-*  Creative Commerce
+*  Creative Commerce - 1.1.0
 *  Creative Agent
 *  Creative Conversion
 *  Creative Dual Engine
@@ -32,18 +32,12 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 3. Check the STATUS screen for required dependencies
 
 
-== Releasing New Versions ==
-
-- To release new versions zip up the individual plugins and place them in:
-
-```ftp://superdevcolour@82.145.59.39/public_html/wp-update-server-master/packages/```
-
-- The client WordPress installs will then read and detect the new versions for download.
-
-
 == Changelog ==
 
-= 1.0 =
+= 1.1.0 - 2021-11-02 =
+* Enhancement - Add Trade Only switch to Licence that adds a snippet which hides the store from retail (Dual Engine 'lite')
+
+= 1.0.0 =
 * Initial Version
 
 
