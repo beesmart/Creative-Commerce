@@ -48,7 +48,10 @@
 		    						$trade_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-trade-booster' );
 
 		    						$is_admin = $aura_sc_admin->check_current_is_privileged_user();
-
+								    $trade_status = $aura_sc_admin->get_trade_status();
+									
+								
+								
 		    						?>
 
 		    						<?php 
@@ -56,15 +59,13 @@
 		    						if ($is_admin) : ?>
 
 		    						<h1>Foundation</h1>
+								
+									<?php if($trade_status) : echo 'Trade Status: Trade Only'; else : echo 'Trade Status: Dual'; endif;  ?>
 
 		    						<h2>Required Dependencies</h2>
 		    						
 		    						<?php
 		    							$this->check_plugin_dependencies();
-
-		    							if(empty($this->check_plugin_dependencies())) :
-		    								echo 'Great! No Depedencies Exist.';
-		    							endif;
 		    						?>
 
 		    						<?php
@@ -76,77 +77,77 @@
 		    						?>
 
 		   
-		    						<hr style="margin: 20px 0;">
+		    							<hr style="margin: 20px 0;">
 
-		    						<h1>Dual Engine</h1>
+		    							<h1>Dual Engine</h1>
 
-		    						<h2>Products - Visbility Issues</h2>
-		    						<h3>Pack Attributes Exist?</h3>
+		    							<h2>Products - Visbility Issues</h2>
+		    							<h3>Pack Attributes Exist?</h3>
 
-		    						<?php $taxonomy_exist = $this::status_req_attr_exist(); ?>
+		    							<?php $taxonomy_exist = $this::status_req_attr_exist(); ?>
 
-		    						<div class="postbox <?php if ($taxonomy_exist) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
+		    							<div class="postbox <?php if ($taxonomy_exist) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
 		    					
-		    						<?php 
+			    						<?php 
 
-		    						if ($taxonomy_exist) {
+			    						if ($taxonomy_exist) {
 
-		    							echo __( '<p style="color: green;">Good! Attribute "Pack Size" is Setup</p>', 'aura-supercommerce' );
+			    							echo __( '<p style="color: green;">Good! Attribute "Pack Size" is Setup</p>', 'aura-supercommerce' );
 
-		    							$term_single = term_exists( 'single-item', 'pa_pack-size' );
+			    							$term_single = term_exists( 'single-item', 'pa_pack-size' );
 
-		    							if ( $term_single !== 0 && $term_single !== null ) {
-		    							   	   echo __( '<p style="color: green;">Good! Single Pack is Setup!</p>', 'aura-supercommerce' );
-		    							} else { echo __( '<p>Warning! Single Pack is NOT Setup!</p>', 'aura-supercommerce' ); }
+			    							if ( $term_single !== 0 && $term_single !== null ) {
+			    							   	   echo __( '<p style="color: green;">Good! Single Pack is Setup!</p>', 'aura-supercommerce' );
+			    							} else { echo __( '<p>Warning! Single Pack is NOT Setup!</p>', 'aura-supercommerce' ); }
 
-		    							$term_multi = term_exists( 'multi-pack', 'pa_pack-size' );
+			    							$term_multi = term_exists( 'multi-pack', 'pa_pack-size' );
 
-		    							if ( $term_multi !== 0 && $term_single !== null ) {
-		    							   	   echo __( '<p style="color: green;">Good! Multi Pack is Setup!</p>', 'aura-supercommerce' );
-		    							} else { echo __( '<p>Warning! Multi Pack is NOT Setup!</p>', 'aura-supercommerce' ); }
+			    							if ( $term_multi !== 0 && $term_single !== null ) {
+			    							   	   echo __( '<p style="color: green;">Good! Multi Pack is Setup!</p>', 'aura-supercommerce' );
+			    							} else { echo __( '<p>Warning! Multi Pack is NOT Setup!</p>', 'aura-supercommerce' ); }
 
-		    						} else {
+			    						} else {
 
-		    							echo __( '<p>Warning! Please create an Attribute called "Pack Size", with 2 terms, Single Pack and Multi Pack</p>', 'aura-supercommerce' );
-		    						}
+			    							echo __( '<p>Warning! Please create an Attribute called "Pack Size", with 2 terms, Single Pack and Multi Pack</p>', 'aura-supercommerce' );
+			    						}
 
 
-		    						?>
+		    							?>
 
-		    						</div>
+		    							</div>
 
-		    						<h3>Unassigned Attributes</h3>
+		    							<h3>Unassigned Attributes</h3>
 		    						
-		    						<?php // query all products to see if they are inside a bundle. If so check they have the correct attributes Pack Size. and single. If not echo. Also show bundles which dont have the attribute. 
+		    							<?php // query all products to see if they are inside a bundle. If so check they have the correct attributes Pack Size. and single. If not echo. Also show bundles which dont have the attribute. 
 
-		    						$warning_products = $this::status_unassigned_attr_exist();
+			    						$warning_products = $this::status_unassigned_attr_exist();
 
-		    						?>
+			    						?>
 
-		    						<div class="postbox <?php if (!$warning_products) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
-		    				
-		    						<?php
-		    							if ($warning_products) :
+			    						<div class="postbox <?php if (!$warning_products) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
+			    				
+			    						<?php
+			    							if ($warning_products) :
 
-		    								echo '<p>Warning there are products which may require the Single Pack Attribute. See here for more info...</p>';
-		    								echo '<ul>'; 
-
-
-		    								foreach ($warning_products as $value) {
-		    									echo '<li ><a href="' . get_edit_post_link( $value ) . '" style="color: red">' . get_the_title( $value ) . '</a></li>';
-		    								}
-
-		    								echo '</ul>'; 
-
-		    							
-		    						endif;
-
-		    						//check these have attributes
+			    								echo '<p>Warning there are products which may require the Single Pack Attribute. See here for more info...</p>';
+			    								echo '<ul>'; 
 
 
-		    						?>
-		    						</div>
-		    						<hr>
+			    								foreach ($warning_products as $value) {
+			    									echo '<li ><a href="' . get_edit_post_link( $value ) . '" style="color: red">' . get_the_title( $value ) . '</a></li>';
+			    								}
+
+			    								echo '</ul>'; 
+
+			    							
+			    						endif;
+
+			    						//check these have attributes
+
+
+			    						?>
+		    							</div>
+		    							<hr>
 
 		    						<h2>Products - Price Issues</h2>
 		    						<h3>Membership Price Tiers Applied to All Products</h3>
@@ -215,14 +216,14 @@
 	    										echo '<p>Warning! <a href="' . get_edit_user_link($value) . '"> Trade Customer: ' . get_userdata($value)->user_login . ' does not appear to have a membership attached</a></p>'; 
 	    									endif;
 	    								}
-	    							endif;
-		    					
-		    						 
-		    						?>
+	    							endif; ?>
+
 
 		    						</div>
 
-		    							<hr style="margin: 20px 0;">
+		    					<?php endif; 	?>
+
+		    					<hr style="margin: 20px 0;">
 
 		    					<h1>Agents</h1>
 
@@ -231,7 +232,7 @@
 
 		    					<div class="postbox">
 
-		    					<?php endif; 
+		    					<?php 
 		    						
 		    					if ($agent_plugin_exists) :
 
@@ -271,7 +272,7 @@
 
 				    					<?php foreach ($agent_data_users as $value) {
 				    						$user = get_user_by('id', $value);
-				    						echo "<li><a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . "</li>";
+				    						echo "<li><a href='" . get_site_url() . "/wp-admin/user-edit.php?user_id=" . $value . "' target='_Blank'>" . $user->user_nicename . "</a></li>";
 				    					} ?>
 				    					
 				    					</ul>
@@ -285,8 +286,38 @@
 
 		    					?>
 
+		    					<hr style="margin: 20px 0;">
+
+		    					<h1>Trade Booster</h1>
+
+		    					<h2>Stockists - Potential Issues</h2>
+		    					<h3>Monthly reports not setup</h3>
 		    					
+
+		    					<?php if ($trade_plugin_exists) : 
+
+		    						$wpsl_mailto_report = get_option( 'wpsl_auto_report_mailto' );
+		    					?>
+
+		    					<div class="postbox <?php if (!empty($wpsl_mailto_report)) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
+
+		    						<?php if (!empty($wpsl_mailto_report)) : ?>
+
+		    							<p>Great! You have an email filled out</p>
+
+		    						<?php else : ?>
+
+		    							<p>Please fill your email here: <a href="<?php echo get_admin_url(); ?>edit.php?post_type=wpsl_stores&page=wpsl_report"><i class="fas fa-mail-bulk"></i> Setup Monthly Stockist Reports</a></p>
+
+		    						<?php endif; ?>
+
+		    					<?php endif ?>
+
+		    					</div>
+
 		    				
+
+		    					
 		    				</div>
 		    			</div>
 		    		</div>

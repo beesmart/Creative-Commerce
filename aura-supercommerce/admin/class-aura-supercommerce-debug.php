@@ -114,7 +114,9 @@ class Aura_Supercommerce_Debug {
 	public function dashboard_widget_status_callback( $post, $callback_args ) {
 
 
-
+		$aura_sc_admin = new Aura_Supercommerce_Admin($this->plugin_name, $this->version);
+		$trade_status = $aura_sc_admin->get_trade_status();
+		
 	    $issue_count = $this::display_counted_status_issues();
 
 	   
@@ -125,6 +127,9 @@ class Aura_Supercommerce_Debug {
 	    	echo '<h4><span class="dashicons dashicons-yes-alt" style="color: green;"></span> Great! System reports no potential issues</h4>';
 	    endif;
 
+	    echo '<hr style="margin: 15px 0;">';
+
+	    if ($trade_status) : echo '<h5>Trade Only Platform</h5>'; endif;
 
 	 	echo '<hr style="margin: 20px 0;">';
 
@@ -216,10 +221,14 @@ class Aura_Supercommerce_Debug {
 
 		$the_query = get_posts($args);
 
-		$results = WC_PB_DB::query_bundled_items( array(
-		    'return'    => 'id=>product_id',
-		   
-		) );
+		if(class_exists('WC_PB_DB')) :
+
+			$results = WC_PB_DB::query_bundled_items( array(
+			    'return'    => 'id=>product_id',
+			   
+			) );
+
+		endif;
 
 		$taxonomy_exist = $this::status_req_attr_exist();
 		$terms_exist =  $this::status_req_terms_exist();
@@ -433,8 +442,10 @@ class Aura_Supercommerce_Debug {
 
 		$aura_sc_admin = new Aura_Supercommerce_Admin($this->plugin_name, $this->version);
 		$dualeng_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-dual-engine' );
+	    $trade_status = $aura_sc_admin->get_trade_status();
 		
-		if ($dualeng_plugin_exists) :
+		
+		if ($dualeng_plugin_exists && !$trade_status) :
 
 			// Positive Flags
 			$required[] = $this::status_req_attr_exist();

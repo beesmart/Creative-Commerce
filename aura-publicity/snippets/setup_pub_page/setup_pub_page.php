@@ -8,7 +8,7 @@
  *
  * @link              https://digitalzest.co.uk
  * @since             1.0.0
- * @package           Aura_Dual_Engine
+ * @package           Aura_Publicity
  *
 **/
 

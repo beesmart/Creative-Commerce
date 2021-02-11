@@ -4,9 +4,11 @@
 
 
 	$active_plugins = $this::list_active_plugins();
-
+	$aura_sc_admin = new Aura_Supercommerce_Admin( $this->plugin_name, $this->version );
 	$aura_licence_checker  = new aura_licence_checker;
 	$products = $aura_licence_checker->check_licence_products();
+
+	$trade_status = $aura_sc_admin->get_trade_status();
 
 ?>
 
@@ -19,6 +21,15 @@
 			<h2>Products Dashboard</h2>
 			<h4>Version: <?php echo $this->version ?></h4>
 		</div>
+
+	<?php
+		if ($trade_status) :
+	?>
+		<div class="cc-notice-box">
+			<h2>Creative Commerce is set to <strong>Trade Only</strong>. Some features of the Dual Engine plugin have been disabled. You can re-enable by upgrading, but if you believe this is an error please let us know.</h2>
+		</div>
+	<?php endif; ?>
+
 	<div class="tab-content">
 		<div class="tab-inner">
 			<div class="tab-inner-subtitle">

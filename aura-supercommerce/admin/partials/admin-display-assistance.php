@@ -35,6 +35,8 @@
 				$time_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-time-saver' );
 				$trade_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-trade-booster' );
 
+				$trade_status = $aura_sc_admin->get_trade_status();
+				
 				?>
 
 				
@@ -48,7 +50,7 @@
 
 				<?php
 
-				if ($dualeng_plugin_exists):
+				if ($dualeng_plugin_exists && !$trade_status):
 
 				?>
 
@@ -102,8 +104,8 @@
 					<h1>Trade Booster</h1>
 					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/shipping-addresses/"><i class="fas fa-dolly"></i> Shipping Addresses</a></div>
 					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>admin.php?page=advanced-notifications/"><i class="fas fa-mail-bulk"></i> Advanced Email Notifications</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=wpsl_stores&page=wpsl_report"><i class="fas fa-mail-bulk"></i> Setup Monthly Stockist Reports</a></div>
 				</div>
-
 
 				<?php 
 

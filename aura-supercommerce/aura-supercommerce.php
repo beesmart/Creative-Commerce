@@ -10,7 +10,7 @@
  * Plugin Name:       Creative Commerce
  * Plugin URI:        httpss://digitalzest.co.uk/
  * Description:       Plugin Management and Hub for Aura Products
- * Version:           1.0.1
+ * Version:           1.1.0
  * Author:            Digital Zest
  * Author URI:        httpss://digitalzest.co.uk/
  * License:           GPL-2.0+
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
 */
 
 
-define( 'AURA_SUPERCOMMERCE_VER', '1.0.1' );
+define( 'AURA_SUPERCOMMERCE_VER', '1.1.0' );
 define( 'AURA_SUPERCOMMERCE_SLUG', 'aura-supercommerce' );
 define( 'AURA_SUPERCOMMERCE_PLUGINS', 
 	array( 

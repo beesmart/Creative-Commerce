@@ -53,8 +53,8 @@ class Aura_Supercommerce {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'AURA_SUPERCOMMERCE_VERSION' ) ) {
-			$this->version = AURA_SUPERCOMMERCE_VERSION;
+		if ( defined( 'AURA_SUPERCOMMERCE_VER' ) ) {
+			$this->version = AURA_SUPERCOMMERCE_VER;
 		} else {
 			$this->version = '1.0.1';
 		}
@@ -179,6 +179,7 @@ class Aura_Supercommerce {
 
 		$this->loader->add_action( 'login_enqueue_scripts', $plugin_admin, 'my_login_logo');
 
+		$this->loader->add_action( 'template_redirect', $plugin_admin, 'cc_tradeonly_redirect');
 
 
 	}

@@ -70,6 +70,12 @@ class aura_licence_checker {
 
 		// split transients based on action because if not when this fires on an activate action it only updates with status and never retrieves the rest of the useful data.
 		
+		// $response = wp_remote_get($query, array('timeout' => 20, 'sslverify' => false));
+		// // licence data.
+		// $licence_data = json_decode(wp_remote_retrieve_body($response));
+		// var_dump($response);
+		// exit;
+
 		if($_action === 'slm_activate' || $_action === 'slm_deactivate') :
 
 			 if( ! empty( $transient_status ) ) {
@@ -81,7 +87,7 @@ class aura_licence_checker {
 			 	$response = wp_remote_get($query, array('timeout' => 20, 'sslverify' => false));
 			 	// licence data.
 			 	$licence_data = json_decode(wp_remote_retrieve_body($response));
-			 
+			
 			 	set_transient( 'licence_transient_status', $licence_data, HOUR_IN_SECONDS );
 			 	
 			}
@@ -390,7 +396,34 @@ class aura_licence_checker {
 
 	}
 
+	/**
+	 *
+	 * A GET function that checks which Administrators $this licence has attached to it. We use this to stop other site admins i.e. the client from having broader control.
+	 *
+	 * @return array/obj Serialized data containing Admin usernames
+	*/
 
+	public function check_trade_only_status(){
+
+		$licence_key = get_option('aura_licence_key');
+
+		if($licence_key) {
+
+			$licence_data = $this->api_request( 'slm_check', $licence_key );
+	 
+	        if($licence_data){
+
+	        	$licence_check_trade_only = $licence_data->trade_only;
+
+	        	return $licence_check_trade_only;
+	        }
+
+		} else {
+
+			return "Key is either invalid, disabled or not entered";
+		}
+
+	}
 
 
 

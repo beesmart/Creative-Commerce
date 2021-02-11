@@ -287,6 +287,28 @@ class Aura_Supercommerce_Admin {
 	    endif;
 
 	}
+	
+	/**
+	 * Calls the remote API to find our Trade status (i.e. those who use Dual Engine lite)
+	 *
+	 * @since    1.1.0
+	 * @return   string - a string containing true or false
+	 */
+
+	public function get_trade_status(){
+
+		$aura_licence_checker = new aura_licence_checker;
+		$trade_status = $aura_licence_checker->check_trade_only_status();
+		
+		if (is_object($trade_status)) :
+	    	
+	    	$trade_status = unserialize($trade_status->trade_only);
+
+	    	return $trade_status;
+	    	
+	    endif;
+
+	}
 
 
 	/**
@@ -495,10 +517,37 @@ class Aura_Supercommerce_Admin {
 	    </style>
 
 	<?php }
+
+
+	/**
+	 * Replace the default WordPress logo on wp-login.php
+	 *
+	 * @return HTML/CSS
+	 * @since    1.1.0
+	 */
+	 
+
+
+	public function cc_tradeonly_redirect() { 
+
+		$trade_status = $this->get_trade_status();
+
+		if($trade_status == TRUE) :
+
+		    if ( is_woocommerce() || is_cart() || is_checkout() ) {
+			
+			$current_user = wp_get_current_user();
+			
+			 if ( in_array( 'customer', $current_user->roles ) || in_array( 'subscriber', $current_user->roles ) || ! is_user_logged_in() ) {
+				 wp_redirect( get_permalink(get_option('woocommerce_myaccount_page_id')) );
+	        	 exit;
+			 }
+        	
+    	}
+
+    	endif;
+	}
 	
 
 
 }
-
-
-

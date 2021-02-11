@@ -19,6 +19,9 @@ if ( is_plugin_active( 'wp-store-locator/wp-store-locator.php' ) ) {
 
 include_once(plugin_dir_path(__FILE__) . "includes/custom-file.php");
 
+include_once(plugin_dir_path(__FILE__) . "includes/wpsl-custom-reports.php");
+
+// ************ //
 
 add_action( 'admin_post_refresh_all_stockist_data', 'refresh_all_stockist_data' );
 

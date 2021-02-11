@@ -113,6 +113,11 @@
 	width: 100%;
 	margin: 0;
 }
+.aura-super .cc-notice-box {
+	padding: 8px 9vw;
+    background: #6dd7a8;
+    font-size: 11px;
+}
 
 .aura-super .tab-content {
 	padding: 35px 25px;
