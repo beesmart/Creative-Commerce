@@ -129,7 +129,7 @@ class Aura_Supercommerce_Debug {
 
 	    echo '<hr style="margin: 15px 0;">';
 
-	    if ($trade_status) : echo '<h5>Trade Only Platform</h5>'; endif;
+	    if ($trade_status === "TRUE" && $trade_status != 'FALSE') : echo '<h5>Trade Only Platform</h5>'; endif;
 
 	 	echo '<hr style="margin: 20px 0;">';
 

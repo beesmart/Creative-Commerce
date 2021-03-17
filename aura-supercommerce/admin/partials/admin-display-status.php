@@ -60,7 +60,7 @@
 
 		    						<h1>Foundation</h1>
 								
-									<?php if($trade_status) : echo 'Trade Status: Trade Only'; else : echo 'Trade Status: Dual'; endif;  ?>
+									<?php if($trade_status === "TRUE" && $trade_status != 'FALSE') : echo 'Trade Status: Trade Only'; else : echo 'Trade Status: Dual'; endif;  ?>
 
 		    						<h2>Required Dependencies</h2>
 		    						

@@ -9,11 +9,14 @@
  } 
 
 
-.toplevel_page_aura-supercommerce #wpcontent,
-.aura-supercommerce_page_aura-status #wpcontent,
-.aura-supercommerce_page_aura-dual-engine #wpcontent {
-	padding-left: 0;
-}
+ .toplevel_page_aura-supercommerce #wpcontent,
+ .aura-supercommerce_page_aura-status #wpcontent,
+ .aura-supercommerce_page_aura-dual-engine #wpcontent,
+ .creative-commerce_page_aura-status #wpcontent,
+ .creative-commerce_page_aura-dual-engine #wpcontent
+ {
+ 	padding-left: 0;
+ }
 
 #aura-body.wrap {
 	margin: 0;

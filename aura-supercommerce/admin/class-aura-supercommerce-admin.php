@@ -520,10 +520,6 @@ class Aura_Supercommerce_Admin {
 
 
 	/**
-	 * Replace the default WordPress logo on wp-login.php
-	 *
-	 * @return HTML/CSS
-	 * @since    1.1.0
 	 */
 	 
 
@@ -532,7 +528,9 @@ class Aura_Supercommerce_Admin {
 
 		$trade_status = $this->get_trade_status();
 
-		if($trade_status == TRUE) :
+		if($trade_status === "FALSE" || empty($trade_status)) :  
+			// do nothing
+		else :
 
 		    if ( is_woocommerce() || is_cart() || is_checkout() ) {
 			

@@ -50,12 +50,13 @@ class aura_licence_checker {
 
 	private function api_request( $_action, $_key ) {
 
+		$server_name = (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : php_uname("n");
 
 		$api_params = array(
 		    'slm_action' => $_action,
 		    'secret_key' => self::YOUR_SPECIAL_SECRET_KEY,
 		    'license_key' => $_key, // Licence is spelt in US English! Yanks eh!
-		    'registered_domain' => $_SERVER['SERVER_NAME'],
+		    'registered_domain' => $server_name,
 		    'item_reference' => urlencode(self::YOUR_ITEM_REFERENCE),
 		);
 
@@ -420,7 +421,7 @@ class aura_licence_checker {
 
 		} else {
 
-			return "Key is either invalid, disabled or not entered";
+			return "Licence reports Trade Only restriction enabled";
 		}
 
 	}

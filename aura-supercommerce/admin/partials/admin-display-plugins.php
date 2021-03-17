@@ -23,7 +23,7 @@
 		</div>
 
 	<?php
-		if ($trade_status) :
+		if ($trade_status === "TRUE" && $trade_status != 'FALSE') :
 	?>
 		<div class="cc-notice-box">
 			<h2>Creative Commerce is set to <strong>Trade Only</strong>. Some features of the Dual Engine plugin have been disabled. You can re-enable by upgrading, but if you believe this is an error please let us know.</h2>
