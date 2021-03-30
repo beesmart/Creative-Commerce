@@ -5,4 +5,4 @@
 * Enhancement - Add Trade Only switch to Licence that adds a snippet which hides the store from retail (Dual Engine 'lite')
 
 = 1.0.0 - 2020-09-15 =
-* Notice - This is the first entry in the changelog and registers it as installed. #TICKETREFHERE
+* Notice - This is the first entry in the changelog and registers it as installed. #TICKETREFHERE.

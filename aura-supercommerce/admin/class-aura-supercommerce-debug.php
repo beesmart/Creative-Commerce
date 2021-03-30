@@ -148,7 +148,7 @@ class Aura_Supercommerce_Debug {
 
 	 	echo '<hr style="margin: 20px 0;">';
 
-	    echo '<a href="https://helpdesk.digitalzest.co.uk/" target="_Blank"><button class="button-primary">Click here for  Help Desk</button></a>';
+	    echo '<a href="https://helpdesk.digitalzest.co.uk/home-cc/" target="_Blank"><button class="button-primary">Click here for  Help Desk</button></a>';
 	}
 
 
@@ -212,11 +212,13 @@ class Aura_Supercommerce_Debug {
 	 * @return   Array | Boolean - Array contains product data of products which failed the check, else return False because there are no problem products
 	*/
 
+
 	public function status_unassigned_attr_exist(){
 
 		$args = array(
 		    'posts_per_page'   => -1,
-		    'post_type'        => 'product'
+		    'post_type'        => 'product',
+		    'post_status' => array('publish', 'pending'),
 		);
 
 		$the_query = get_posts($args);
@@ -239,8 +241,14 @@ class Aura_Supercommerce_Debug {
 
 			foreach ($results as $product) {
 				if( !has_term( 'single-item', 'pa_pack-size', $product ) ) {
-					$warning_products[] = $product;
+				
+					if ( get_post_status ( $product ) ) {
+					   $warning_products[] = $product;
+					}
+					
 				}
+
+				
 			}
 
 			if ($warning_products) :
@@ -253,6 +261,7 @@ class Aura_Supercommerce_Debug {
 		endif;
 
 	}
+
 
 	/**
 	 * A problem identified previosuly is that Global price settings in WooCommerce Memberships can be unexpected/unintended, applying sweeping rules to all products. Therefore we check to see if there are any 

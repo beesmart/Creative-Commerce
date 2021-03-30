@@ -60,7 +60,10 @@ function wooboi_check_current_user_access(){
 		$wooboi_get_allowed_memberships = get_option( 'wooboi_get_allowed_memberships' ); 
 		$active_memberships = wc_memberships_get_user_active_memberships($user_id);
 
-        if(wc_memberships_is_user_active_member( $user_id, 34 )) {
+        // if(wc_memberships_is_user_active_member( $user_id, 34 )) {
+        //     $allowed_for_bulk_order = true;
+        // }
+        if($active_memberships) {
             $allowed_for_bulk_order = true;
         }
 
