@@ -34,6 +34,9 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
+= 1.1.1 - 2021-06-04 =
+* Update - Remove FMA Added Reg fields plugin and associated snippet due to bug in plugin and abandonment
+
 = 1.1.0 - 2021-04-01 =
 * Request ACF be installed when accessing 'better category overview' snippet admin page
 * Better UI prompts for 'minimum quantity requirement' snippet, show UI prompts on single product page via shortcode and basket notifications
