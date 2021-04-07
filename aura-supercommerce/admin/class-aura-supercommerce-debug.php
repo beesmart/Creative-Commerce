@@ -482,7 +482,7 @@ class Aura_Supercommerce_Debug {
 
 
 	/**
-	 * Use our dependency data from our CONST, to check which dependecies are activated or missing. Then output this as HTML feedback on the status page. Special shoutout to FMA plugin which has a unique naming structure and requires it's own conditional.
+	 * Use our dependency data from our CONST, to check which dependecies are activated or missing. Then output this as HTML feedback on the status page. Special shoutout to ACF which uses a slightly different naming format,
 	 *
 	 * @since    1.0.0
 	 * @return   HTML - Echo HTML feedback based on whether a dep. is or isn't installed/activated.
@@ -503,7 +503,7 @@ class Aura_Supercommerce_Debug {
 
 			 	foreach ($data['dependencies'] as $value) {
 			 		
-			 		if ( !function_exists('is_plugin_active') || ( !is_plugin_active( $value . '/' . $value . '.php') && !is_plugin_active( $value . '/init.php') && !is_plugin_active( $value . '/fmeaddon-add-registration-attributes.php')) ) {
+			 		if ( !function_exists('is_plugin_active') || ( !is_plugin_active( $value . '/' . $value . '.php') && !is_plugin_active( $value . '/init.php') && !is_plugin_active( $value . '/acf.php')) ) {
 
 			 			echo "<a href='" . get_site_url() . "/wp-admin/plugin-install.php?s=" . $value . "&tab=search&type=term'><span class='disabled-red' style='color: red; text-transform: capitalize; padding-left: 6px;'><i class='fa fa-times'></i> " . $value . '</span></a>';
 

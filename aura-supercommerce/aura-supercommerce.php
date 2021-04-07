@@ -10,7 +10,7 @@
  * Plugin Name:       Creative Commerce
  * Plugin URI:        httpss://digitalzest.co.uk/
  * Description:       Plugin Management and Hub for Aura Products
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            Digital Zest
  * Author URI:        httpss://digitalzest.co.uk/
  * License:           GPL-2.0+
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
 */
 
 
-define( 'AURA_SUPERCOMMERCE_VER', '1.1.0' );
+define( 'AURA_SUPERCOMMERCE_VER', '1.1.1' );
 define( 'AURA_SUPERCOMMERCE_SLUG', 'aura-supercommerce' );
 define( 'AURA_SUPERCOMMERCE_PLUGINS', 
 	array( 
@@ -52,7 +52,7 @@ define( 'AURA_SUPERCOMMERCE_PLUGINS',
 			'title' => 'Dual Engine',
 			'slug' => 'aura-dual-engine',
 			'image_URL' => 'https://superdev.colourcreation.co.uk/wp-content/plugins/aura-supercommerce/admin/partials/images/dz-cc-place.jpg',
-			'dependencies' => array('fma-additional-registration-attributes', 'woocommerce-memberships', 'woocommerce-role-based-methods', 'woocommerce-table-rate-shipping', 'woocommerce-product-bundles')
+			'dependencies' => array('woocommerce-memberships', 'woocommerce-role-based-methods', 'woocommerce-table-rate-shipping', 'woocommerce-product-bundles', 'advanced-custom-fields-pro')
 		),
 		'aura-time-saver' => array(
 			'id' => 4,

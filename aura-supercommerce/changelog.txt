@@ -1,6 +1,9 @@
 
 == Changelog ==
 
+= 1.1.1 - 2021-06-04 =
+* Update - Remove FMA Added Reg fields plugin and associated snippet due to bug in plugin and abandonment
+
 = 1.1.0 - 2021-11-02 =
 * Enhancement - Add Trade Only switch to Licence that adds a snippet which hides the store from retail (Dual Engine 'lite')
 

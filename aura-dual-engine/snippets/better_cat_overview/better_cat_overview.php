@@ -13,6 +13,7 @@
 **/
 
 
+
   
 add_action('admin_menu', 'aura_register_my_custom_submenu_page');
  
@@ -29,6 +30,9 @@ function aura_register_my_custom_submenu_page() {
 
  
 function aura_cat_overview_page_callback() {
+
+
+	if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) || is_plugin_active( 'advanced-custom-fields/acf.php' ) ) {
     
 	$categories = get_terms( ['taxonomy' => 'product_cat', 'hide_empty' => false] );
 
@@ -73,14 +77,24 @@ function aura_cat_overview_page_callback() {
 				$category_link = '<a href="/wp-admin/term.php?taxonomy=product_cat&tag_ID=' . $category->term_id . '" >' . $category->name . '</a>';
 
 				$display_tick = false;
+				$hide_field_retail = "";
+				$hide_field_trade = "";
+				$fccm_meta_minimum = "";
 
-				$hide_field_trade = get_field('hcu_hidden_user_trade', $category );
-				$hide_field_retail = get_field('hcu_hidden_user_retail', $category );
-
+				if (get_field('hcu_hidden_user_trade', $category)) {
+				  $hide_field_trade = get_field('hcu_hidden_user_trade', $category );
+				}
+				if (get_field('hcu_hidden_user_retail', $category)) {
+				  $hide_field_retail = get_field('hcu_hidden_user_retail', $category );
+				}
+				
+				
 				$display_tick = '<span style="color: red;" class="dashicons dashicons-yes-alt"></span>'; 
 			//	$display_fail = '<span class="dashicons dashicons-dismiss"></span>';
-				$fccm_meta_minimum = get_field('fccm_meta_minimum', $category);
-
+				if (get_field('fccm_meta_minimum', $category)) {
+				   $fccm_meta_minimum = get_field('fccm_meta_minimum', $category);
+				}
+				
 			?>
 
 				<tr>
@@ -89,7 +103,6 @@ function aura_cat_overview_page_callback() {
 					<td><?php if($hide_field_trade) : echo $display_tick; /* else : echo $display_fail; */ endif; ?></td>
 					<td><?php if ($fccm_meta_minimum) : ?> Must have <span style="color: red; font-weight: bold;"><?php echo $fccm_meta_minimum; ?></span> of any in this category <?php endif;?> </td>
 				</tr>
-
 
 			<?php	
 
@@ -102,6 +115,10 @@ function aura_cat_overview_page_callback() {
 		</table>
   
 <?php
+	}
+	else {
+		echo '<h2>Please install <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Advanced Custom Fields</a> to enable this feature</h2>';
+	}
 
 }
 

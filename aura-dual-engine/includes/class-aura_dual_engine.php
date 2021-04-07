@@ -70,7 +70,7 @@ class Aura_dual_engine {
 		if ( defined( 'AURA_DUAL_ENGINE_VERSION' ) ) {
 			$this->version = AURA_DUAL_ENGINE_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.1.0';
 		}
 		$this->plugin_name = 'aura-dual-engine';
 
