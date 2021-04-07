@@ -1,4 +1,4 @@
-=== Craetive Commerce ===
+=== Creative Commerce ===
 Contributors: Paul Taylor, Stephen Collins, Connor Douglas 
 Tags: eCommerce, Digital Zest
 Stable tag: 1.0
@@ -7,8 +7,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 
-*  Creative Commerce - 1.1.0
-*  Creative Agent
+*  Creative Commerce - 1.1.1
+*  Creative Agent - 1.1.0
 *  Creative Conversion
 *  Creative Dual Engine
 *  Creative Publicity
@@ -33,6 +33,9 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 
 == Changelog ==
+
+= 1.1.1 - 2021-06-04 =
+* Update - Remove FMA Added Reg fields plugin and associated snippet due to bug in plugin and abandonment
 
 = 1.1.0 - 2021-11-02 =
 * Enhancement - Add Trade Only switch to Licence that adds a snippet which hides the store from retail (Dual Engine 'lite')
