@@ -148,16 +148,19 @@ class Aura_dual_engine_Admin {
 	 */
 
 	public function plugin_setup_menu_backend(){
+
+		if ( class_exists('Aura_Supercommerce_Admin') ) {
 		
-		$aura_admin_functions = new Aura_Supercommerce_Admin( $this->plugin_name, $this->version );
+			$aura_admin_functions = new Aura_Supercommerce_Admin( $this->plugin_name, $this->version );
 
-		$show_admin_screens = false; 
+			$show_admin_screens = false; 
 
-		if($aura_admin_functions->check_current_is_privileged_user()) : $show_admin_screens = true; endif;
+			if($aura_admin_functions->check_current_is_privileged_user()) : $show_admin_screens = true; endif;
 
-		if ( $show_admin_screens ) {
-		
-	    	add_submenu_page( 'aura-supercommerce', 'Dual Engine', 'Dual Engine', 'manage_options', 'aura-dual-engine', array( $this, 'admin_page_display' ), 999 );
+			if ( $show_admin_screens ) {
+			
+		    	add_submenu_page( 'aura-supercommerce', 'Dual Engine', 'Dual Engine', 'manage_options', 'aura-dual-engine', array( $this, 'admin_page_display' ), 999 );
+	 		}
 	 	}
 	}
 	

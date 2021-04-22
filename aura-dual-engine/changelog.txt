@@ -1,6 +1,9 @@
 
 == Changelog ==
 
+= 1.1.1 - 2021-04-01 =
+* Add class exists check to class on
+
 = 1.1.0 - 2021-04-01 =
 * Request ACF be installed when accessing 'better category overview' snippet admin page
 * Better UI prompts for 'minimum quantity requirement' snippet, show UI prompts on single product page via shortcode and basket notifications
