@@ -4,7 +4,7 @@ Tags: eCommerce
 Requires at least: 4.9
 Tested up to: 5.6
 Requires PHP: 7.2
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,12 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 
 == Changelog ==
+
+= 1.2.2 - 2021-22-04 =
+* Update - Change inputs from labels to placholder text in add_reg_snippet
+
+= 1.1.2 - 2021-07-04 =
+* Fix - Bug in debug status checker
 
 = 1.1.1 - 2021-06-04 =
 * Update - Remove FMA Added Reg fields plugin and associated snippet due to bug in plugin and abandonment

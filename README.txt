@@ -7,8 +7,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 
-*  Creative Commerce - 1.1.1
-*  Creative Agent - 1.1.0
+*  Creative Commerce
+*  Creative Agent
 *  Creative Conversion
 *  Creative Dual Engine
 *  Creative Publicity
@@ -33,6 +33,12 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 
 == Changelog ==
+
+= 1.2.2 - 2021-22-04 =
+* Update - Change inputs from labels to placholder text in add_reg_snippet
+
+= 1.1.2 - 2021-07-04 =
+* Fix - Bug in debug status checker
 
 = 1.1.1 - 2021-06-04 =
 * Update - Remove FMA Added Reg fields plugin and associated snippet due to bug in plugin and abandonment

@@ -325,16 +325,18 @@ class Aura_Supercommerce_Debug {
 		");
 
 		// Raw output
-		
+		$my_posts = "";
 
-		$args = array(
-		  'post__in'  => $product_ids, // ID of a page, post, or custom type
-		  'post_type' => 'product'
-		);
+		if ($product_ids) :
+				$args = array(
+			  'post__in'  => $product_ids, // ID of a page, post, or custom type
+		  	  'post_type' => 'product'
+			);
+			$my_posts = new WP_Query($args);
+		endif;
 
-		$my_posts = new WP_Query($args);
         
-        if($my_posts) : return $my_posts; else : return false; endif;
+        if(!empty($my_posts)) : return $my_posts; else : return false; endif;
 
 	}
 
@@ -452,10 +454,9 @@ class Aura_Supercommerce_Debug {
 		$aura_sc_admin = new Aura_Supercommerce_Admin($this->plugin_name, $this->version);
 		$dualeng_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-dual-engine' );
 	    $trade_status = $aura_sc_admin->get_trade_status();
-		
-		
-		if ($dualeng_plugin_exists && !$trade_status) :
 
+		if ($dualeng_plugin_exists && (!$trade_status || $trade_status == "FALSE")) :
+				
 			// Positive Flags
 			$required[] = $this::status_req_attr_exist();
 			$required[] = $this::status_req_terms_exist();
@@ -467,6 +468,7 @@ class Aura_Supercommerce_Debug {
 			$status_flags[] = $this::tradecust_no_attached_membership();
 
 		endif;
+
 
 		foreach ($required as $req) {
 			if ($req == false) : $counter++; endif;

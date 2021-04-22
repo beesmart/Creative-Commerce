@@ -7,7 +7,7 @@
  * Dependency: WP Memberships
  *
  * @link              https://auracreativemedia.co.uk
- * @since             1.0.0
+ * @since             1.1.0
  * @package           Aura_Supercommerce
  *
 **/

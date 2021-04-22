@@ -1,1 +1,0 @@
-[16-Sep-2020 13:43:05 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in phar:///chroot/wp-cli/vendor/wp-cli/wp-cli/bin/wp-cli.phar/vendor/wp-cli/eval-command/src/Eval_Command.php(37) : eval()'d code on line 1

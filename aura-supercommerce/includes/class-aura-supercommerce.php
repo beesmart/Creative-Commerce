@@ -56,7 +56,7 @@ class Aura_Supercommerce {
 		if ( defined( 'AURA_SUPERCOMMERCE_VER' ) ) {
 			$this->version = AURA_SUPERCOMMERCE_VER;
 		} else {
-			$this->version = '1.1.1';
+			$this->version = '1.2.2';
 		}
 		$this->plugin_name = 'aura-supercommerce';
 

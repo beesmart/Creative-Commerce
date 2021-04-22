@@ -182,18 +182,21 @@
 
 		    							$my_posts = $this::missing_product_images_exist(); ?>
 
-		    						<div class="postbox <?php if (!$my_posts) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
-		    						
+		    					    <div class="postbox <?php if (!$my_posts) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
+		    							    						
 		    						<?php
 
 		    							echo '<ul>';
-
+										    if($my_posts) :
+                                            if($my_posts->have_posts()) :
 		    									while ( $my_posts->have_posts() ) :
 		    										  $my_posts->the_post(); 
 
 		    										  echo '<li><a href="' . get_edit_post_link() . '">' . get_the_title() . '</a></li>';
 
 		    									endwhile;
+										   endif;
+										endif;
 
 		    								echo '</ul>';
 		    							?>
