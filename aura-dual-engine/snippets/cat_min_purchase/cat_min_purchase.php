@@ -7,7 +7,7 @@
  * Dependency: WP Memberships
  *
  * @link              https://auracreativemedia.co.uk
- * @since             1.1.0
+ * @since             1.1.3
  * @package           Aura_Supercommerce
  *
 **/
@@ -219,6 +219,7 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 	 * 
 	*/
 
+
 	// define the woocommerce_before_shop_loop callback 
 	function show_cat_min_notice_on_archives() { 
 	    // make action magic happen here...
@@ -229,15 +230,18 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
     	}
       
     	if ( ! empty( $memberships ) ) :
-    		
-			$term_id = get_queried_object()->term_id;
-			$term_name = get_queried_object()->name;
-			$meta_min = get_term_meta($term_id, 'fccm_meta_minimum', true);
 
-			if ($meta_min) :
+			if(is_tax()) :
+				$term_id = get_queried_object()->term_id;
+				$term_name = get_queried_object()->name;
+				$meta_min = get_term_meta($term_id, 'fccm_meta_minimum', true);
 
-				$cat_min_notice .= '<p class="min-cat-price_html">Minimum order for ' . $term_name . ': ' . $meta_min . '</p>';
-				echo $cat_min_notice;
+				if ($meta_min) :
+
+					$cat_min_notice = '<p class="min-cat-price_html">Minimum order for ' . $term_name . ': ' . $meta_min . '</p>';
+					echo $cat_min_notice;
+
+				endif;
 
 			endif;
 

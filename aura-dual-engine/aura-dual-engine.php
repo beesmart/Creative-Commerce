@@ -16,7 +16,7 @@
  * Plugin Name:       Creative Commerce - Dual-Engine
  * Plugin URI:        https://digitalzest.co.uk/
  * Description:       The Dual Engine adds additional B2B functionality to assist stores which wish to sell their products to both Trade and Retail customers.
- * Version:           1.2.2
+ * Version:           1.2.3
  * Author:            Digital Zest
  * Author URI:        https://digitalzest.co.uk/
  * License:           GPL-2.0+
