@@ -34,6 +34,12 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
+= 1.2.2 - 2021-04-22 =
+* Add more notices to cart cat min snippet
+
+= 1.1.2 - 2021-04-01 =
+* Add class exists check to class on
+
 = 1.1.1 - 2021-06-04 =
 * Update - Remove FMA Added Reg fields plugin and associated snippet due to bug in plugin and abandonment
 

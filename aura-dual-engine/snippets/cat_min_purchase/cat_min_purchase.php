@@ -2,7 +2,7 @@
 
 /**
  * Snippet Name: Force Category Cart Minimum
- * Version: 1.0.0
+ * Version: 1.1.0
  * Description: Renders notices and prevents checkout if the cart does not contain a minimum number of products in a category. Use shortcode '[category-products-required]' to display a notice for required amounts for the currently viewed product.
  * Dependency: WP Memberships
  *
@@ -165,6 +165,90 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 		endif;
 
 	}
+
+	/**
+	 * Show the cat cart min message next to the price on the single-product.php template
+	 * 
+	 * @since 1.1.2
+	 * 
+	*/
+
+	function show_nextto_price_on_singleproduct( $price ) {
+
+		$user_id = get_current_user_id();
+
+	  	if(! empty($user_id)){
+		  	$memberships = wc_memberships_get_user_active_memberships( $user_id );
+		}
+	  
+		if ( ! empty( $memberships ) ) :
+
+			if(is_product()) :
+
+				global $product;
+				$product_id = $product->get_id();
+
+				$this_product = wc_get_product( $product_id );
+				$product_title = $this_product->get_title();
+
+				$terms = get_the_terms( $product_id, 'product_cat' );
+
+				$term_id = $terms[0]->term_id;
+				$term_name = $terms[0]->name;
+				$meta_min = get_term_meta($term_id, 'fccm_meta_minimum', true);
+
+				if ($meta_min) :
+
+					$price .= '<span class="min-cat-price_html"> minimum order for ' . $term_name . ': ' . $meta_min . '</span>';
+					return $price;
+
+				endif;
+
+	    	endif;
+
+		endif;
+
+		return $price;
+	}  
+	
+	add_filter( 'woocommerce_get_price_html', 'show_nextto_price_on_singleproduct' );
+
+	/**
+	 * Show the cat cart min message on the archive term page(s)
+	 * @since 1.1.2
+	 * 
+	*/
+
+	// define the woocommerce_before_shop_loop callback 
+	function show_cat_min_notice_on_archives() { 
+	    // make action magic happen here...
+    	$user_id = get_current_user_id();
+
+      	if(! empty($user_id)){
+    	  	$memberships = wc_memberships_get_user_active_memberships( $user_id );
+    	}
+      
+    	if ( ! empty( $memberships ) ) :
+    		
+			$term_id = get_queried_object()->term_id;
+			$term_name = get_queried_object()->name;
+			$meta_min = get_term_meta($term_id, 'fccm_meta_minimum', true);
+
+			if ($meta_min) :
+
+				$cat_min_notice .= '<p class="min-cat-price_html">Minimum order for ' . $term_name . ': ' . $meta_min . '</p>';
+				echo $cat_min_notice;
+
+			endif;
+
+    	endif;
+
+	}; 
+	         
+	// add the action 
+	add_action( 'woocommerce_before_shop_loop', 'show_cat_min_notice_on_archives', 10, 2 ); 
+
+
 
 	/**
 	 * Returns the category requirement of the currently viewed product, location of output defined by shortcode. Trade memberships Only.
