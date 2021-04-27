@@ -34,6 +34,9 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
+= 1.3.3 - 2021-04-27 =
+* Update: Add new snippet to show SKU's on cart and shop pages
+
 = 1.2.2 - 2021-04-22 =
 * Add more notices to cart cat min snippet
 

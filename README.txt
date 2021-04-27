@@ -10,7 +10,7 @@ The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 *  Creative Commerce
 *  Creative Agent
 *  Creative Conversion
-*  Creative Dual Engine
+*  Creative Dual Engine - 1.3.3
 *  Creative Publicity
 *  Creative Stock Maximiser
 *  Creative Time Saver

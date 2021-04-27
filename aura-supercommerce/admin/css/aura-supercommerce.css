@@ -40,10 +40,10 @@ body:not(.priv_admin) #nua-support {
   display: none;
 }
 
-body:not(.priv_admin) .nav-tab-wrapper .nav-tab:last-child {
+/*body:not(.priv_admin) .nav-tab-wrapper .nav-tab:last-child {
   display: none;
 }
-
+*/
 body:not(.priv_admin) .woocommerce-store-alerts.is-alert-update {
   display: none;
 }
