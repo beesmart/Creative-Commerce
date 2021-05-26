@@ -79,6 +79,37 @@ function custom_taxonomy_Item()  {
 
 	register_taxonomy_for_object_type( 'occasion', 'product' );
 
+	$labels = array(
+	    'name'                       => 'Theme',
+	    'singular_name'              => 'Theme',
+	    'menu_name'                  => 'Theme',
+	    'all_items'                  => 'All Ranges',
+	    'parent_item'                => 'Parent Theme',
+	    'parent_item_colon'          => 'Parent Theme:',
+	    'new_item_name'              => 'New Theme Name',
+	    'add_new_item'               => 'Add New Theme',
+	    'edit_item'                  => 'Edit Theme',
+	    'update_item'                => 'Update Theme',
+	    'separate_items_with_commas' => 'Separate Theme with commas',
+	    'search_items'               => 'Search Ranges',
+	    'add_or_remove_items'        => 'Add or remove Theme',
+	    'choose_from_most_used'      => 'Choose from the most used Theme',
+	);
+	$args = array(
+	    'labels'                     => $labels,
+	    'hierarchical'               => true,
+	    'public'                     => true,
+	    'show_ui'                    => true,
+	    'show_admin_column'          => true,
+	    'show_in_nav_menus'          => true,
+	    'show_tagcloud'              => true,
+	);
+
+	register_taxonomy( 'theme', 'product', $args );
+
+	register_taxonomy_for_object_type( 'theme', 'product' );
+
+
 }
 
 

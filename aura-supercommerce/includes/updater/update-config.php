@@ -89,7 +89,7 @@ if($licence_status === 'active'){
 
 	    // Let Plugin run it's updates by calling PUC
 	    $update_checker = Puc_v4_Factory::buildUpdateChecker(
-	      "https://superdev.colourcreation.co.uk/wp-update-server-master/?action=get_metadata&slug=$plugin_slug", // Metadata URL.
+	      "https://superdev.auracreativemedia.co.uk/wp-update-server-master/?action=get_metadata&slug=$plugin_slug", // Metadata URL.
 	      $file_path, // Full path to the main plugin file.
 	      $plugin_slug, // Plugin slug. Usually it's the same as the name of the directory.
 	      24*6 // <-- update interval in hours

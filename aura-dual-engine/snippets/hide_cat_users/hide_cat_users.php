@@ -112,24 +112,27 @@ function get_subcategory_terms( $terms, $taxonomies, $args ) {
  
      if ( ( in_array( 'product_cat', $taxonomies ) || is_shop() || is_tax('product_cat') || is_tag() ) && ( (! in_array( 'tradecust', $current_user->roles ) ) && (! in_array( 'store_agent', $current_user->roles ) ) ) ) {
         foreach ( $terms as $key => $term ) {
-		  	if (is_array( $exclude_slugs['retail'] )){
-			  if ( ! in_array( $term->slug, $exclude_slugs['retail'] ) ) {
-				  $new_terms[] = $term;
-			  }
-			}
-        }
+          if($term){
+  		      	if (is_array( $exclude_slugs['retail'] )){
+        			  if ( ! in_array( $term->slug, $exclude_slugs['retail'] ) ) {
+        		  		  $new_terms[] = $term;
+  			        }
+  			      }
+         }
+      }
 
         $terms = $new_terms;
     }
 
     if ( ( in_array( 'product_cat', $taxonomies ) || is_shop() || is_tax('product_cat') || is_tag() ) && ( (in_array( 'tradecust', $current_user->roles ) ) || (in_array( 'store_agent', $current_user->roles ) ) ) ) {
         foreach ( $terms as $key => $term ) {
-		  	if (is_array( $exclude_slugs['trade'] )){
-			  if ( ! in_array( $term->slug, $exclude_slugs['trade'] ) ) {
-                	$new_terms[] = $term;
-              }
-			}
-            
+		  	 if($term){
+              if (is_array( $exclude_slugs['trade'] )){
+      			    if ( ! in_array( $term->slug, $exclude_slugs['trade'] ) ) {
+                      	$new_terms[] = $term;
+                }
+      			  }
+           }
         }
 	
         $terms = $new_terms;
