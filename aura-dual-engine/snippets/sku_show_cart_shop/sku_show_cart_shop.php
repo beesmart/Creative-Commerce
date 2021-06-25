@@ -36,7 +36,7 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 			
 			function _sku_after_price_loop( $price ) { 
 			    global $product;
-			    if ( $product->get_sku() ) {
+			    if ( $product->get_sku() && !is_admin() ) {
 			        $sku = $product->get_sku();
 			        return $price . '<br /><p class="product-sku sku-sml-text"><span>SKU:</span> ' . $sku . '</p>';
 			    } else { 

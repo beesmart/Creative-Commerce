@@ -15,7 +15,7 @@ function deactivate_notifier() {
  // Set the cron job for the monthly cron
 if( ! wp_next_scheduled ( 'cc_monthly_stockist_report' ) ) {
    // This will trigger an action that will fire the "monthly_cron" action on the last day of each month at 4:00 am UTC
-   wp_schedule_event( strtotime('13:25:00'), 'daily', 'cc_monthly_stockist_report');
+   wp_schedule_event( time(), 'daily', 'cc_monthly_stockist_report');
 }
 
 add_action( 'cc_monthly_stockist_report', 'maybe_run_monthly_cron' );
@@ -29,7 +29,7 @@ function maybe_run_monthly_cron(){
     //     do_action( 'cc_monthly_stockist_callback' );
     // }
     $date = date('d');
-      if ('04' == $date || '28' == $date) {
+      if ('01' == $date) {
         do_action( 'cc_monthly_stockist_callback' );
     }
 }
@@ -166,7 +166,7 @@ function email_monthly_stockist_report(){
     // auto cron function
 
     $headers =  array('Content-Type: text/html; charset=UTF-8', 'From:' . $from_report);
-    $subject = 'Email Report';
+    $subject = 'Stockist Email Report';
     $body = '<html>
                 <head>
 

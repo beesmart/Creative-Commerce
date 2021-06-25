@@ -77,9 +77,9 @@
 	    if ( isset( $_POST['billing_address_1'] ) && empty( $_POST['billing_address_1'] ) ) {
 	        $errors->add( 'billing_address_1_error', __( '<strong>Error</strong>: Address Line 1 is required!.', 'woocommerce' ) );
 	    }
-	    //if ( isset( $_POST['billing_address_2'] ) && empty( $_POST['billing_address_2'] ) ) {
-	    //    $errors->add( 'billing_address_2_error', __( '<strong>Error</strong>: address_2 is required!.', 'woocommerce' ) );
-	   // }
+	    if ( isset( $_POST['billing_address_2'] ) && empty( $_POST['billing_address_2'] ) ) {
+	       $errors->add( 'billing_address_2_error', __( '<strong>Error</strong>: address_2 is required!.', 'woocommerce' ) );
+	   }
 	    if ( isset( $_POST['billing_city'] ) && empty( $_POST['billing_city'] ) ) {
 	        $errors->add( 'billing_city_error', __( '<strong>Error</strong>: city is required!', 'woocommerce' ) );
 	    }

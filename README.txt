@@ -34,6 +34,12 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+= 1.3.3  2021-26-05 =
+* Update Repo URL to auracreative (from cc)
+
+= 1.2.3  2021-13-05 =
+* PMReg bugfix
+
 = 1.2.2 - 2021-22-04 =
 * Update - Change inputs from labels to placholder text in add_reg_snippet
 
