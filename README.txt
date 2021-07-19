@@ -7,7 +7,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 
-*  Creative Commerce
+*  Creative Commerce - 1.3.5
 *  Creative Agent
 *  Creative Conversion
 *  Creative Dual Engine - 1.3.3
@@ -33,6 +33,11 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 
 == Changelog ==
+
+
+= 1.3.5  2021-19-07 =
+* Update. Added a new snippet = Add Subtotal Ex VAT to new order emails
+* Fix. Checkout was preventing new users from ordering because Company name field could not be filled out. Stop validation on checkout for company name. (not relevant for retail users anyway)
 
 = 1.3.3  2021-26-05 =
 * Update Repo URL to auracreative (from cc)
