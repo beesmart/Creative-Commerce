@@ -35,6 +35,10 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.3.5  2021-19-07 =
+* Update. Added a new snippet = Add Subtotal Ex VAT to new order emails
+* Fix. Checkout was preventing new users from ordering because Company name field could not be filled out. Stop validation on checkout for company name. (not relevant for retail users anyway)
+
 = 1.3.3  2021-26-05 =
 * Update Repo URL to auracreative (from cc)
 

@@ -6,7 +6,7 @@
  * Description: Adds a number of additional account registration fields. The What type of Business & Message
  *
  * @link              https://auracreativemedia.co.uk
- * @since             1.1.0
+ * @since             1.1.1
  * @package           Aura_Supercommerce
  *
 **/
@@ -68,7 +68,7 @@
 	    if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
 	        $errors->add( 'billing_last_name_error', __( '<strong>Error</strong>: Last name is required!.', 'woocommerce' ) );
 	    }
-	  if ( isset( $_POST['billing_company'] ) && empty( $_POST['billing_company'] ) ) {
+	  if ( isset( $_POST['billing_company'] ) && empty( $_POST['billing_company'] ) && !is_checkout() ) {
 	        $errors->add( 'billing_company_error', __( '<strong>Error</strong>: Company name is required!', 'woocommerce' ) );
 	    }
 	    if ( isset( $_POST['billing_phone'] ) && empty( $_POST['billing_phone'] ) ) {
