@@ -2,7 +2,7 @@
 Contributors: Digital Zest
 Tags: eCommerce
 Requires at least: 4.9
-Tested up to: 5.2
+Tested up to: 5.8
 Requires PHP: 7.2
 Stable tag: 1.0
 License: GPLv2 or later

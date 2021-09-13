@@ -493,6 +493,22 @@ class Aura_Supercommerce_Admin {
 	}
 
 	/**
+	 * Show a notice to anyone who has just updated this plugin
+ 	 * This notice shouldn't display to anyone who has just installed the plugin for the first time
+	 *
+	 * @see https://codex.wordpress.org/Plugin_API/Action_Reference/upgrader_process_complete
+	 */
+
+	public function aura_display_update_notice() {
+	 // Check the transient to see if we've just updated the plugin
+	 if( get_transient( 'aura_supercommerce_updated' ) ) {
+	  echo '<div class="notice notice-success">' . __( 'Thanks for updating', 'wp-upe' ) . '</div>';
+	  delete_transient( 'aura_supercommerce_updated' );
+	 }
+	}
+
+
+	/**
 	 * Replace the default WordPress logo on wp-login.php
 	 *
 	 * @return HTML/CSS

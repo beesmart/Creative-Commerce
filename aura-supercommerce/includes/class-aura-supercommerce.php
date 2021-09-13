@@ -177,6 +177,8 @@ class Aura_Supercommerce {
 
 		$this->loader->add_action( 'upgrader_process_complete', $plugin_admin, 'aura_upgrade_completed', 10, 2);
 
+		$this->loader->add_action( 'admin_notices', $plugin_admin, 'aura_display_update_notice');
+
 		$this->loader->add_action( 'login_enqueue_scripts', $plugin_admin, 'my_login_logo');
 
 		$this->loader->add_action( 'template_redirect', $plugin_admin, 'cc_tradeonly_redirect');

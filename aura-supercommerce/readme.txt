@@ -2,7 +2,7 @@
 Contributors: Digital Zest
 Tags: eCommerce
 Requires at least: 4.9
-Tested up to: 5.6
+Tested up to: 5.8
 Requires PHP: 7.2
 Stable tag: 1.1.2
 License: GPLv2 or later
@@ -34,6 +34,9 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 
 == Changelog ==
+
+= 1.3.7  2021-13-09 =
+* Fix - Refresh snippets on update
 
 = 1.3.6  2021-03-09 =
 * Update. Added a new snippet = Media Library - Sort by Filesize column to wp-admin
