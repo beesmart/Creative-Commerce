@@ -7,10 +7,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 
-*  Creative Commerce - 1.3.5
+*  Creative Commerce - 1.3.6
 *  Creative Agent
 *  Creative Conversion
-*  Creative Dual Engine - 1.3.3
+*  Creative Dual Engine - 1.3.5
 *  Creative Publicity
 *  Creative Stock Maximiser
 *  Creative Time Saver
@@ -34,6 +34,9 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+
+= 1.3.6  2021-03-09 =
+* Update. Added a new snippet = Media Library - Sort by Filesize column to wp-admin
 
 = 1.3.5  2021-19-07 =
 * Update. Added a new snippet = Add Subtotal Ex VAT to new order emails
