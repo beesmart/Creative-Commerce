@@ -1,8 +1,8 @@
 <?php 
 
 /**
- * Snippet Name: Hide Category From User Type
- * Version: 1.0.0
+ * Snippet Name: Hide Category From User Type / Shop functions
+ * Version: 1.1.0
  * Description: These multiple functions exclude categories from users (except admin, trade, agent) when viewing front end archive, search and single templates. 
  * Dependency: WP Memberships
  *
@@ -410,6 +410,7 @@ function restict_by_category( $template ) {
       ?>
       <hr>
       <h4>Category Visibility Options</h4>
+      The following 2 fields hide the category products <strong>completely</strong> from the user even if they have a direct link they are shown 0 content relating to the product. (Useful when hiding say Trade products from Retail users)
       <hr>
       <div class="form-field">
           <label for="hcu_hidden_user_retail"><?php _e('Hide This Categories Products From Retail/Guests', 'aura-dual-engine'); ?></label>
@@ -422,6 +423,14 @@ function restict_by_category( $template ) {
           <input type="checkbox" name="hcu_hidden_user_trade" id="hcu_hidden_user_trade" value="trade">
           <p class="description"><?php _e('', 'aura-dual-engine'); ?></p>
       </div>
+      <hr>
+      The following field only hides the category from the archive/shop pages, meaning the user could still find the product with a direct link. (Useful if you want to have a Clearance line of products but don't want it clogging up the shop page)
+      <div class="form-field">
+          <label for="hcu_not_archive_visible"><?php _e('Exclude This Categories Products from the Shop page', 'aura-dual-engine'); ?></label>
+          <input type="checkbox" name="hcu_not_archive_visible" id="hcu_not_archive_visible" value="false">
+          <p class="description"><?php _e('', 'aura-dual-engine'); ?></p>
+      </div>
+      
      
       <?php
 
@@ -440,6 +449,7 @@ function restict_by_category( $template ) {
       // retrieve the existing value(s) for this meta field.
       $hcu_hidden_user_retail = get_term_meta($term_id, 'hcu_hidden_user_retail', true);
       $hcu_hidden_user_trade = get_term_meta($term_id, 'hcu_hidden_user_trade', true);
+      $hcu_not_archive_visible = get_term_meta($term_id, 'hcu_not_archive_visible', true);
 
       ?>
 
@@ -458,7 +468,15 @@ function restict_by_category( $template ) {
               <p class="description"><?php _e('Hidden From Trade', 'aura-dual-engine'); ?></p>
           </td>
       </tr>
-     
+      <hr>
+     <tr class="form-field">
+          <th scope="row" valign="top"><label for="hcu_not_archive_visible"><?php _e('Exclude This Categories Products from the Shop page', 'aura-dual-engine'); ?></label></th>
+           <td>
+
+              <input type="checkbox" name="hcu_not_archive_visible" id="hcu_not_archive_visible" value="<?php echo esc_attr($hcu_not_archive_visible) ? esc_attr($hcu_not_archive_visible) : 'trade'; ?>" <?php if ($hcu_not_archive_visible) : echo 'checked'; endif; ?>>
+              <p class="description"><?php _e(' The following field only hides the category from the archive/shop pages, meaning the user could still find the product with a direct link. (Useful if you want to have a Clearance line of products but don\'t want it clogging up the shop page)', 'aura-dual-engine'); ?></p>
+          </td>
+      </tr>
       <?php
   }
 
@@ -473,9 +491,11 @@ function restict_by_category( $template ) {
 
       $hcu_hidden_user_retail = filter_input(INPUT_POST, 'hcu_hidden_user_retail');
       $hcu_hidden_user_trade = filter_input(INPUT_POST, 'hcu_hidden_user_trade');
+      $hcu_not_archive_visible = filter_input(INPUT_POST, 'hcu_not_archive_visible');
 
       update_term_meta($term_id, 'hcu_hidden_user_retail', $hcu_hidden_user_retail);
       update_term_meta($term_id, 'hcu_hidden_user_trade', $hcu_hidden_user_trade);
+      update_term_meta($term_id, 'hcu_not_archive_visible', $hcu_not_archive_visible);
       
 
   }
@@ -490,12 +510,81 @@ function restict_by_category( $template ) {
  *
  */
 
-add_action('wp_loaded', 'load_custom_template_woo', 999);
+    add_action('wp_loaded', 'load_custom_template_woo', 999);
 
-function load_custom_template_woo(){
-  add_filter('template_include', 'restict_by_category');
+    function load_custom_template_woo(){
+      add_filter('template_include', 'restict_by_category');
 
-}
+    }
+
+
+    // SHOP Exclusion functions
+
+    /**
+     * Exclude products from a particular category on the shop page
+     */
+
+    function custom_pre_get_posts_query( $q ) {
+
+      $taxonomy = new WP_Term_Query( array( 
+                    'taxonomy' => 'product_cat', 
+                    'number'  => '',
+                    'posts_per_page' => -1,
+                    'hide_empty' => false, ) );
+
+        $exclude_slugs_shop = array();
+
+        // Start the loop through the terms
+        foreach ($taxonomy->get_terms() as $term) { 
+        //foreach ($taxonomy_terms as $term) { 
+                    
+              // Get acf field Name
+              $not_archive_visible = get_term_meta($term->term_id, 'hcu_not_archive_visible', true);
+
+              if($not_archive_visible){
+                  array_push($exclude_slugs_shop, $term->slug);
+               }
+
+        }
+
+
+
+        $tax_query = (array) $q->get( 'tax_query' );
+
+        $tax_query[] = array(
+               'taxonomy' => 'product_cat',
+               'field' => 'slug',
+               'terms' => $exclude_slugs_shop,
+               'operator' => 'NOT IN'
+        );
+        
+
+       if(is_shop()) :
+         $q->set( 'tax_query', $tax_query );
+       endif;
+
+    }
+
+    add_action( 'woocommerce_product_query', 'custom_pre_get_posts_query' );  
+
+
+
+    // https://www.businessbloomer.com/woocommerce-exclude-category-from-products-shortcode/
+
+    add_filter( 'woocommerce_shortcode_products_query' , 'bbloomer_exclude_cat_shortcodes');
+     
+    function bbloomer_exclude_cat_shortcodes($query_args){
+     
+        $query_args['tax_query'] =  array(array( 
+                'taxonomy' => 'product_cat', 
+                'field' => 'slug', 
+                'terms' => array('MAGIC'), // Don't display products from this category
+                'operator' => 'NOT IN'
+            )); 
+     
+        return $query_args;
+    }
+
   
 }
  

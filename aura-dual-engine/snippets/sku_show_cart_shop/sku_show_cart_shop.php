@@ -6,7 +6,7 @@
  * Dependency: WP Memberships
  *
  * @link              https://auracreativemedia.co.uk
- * @since             1.2.3
+ * @since             1.2.4
  * @package           Aura_Supercommerce
  * @requires          WP Memberships
  *
@@ -36,7 +36,7 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 			
 			function _sku_after_price_loop( $price ) { 
 			    global $product;
-			    if ( $product->get_sku() && !is_admin() ) {
+			    if ( $product->get_sku() && !is_admin() && !is_product() ) {
 			        $sku = $product->get_sku();
 			        return $price . '<br /><p class="product-sku sku-sml-text"><span>SKU:</span> ' . $sku . '</p>';
 			    } else { 

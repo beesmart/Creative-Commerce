@@ -2,7 +2,7 @@
 
 /**
  * Snippet Name: Better Category Overview
- * Version: 1.0.0
+ * Version: 1.1.0
  * Description: Displays a better overview of all categories including meta options, useful for admins to debug and maintain their store
  * Dependency: WP Memberships
  *
@@ -65,6 +65,7 @@ function aura_cat_overview_page_callback() {
 				<th><?php esc_attr_e( 'Hidden from Retail?', 'aura-dual-engine' ); ?></th>
 				<th><?php esc_attr_e( 'Hidden from Trade?', 'aura-dual-engine' ); ?></th>
 				<th><?php esc_attr_e( 'Category Minimum', 'aura-dual-engine' ); ?></th>
+				<th><?php esc_attr_e( 'Hidden from "Shop" page', 'aura-dual-engine' ); ?></th>
 			</tr>
 			</thead>
 
@@ -80,12 +81,16 @@ function aura_cat_overview_page_callback() {
 				$hide_field_retail = "";
 				$hide_field_trade = "";
 				$fccm_meta_minimum = "";
+				$exclude_field_shop = "";
 
 				if (get_field('hcu_hidden_user_trade', $category)) {
 				  $hide_field_trade = get_field('hcu_hidden_user_trade', $category );
 				}
 				if (get_field('hcu_hidden_user_retail', $category)) {
 				  $hide_field_retail = get_field('hcu_hidden_user_retail', $category );
+				}
+				if (get_field('hcu_not_archive_visible', $category)) {
+				  $exclude_field_shop = get_field('hcu_not_archive_visible', $category );
 				}
 				
 				
@@ -102,6 +107,7 @@ function aura_cat_overview_page_callback() {
 					<td><?php if($hide_field_retail) : echo $display_tick; /* else : echo $display_fail; */ endif; ?></td>
 					<td><?php if($hide_field_trade) : echo $display_tick; /* else : echo $display_fail; */ endif; ?></td>
 					<td><?php if ($fccm_meta_minimum) : ?> Must have <span style="color: red; font-weight: bold;"><?php echo $fccm_meta_minimum; ?></span> of any in this category <?php endif;?> </td>
+					<td><?php if($exclude_field_shop) : echo $display_tick; /* else : echo $display_fail; */ endif; ?></td>
 				</tr>
 
 			<?php	

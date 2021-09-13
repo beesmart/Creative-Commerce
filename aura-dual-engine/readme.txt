@@ -27,12 +27,19 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 - To release new versions zip up the individual plugins and place them in:
 
-```ftp://superdevcolour@82.145.59.39/public_html/wp-update-server-master/packages/```
+```ftp://auracreativemedia.co.uk/superdev.auracreativemedia.co.uk/public_html/wp-update-server-master/packages/```
 
 - The client WordPress installs will then read and detect the new versions for download.
 
 
 == Changelog ==
+
+= 1.3.5 - 2021-09-03
+* Update: Add new Trade Price Column Snippet
+* Update: Add 'hide from shop' field to 2 snippets: Better Cat Overview and also Hide Cat Users
+
+= 1.3.4 - 2021-08-25 =
+* Fix: Add check to stop SKU showing on single product template (SKU was being shown twice)
 
 = 1.3.3 - 2021-04-27 =
 * Update: Add new snippet to show SKU's on cart and shop pages
