@@ -36,6 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'AURA_CONVERSION_VERSION', '1.0.1' );
+define( 'AURA_CONVERSION_DIR', 'aura-conversion/aura-conversion.php' );
 define( 'AURA_CONVERSION_SLUG', 'aura-conversion' );
 define( 'AURA_CONVERSION_TITLE', 'Conversion' );
 

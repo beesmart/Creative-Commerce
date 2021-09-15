@@ -64,7 +64,7 @@ class Aura_Agent_Custom {
 	 * @param      string    $version    The version of this plugin.
 	 * @param      string    $slug    The slug of this plugin.
 	 */
-	public function __construct( $plugin_name, $version, $slug ) {
+	public function __construct( $plugin_name="aura-agent", $version="1.0.0", $slug=AURA_AGENT_DIR ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;

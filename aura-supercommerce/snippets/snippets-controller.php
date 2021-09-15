@@ -49,7 +49,7 @@ class Aura_Supercommerce_Custom {
 	 * @param      string    $version    The version of this plugin.
 	 * @param      string    $slug    The slug of this plugin.
 	 */
-	public function __construct( $plugin_name, $version, $slug ) {
+	public function __construct( $plugin_name="aura-supercommerce", $version="1.3.11", $slug=AURA_SUPERCOMMERCE_SLUG ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;

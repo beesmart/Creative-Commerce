@@ -222,18 +222,19 @@ class Aura_Conversion_Admin {
 
 		 // The path to our plugin's main file
 		 $our_plugin = plugin_basename( __FILE__ );
-
+		 $dir = AURA_CONVERSION_DIR;
 		 // If an update has taken place and the updated type is plugins and the plugins element exists
+		 set_transient( 'aura_conversion_updated', 1 );
 
 		 if( $options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] ) ) {
 
 		  // Iterate through the plugins being updated and check if ours is there
 		  foreach( $options['plugins'] as $plugin ) {
 
-		   if( $plugin == $our_plugin ) {
+		   if( $plugin == $dir ) {
 
 		    // Set a transient to record that our plugin has just been updated
-		    set_transient( 'aura_conversion_updated', 1 );
+
 
 		    $aura_pm_custom = new Aura_Conversion_Custom;
 		    $aura_pm_custom->aco_refresh_snippets();
@@ -242,6 +243,7 @@ class Aura_Conversion_Admin {
 		   }
 
 		  }
+		   delete_transient( 'aura_conversion_updated' );
 
 		 }
 

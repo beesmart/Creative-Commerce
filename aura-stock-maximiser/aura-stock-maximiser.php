@@ -36,6 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'AURA_STOCKIST_VERSION', '1.0.1' );
+define( 'AURA_STOCKIST_DIR', 'aura-stock-maximiser/aura-stock-maximiser.php' );
 define( 'AURA_STOCKIST_SLUG', 'aura-stock-maximiser' );
 define( 'AURA_STOCKIST_TITLE', 'Stockist-Maximiser' );
 

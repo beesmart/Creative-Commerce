@@ -41,6 +41,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 define( 'AURA_TIME_SAVER_VERSION', '1.0.1' );
+define( 'AURA_TIME_SAVER_DIR', 'aura-time-saver/aura-time-saver.php' );
 define( 'AURA_TIME_SAVER_SLUG', 'aura-time-saver' );
 define( 'AURA_TIME_SAVER_TITLE', 'Time Saver' );
 

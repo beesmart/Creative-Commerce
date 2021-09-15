@@ -462,27 +462,26 @@ class Aura_Supercommerce_Admin {
 	 * @param $options Array
 	 * @see https://codex.wordpress.org/Plugin_API/Action_Reference/upgrader_process_complete
 	 */
-
 	public function aura_upgrade_completed( $upgrader_object, $options ) {
 
 	 // The path to our plugin's main file
-	 $our_plugin = plugin_basename( __FILE__ );
+	 //$our_plugin = plugin_basename( __FILE__ ); - Not Working
+	 $dir = AURA_SUPERCOMMERCE_DIR;
 
 	 // If an update has taken place and the updated type is plugins and the plugins element exists
 
 	 if( $options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] ) ) {
-
+	 		
 	  // Iterate through the plugins being updated and check if ours is there
 	  foreach( $options['plugins'] as $plugin ) {
+	  			
+	   if( $plugin == $dir ) {
 
-	   if( $plugin == $our_plugin ) {
+	   	$aura_sc_custom = new Aura_Supercommerce_Custom;
+	   	$aura_sc_custom->_refresh_snippets();
 
 	    // Set a transient to record that our plugin has just been updated
 	    set_transient( 'aura_supercommerce_updated', 1 );
-
-	    $aura_sc_custom = new Aura_Supercommerce_Custom;
-	    $aura_sc_custom->_refresh_snippets();
-
 
 	   }
 
@@ -491,7 +490,6 @@ class Aura_Supercommerce_Admin {
 	 }
 
 	}
-
 	/**
 	 * Show a notice to anyone who has just updated this plugin
  	 * This notice shouldn't display to anyone who has just installed the plugin for the first time

@@ -36,6 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'AURA_AGENT_VERSION', '1.0.1' );
+define( 'AURA_AGENT_DIR', 'aura-agent/aura-agent.php' );
 define( 'AURA_AGENT_SLUG', 'aura-agent' );
 define( 'AURA_AGENT_TITLE', 'Agent-Perfection' );
 

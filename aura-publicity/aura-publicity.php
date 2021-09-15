@@ -36,6 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'AURA_PUBLICITY_VERSION', '1.0.1' );
+define( 'AURA_PUBLICITY_DIR', 'aura-publicity/aura-publicity.php' );
 define( 'AURA_PUBLICITY_SLUG', 'aura-publicity' );
 define( 'AURA_PUBLICITY_TITLE', 'Publicity-Machine' );
 

@@ -228,8 +228,10 @@ class Aura_Agent_Admin {
 		public function aura_upgrade_completed( $upgrader_object, $options ) {
 
 		 // The path to our plugin's main file
-		 $our_plugin = plugin_basename( __FILE__ );
+		 // $our_plugin = plugin_basename( __FILE__ );
+		 $dir = AURA_AGENT_DIR;
 
+		 set_transient( 'aura_agent_updated', 1 );
 		 // If an update has taken place and the updated type is plugins and the plugins element exists
 
 		 if( $options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] ) ) {
@@ -237,16 +239,18 @@ class Aura_Agent_Admin {
 		  // Iterate through the plugins being updated and check if ours is there
 		  foreach( $options['plugins'] as $plugin ) {
 
-		   if( $plugin == $our_plugin ) {
+		   if( $plugin == $dir ) {
 
 		    // Set a transient to record that our plugin has just been updated
-		    set_transient( 'aura_agent_updated', 1 );
+	
 
 		    $aura_pm_custom = new Aura_Agent_Custom;
 		    $aura_pm_custom->aap_refresh_snippets();
 
 
 		   }
+
+		   delete_transient( 'aura_agent_updated' );
 
 		  }
 

@@ -33,6 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 define( 'AURA_TRADE_BOOSTER_VERSION', '1.0.1' );
+define( 'AURA_TRADE_BOOSTER_DIR', 'aura-trade-booster/aura-trade-booster.php' );
 define( 'AURA_TRADE_BOOSTER_SLUG', 'aura-trade-booster' );
 define( 'AURA_TRADE_BOOSTER_TITLE', 'Trade-Booster' );
 

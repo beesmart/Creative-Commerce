@@ -34,6 +34,9 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
+= 1.3.6  2021-14-09 =
+* Fix. Issue with 'On Update' not refreshing snippets correctly
+
 = 1.3.5 - 2021-09-03
 * Update: Add new Trade Price Column Snippet
 * Update: Add 'hide from shop' field to 2 snippets: Better Cat Overview and also Hide Cat Users

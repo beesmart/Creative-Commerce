@@ -60,7 +60,7 @@ class Aura_dual_engine_Custom {
 	 * @param      string    $version    The version of this plugin.
 	 * @param      string    $slug    The slug of this plugin.
 	 */
-	public function __construct( $plugin_name, $version, $slug ) {
+	public function __construct( $plugin_name="aura-dual-engine", $version="1.3.6", $slug=AURA_DUAL_ENGINE_SLUG ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;

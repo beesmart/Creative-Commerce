@@ -232,27 +232,29 @@ class Aura_dual_engine_Admin {
 	public function aura_upgrade_completed( $upgrader_object, $options ) {
 
 	 // The path to our plugin's main file
-	 $our_plugin = plugin_basename( __FILE__ );
-
+	// $our_plugin = plugin_basename( __FILE__ );
+ 	 $dir = AURA_DUAL_ENGINE_DIR;
 	 // If an update has taken place and the updated type is plugins and the plugins element exists
+ 	 // Set a transient to record that our plugin has just been updated
+ 	 set_transient( 'aura_dual_engine_updated', 1 );
 
 	 if( $options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] ) ) {
 
 	  // Iterate through the plugins being updated and check if ours is there
 	  foreach( $options['plugins'] as $plugin ) {
 
-	   if( $plugin == $our_plugin ) {
+	   if( $plugin == $dir ) {
 
-	    // Set a transient to record that our plugin has just been updated
-	    set_transient( 'aura_dual_engine_updated', 1 );
+	   	$aura_de_custom = new Aura_dual_engine_Custom;
+	   	$aura_de_custom->ade_refresh_snippets();
 
-	    $aura_de_custom = new Aura_dual_engine_Custom;
-	    $aura_de_custom->ade_refresh_snippets();
-
+	    
 
 	   }
 
 	  }
+
+	  delete_transient( 'aura_dual_engine_updated' );
 
 	 }
 

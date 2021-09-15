@@ -231,8 +231,9 @@ class Aura_time_saver_Admin {
 	public function aura_upgrade_completed( $upgrader_object, $options ) {
 
 	 // The path to our plugin's main file
-	 $our_plugin = plugin_basename( __FILE__ );
-
+	// $our_plugin = plugin_basename( __FILE__ );
+	 set_transient( 'aura_time_saver_updated', 1 );
+	 $dir = AURA_TIME_SAVER_DIR;
 	 // If an update has taken place and the updated type is plugins and the plugins element exists
 
 	 if( $options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] ) ) {
@@ -240,10 +241,10 @@ class Aura_time_saver_Admin {
 	  // Iterate through the plugins being updated and check if ours is there
 	  foreach( $options['plugins'] as $plugin ) {
 
-	   if( $plugin == $our_plugin ) {
+	   if( $plugin == $dir ) {
 
 	    // Set a transient to record that our plugin has just been updated
-	    set_transient( 'aura_time_saver_updated', 1 );
+
 
 	    $aura_de_custom = new Aura_time_saver_Custom;
 	    $aura_de_custom->ats_refresh_snippets();
@@ -252,7 +253,7 @@ class Aura_time_saver_Admin {
 	   }
 
 	  }
-
+	 delete_transient( 'aura_time_saver_updated');
 	 }
 
 	}
