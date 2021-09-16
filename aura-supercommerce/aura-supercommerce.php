@@ -10,7 +10,7 @@
  * Plugin Name:       Creative Commerce
  * Plugin URI:        httpss://digitalzest.co.uk/
  * Description:       Plugin Management and Hub for Aura Products
- * Version:           1.3.14
+ * Version:           1.3.15
  * Author:            Digital Zest
  * Author URI:        httpss://digitalzest.co.uk/
  * License:           GPL-2.0+
@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
 */
 
 
-define( 'AURA_SUPERCOMMERCE_VER', '1.3.14' );
+define( 'AURA_SUPERCOMMERCE_VER', '1.3.15' );
 define( 'AURA_SUPERCOMMERCE_DIR', 'aura-supercommerce/aura-supercommerce.php' );
 define( 'AURA_SUPERCOMMERCE_SLUG', 'aura-supercommerce' );
 define( 'AURA_SUPERCOMMERCE_PLUGINS', 
@@ -128,7 +128,27 @@ function deactivate_aura_supercommerce() {
 }
 
 register_activation_hook( __FILE__, 'activate_aura_supercommerce' );
+register_activation_hook( __FILE__, 'activate_refresh_sc_core_snippets' );
+
 register_deactivation_hook( __FILE__, 'deactivate_aura_supercommerce' );
+register_deactivation_hook( __FILE__, 'deactivate_refresh_sc_core_snippets' );
+
+
+/**
+ * 2 Cron functions that run Hourly and force a refresh of all snippets. Although snippets should update on plugin updates this single Cron ensures all of the SuperComm suite of plugins refresh their snippets regulary, the reason, to make sure they find new snippets when we add them to the ecosystem.
+ */
+function activate_refresh_sc_core_snippets() {
+
+    if (! wp_next_scheduled ( 'supercomm_cron_hourly_snippets' )) {
+       wp_schedule_event( time(), 'hourly', 'supercomm_cron_hourly_snippets' );
+    }
+}
+
+function deactivate_refresh_sc_core_snippets() {
+    wp_clear_scheduled_hook( 'supercomm_cron_hourly_snippets' );
+
+}
+
 
 /**
  * The core plugin class that is used to define internationalization,

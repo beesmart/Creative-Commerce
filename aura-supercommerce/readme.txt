@@ -70,18 +70,18 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.3.15  2021-16-09 =
+* Update. Added CRON to refresh snippets evey hour
+
 = 1.3.14  2021-14-09 =
 * Fix. Issue with 'On Update' not refreshing snippets correctly
 
 
 = 1.3.7  2021-13-09 =
-
 * Fix - Refresh snippets on update
 
 
-
 = 1.3.6  2021-03-09 =
-
 * Update. Added a new snippet = Media Library - Sort by Filesize column to wp-admin
 
 

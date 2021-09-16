@@ -7,7 +7,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 
-*  Creative Commerce - 1.3.14
+*  Creative Commerce - 1.3.15
 *  Creative Agent
 *  Creative Conversion
 *  Creative Dual Engine - 1.3.6
@@ -33,6 +33,9 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 
 == Changelog ==
+
+= 1.3.15  2021-16-09 =
+* Update. Added CRON to refresh snippets evey hour
 
 = 1.3.14  2021-14-09 =
 * Fix. Issue with 'On Update' not refreshing snippets correctly

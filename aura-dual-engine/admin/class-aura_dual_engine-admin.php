@@ -245,7 +245,7 @@ class Aura_dual_engine_Admin {
 
 	   if( $plugin == $dir ) {
 
-	   	$aura_de_custom = new Aura_dual_engine_Custom;
+	   	$aura_de_custom = new Aura_dual_engine_Custom( 'aura-dual-engine', '1.0.0', AURA_DUAL_ENGINE_SLUG );
 	   	$aura_de_custom->ade_refresh_snippets();
 
 	    

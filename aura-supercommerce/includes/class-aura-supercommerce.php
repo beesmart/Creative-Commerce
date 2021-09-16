@@ -56,7 +56,7 @@ class Aura_Supercommerce {
 		if ( defined( 'AURA_SUPERCOMMERCE_VER' ) ) {
 			$this->version = AURA_SUPERCOMMERCE_VER;
 		} else {
-			$this->version = '1.3.13';
+			$this->version = '1.3.15';
 		}
 		$this->plugin_name = 'aura-supercommerce';
 
@@ -182,6 +182,8 @@ class Aura_Supercommerce {
 		$this->loader->add_action( 'login_enqueue_scripts', $plugin_admin, 'my_login_logo');
 
 		$this->loader->add_action( 'template_redirect', $plugin_admin, 'cc_tradeonly_redirect');
+
+		$this->loader->add_action( 'supercomm_cron_hourly_snippets', $plugin_admin, 'refresh_snippets_all_sc_plugins');
 
 
 	}

@@ -477,7 +477,7 @@ class Aura_Supercommerce_Admin {
 	  			
 	   if( $plugin == $dir ) {
 
-	   	$aura_sc_custom = new Aura_Supercommerce_Custom;
+	   	$aura_sc_custom = new Aura_Supercommerce_Custom( 'aura-supercommerce', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
 	   	$aura_sc_custom->_refresh_snippets();
 
 	    // Set a transient to record that our plugin has just been updated
@@ -534,9 +534,11 @@ class Aura_Supercommerce_Admin {
 
 
 	/**
+	 * If a store is set to Trade Only (i.e. no retail users), force them to redirect to the My Account page to login. I.e. it's a closed shop to people not logged in
+	 * 
+	 *  @return Redirect to My Account Login
 	 */
 	 
-
 
 	public function cc_tradeonly_redirect() { 
 
@@ -559,7 +561,50 @@ class Aura_Supercommerce_Admin {
 
     	endif;
 	}
-	
 
+
+
+	/**
+	 * Hook into a CRON called - supercomm_cron_hourly_snippets - and when that fires - hourly - refresh snippets. We do this for all the SuperComm suite of plugins since we don't want 8 or 9 seperate Crons and functions. (Sorry about the mass of conditionals, I need to consider a better way to write this)
+	 * 
+	 *  @since    1.3.15
+	 */
+
+	public function refresh_snippets_all_sc_plugins() {
+
+	   $plugin_custom = new Aura_Supercommerce_Custom( 'aura-supercommerce', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
+
+	   $plugin_custom->_refresh_snippets();
+
+	    if ( class_exists('Aura_dual_engine_Custom') ) {
+	  	    $Aura_dual_engine_Custom = new Aura_dual_engine_Custom( 'aura-dual-engine', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
+	  	    $Aura_dual_engine_Custom->ade_refresh_snippets();
+		}
+	    if ( class_exists('Aura_Agent_Custom') ) {
+	  	    $Aura_Agent_Custom = new Aura_Agent_Custom( 'aura-agent', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
+	  	    $Aura_Agent_Custom->aap_refresh_snippets();
+		}
+	    if ( class_exists('Aura_Conversion_Custom') ) {
+	  	    $Aura_Conversion_Custom = new Aura_Conversion_Custom( 'aura-conversion', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
+	  	    $Aura_Conversion_Custom->aco_refresh_snippets();
+		}
+		if ( class_exists('Aura_Publicity_Custom') ) {
+		  	$Aura_Publicity_Custom = new Aura_Publicity_Custom( 'aura-publicity', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
+		  	$Aura_Publicity_Custom->apm_refresh_snippets();
+		}
+	    if ( class_exists('Aura_Stockist_Custom') ) {
+	  	    $Aura_Stockist_Custom = new Aura_Stockist_Custom( 'aura-stockist', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
+	  	    $Aura_Stockist_Custom->asm_refresh_snippets();
+		}
+		if ( class_exists('Aura_time_saver_Custom') ) {
+		  	$Aura_time_saver_Custom = new Aura_time_saver_Custom( 'aura-time-saver', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
+		  	$Aura_time_saver_Custom->ats_refresh_snippets();
+		}
+		if ( class_exists('Aura_Trade_Booster_Custom') ) {
+		  	$Aura_Trade_Booster_Custom = new Aura_Trade_Booster_Custom( 'aura-trade-booster', '1.0.0', AURA_SUPERCOMMERCE_SLUG );
+		  	$Aura_Trade_Booster_Custom->atb_refresh_snippets();
+		}
+
+	}
 
 }
