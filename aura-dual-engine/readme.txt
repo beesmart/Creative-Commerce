@@ -34,7 +34,14 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
-= 1.3.6  2021-14-09 =
+= 1.3.8  2021-11-09 =
+* Fix. Some WC warning messages
+
+= 1.3.7  2021-11-05 =
+* Fix. Add admin Bypass to Cat min requirement
+* Update. Improve bulk order resposnsive
+
+= 1.3.6  2021-09-14 =
 * Fix. Issue with 'On Update' not refreshing snippets correctly
 
 = 1.3.5 - 2021-09-03

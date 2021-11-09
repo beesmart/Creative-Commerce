@@ -1,13 +1,13 @@
 === Creative Commerce ===
 Contributors: Paul Taylor, Stephen Collins, Connor Douglas 
 Tags: eCommerce, Digital Zest
-Stable tag: 1.0
+Stable tag: 1.13.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 
-*  Creative Commerce - 1.3.15
+*  Creative Commerce - 1.3.16
 *  Creative Agent
 *  Creative Conversion
 *  Creative Dual Engine - 1.3.6
@@ -34,17 +34,23 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+= 1.3.16  2021-16-09 =
+* Addition. Added a new Snippet 'Shortcode - Show this products Taxonomy terms'
+
 = 1.3.15  2021-16-09 =
 * Update. Added CRON to refresh snippets evey hour
 
 = 1.3.14  2021-14-09 =
 * Fix. Issue with 'On Update' not refreshing snippets correctly
 
+= 1.3.7  2021-13-09 =
+* Fix - Refresh snippets on update
+
 = 1.3.6  2021-03-09 =
-* Update. Added a new snippet = Media Library - Sort by Filesize column to wp-admin
+* Addition. Added a new snippet = Media Library - Sort by Filesize column to wp-admin
 
 = 1.3.5  2021-19-07 =
-* Update. Added a new snippet = Add Subtotal Ex VAT to new order emails
+* Addition. Added a new snippet = Add Subtotal Ex VAT to new order emails
 * Fix. Checkout was preventing new users from ordering because Company name field could not be filled out. Stop validation on checkout for company name. (not relevant for retail users anyway)
 
 = 1.3.3  2021-26-05 =
@@ -65,8 +71,7 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 = 1.1.0 - 2021-11-02 =
 * Enhancement - Add Trade Only switch to Licence that adds a snippet which hides the store from retail (Dual Engine 'lite')
 
-= 1.0.0 =
+= 1.0.0 - 2020-09-15 =
 * Initial Version
-
 
 

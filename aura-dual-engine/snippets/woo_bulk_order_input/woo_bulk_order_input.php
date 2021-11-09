@@ -57,24 +57,23 @@ function wooboi_check_current_user_access(){
 
 	$allowed_for_bulk_order = false;
 	if(isset($user_id)) {
-		$wooboi_get_allowed_memberships = get_option( 'wooboi_get_allowed_memberships' ); 
+
+        // get allowed members for bulk
+		$wooboi_get_allowed_memberships = get_option( 'wooboi_get_allowed_memberships' );
+        // get memberships for this user 
 		$active_memberships = wc_memberships_get_user_active_memberships($user_id);
 
-        // if(wc_memberships_is_user_active_member( $user_id, 34 )) {
-        //     $allowed_for_bulk_order = true;
-        // }
-        if($active_memberships) {
-            $allowed_for_bulk_order = true;
-        }
+		foreach($active_memberships as $membership) {
 
-		// foreach($active_memberships as $membership) {
-		// 	if(is_array($wooboi_get_allowed_memberships) && in_array($membership->plan_id, $wooboi_get_allowed_memberships)) {
-		// 		$allowed_for_bulk_order = true;
-		// 	}
-		// }
+	 	if(is_array($wooboi_get_allowed_memberships) && in_array($membership->plan_id, $wooboi_get_allowed_memberships)) {
+
+		 		$allowed_for_bulk_order = true;
+		 	}
+	    }
 	}
 	return $allowed_for_bulk_order;
 }
+
 function wooboi_bulk_order_input_form(){
     global $wpdb;
     ob_start();
@@ -216,48 +215,64 @@ function wooboi_bulk_order_input_form(){
     }
  ?>
     
-    <textarea name="wooboi_add_more_textarea" style="display:none;"><tr><td><select name="wooboi_product_options[]" data-placeholder="Choose a Product..." class="wooboi-chzn-select" width="300px"><option></option><?php echo $product_options; ?></select> <a class="wooboi_remove_rows" href="javascript:void(0);">[Delete]</a></td><td><input name="wooboi_product_quantity[]" type="number" value="1" min="1" style="width:100px;" /></td><td class="wooboi_sub_total"><?php echo get_woocommerce_currency_symbol();?><span>0.00</span></td></tr></textarea>
+    <textarea name="wooboi_add_more_textarea" style="display:none;">
+        <div class="t-row">
+            <div class="wooboi_select">
+                <select name="wooboi_product_options[]" data-placeholder="Choose a Product..." class="wooboi-chzn-select" width="300px">
+                    <option></option><?php echo $product_options; ?>
+                </select>
+                <a class="wooboi_remove_rows" href="javascript:void(0);">[Delete]</a>
+            </div>
+            <div class="wooboi_quantity_input">
+                <input name="wooboi_product_quantity[]" type="number" value="1" min="1" style="width:100px;" />
+            </div>
+            <div class="wooboi_sub_total"><?php echo get_woocommerce_currency_symbol();?><span>0.00</span>
+            </div>
+        </div>
+    </textarea>
     
     <form method="post" action="<?php echo admin_url('admin-ajax.php?action=wooboi_ajax_action'); ?>">
         
-        <table class="wooboi_table_container">
+        <div class="wooboi_table_container">
             
-            <tr>                
-                <th class="wooboi_product">Product</th>
-                <th class="wooboi_quantity">Quantity</th>
-                <th class="wooboi_price">Price</th>
-            </tr>
+            <div class="t-row row-header">                
+                <div class="wooboi_product">Product</div>
+                <div class="wooboi_quantity">Quantity</div>
+                <div class="wooboi_price">Price</div>
+            </div>
             
-            <tr>
+            <div class="t-row">
                 
-                <td>
+                <div class="wooboi_select">
                     <select name="wooboi_product_options[]" data-placeholder="Choose a Product..." class="wooboi-chzn-select" width="300px">
                         <option></option>
                         <?php echo $product_options; ?>
                     </select>
-                </td>
-                <td>
-                    <input type="number" name="wooboi_product_quantity[]" value="1" min="1" style="width:100px;" />
-                </td>
-                <td class="wooboi_sub_total"><?php echo get_woocommerce_currency_symbol();?><span>0.00</span></td>
+                </div>
+                <div class="wooboi_quantity_input">
+                    <!-- prevent negaitve values oninput -->
+                    <input type="number" name="wooboi_product_quantity[]" min="0" style="width:100px;" oninput="this.value = 
+ !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" />
+                </div>
+                <div class="wooboi_sub_total"><?php echo get_woocommerce_currency_symbol();?><span>0.00</span></div>
                 
-            </tr>
+            </div>
             
-            <tr class="wooboi_add_more_row">
-                <td colspan="3" class="wooboi_add_more">
+            <div class="wooboi_add_more_row t-row">
+                <div colspan="3" class="wooboi_add_more">
                     <a class="wooboi_add_more_link" href="javascript:void(0);">[Add More]</a>
-                </td>
-            </tr>
+                </div>
+            </div>
             
-            <tr class="wooboi_records_total">
-                <th class="wooboi_add_cart_button"><button type="submit" name="wooboi-add-to-cart" value="34" class="single_add_to_cart_button button alt">Add to cart</button> 
-                <input type="checkbox" name="wooboi_empty_cart" value="1"> Empty cart before add new items?
-                </th>
-                <th class="wooboi_add_more_total">Total</th>
-                <th class="wooboi_add_more_total_amt"><?php echo get_woocommerce_currency_symbol();?><span>0.00</span></th>
-            </tr>
+            <div class="wooboi_records_total t-row">
+                <div class="wooboi_add_cart_button"><button type="submit" name="wooboi-add-to-cart" value="34" class="single_add_to_cart_button button alt">Add to cart</button>
+               &nbsp;<br><br> <input type="checkbox" name="wooboi_empty_cart" value="1"> Empty existing Cart before adding new items?
+                </div>
+                <div class="wooboi_add_more_total">Total</div>
+                <div class="wooboi_add_more_total_amt"><?php echo get_woocommerce_currency_symbol();?><span>0.00</span></div>
+            </div>
             
-        </table>
+        </div>
         
     </form>
     

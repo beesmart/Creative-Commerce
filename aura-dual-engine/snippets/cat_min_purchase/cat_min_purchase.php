@@ -2,7 +2,7 @@
 
 /**
  * Snippet Name: Force Category Cart Minimum
- * Version: 1.1.0
+ * Version: 1.1.1
  * Description: Renders notices and prevents checkout if the cart does not contain a minimum number of products in a category. Use shortcode '[category-products-required]' to display a notice for required amounts for the currently viewed product.
  * Dependency: WP Memberships
  *
@@ -25,8 +25,9 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 	  	if(! empty($user_id)){
 		  	$memberships = wc_memberships_get_user_active_memberships( $user_id );
 		}
-	  
-		if ( ! empty( $memberships ) ) {
+	  	
+	  	// if is a member (trade) but not an admin
+		if ( !empty( $memberships ) && !current_user_can( 'manage_options' ) ) {
 	  		
 	  		$terms = get_terms( 'product_cat' );
 	  		$category_array = array();
@@ -136,7 +137,7 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 		  	$memberships = wc_memberships_get_user_active_memberships( $user_id );
 		}
 	  
-		if ( ! empty( $memberships ) ) :
+		if ( ! empty( $memberships ) && !current_user_can( 'manage_options' ) ) :
 
 			$product = wc_get_product( $product_id );
 			$product_title = $product->get_title();
@@ -193,9 +194,17 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 
 				$terms = get_the_terms( $product_id, 'product_cat' );
 
-				$term_id = $terms[0]->term_id;
-				$term_name = $terms[0]->name;
-				$meta_min = get_term_meta($term_id, 'fccm_meta_minimum', true);
+				if($terms) :
+
+					$term_id = $terms[0]->term_id;
+					$term_name = $terms[0]->name;
+					$meta_min = get_term_meta($term_id, 'fccm_meta_minimum', true);
+
+				else: 
+
+					return false;
+
+				endif;
 
 				if ($meta_min) :
 
@@ -303,7 +312,7 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 	    <div class="form-field">
 	        <label for="fccm_meta_minimum"><?php _e('Force Category Cart Minimum', 'aura-dual-engine'); ?></label>
 	        <input type="number" name="fccm_meta_minimum" id="fccm_meta_minimum">
-	        <p class="description"><?php _e('Trade Only. How many products in this category does a trade user need to have in their cart before you allow them to purchase. e.g. Trade Users must buy at least 8 of anything in the Coaster category.', 'aura-dual-engine'); ?></p>
+	        <p class="description"><?php _e('Trade Only. How many products in this category does a trade user need to have in their cart before you allow them to purchase. e.g. Trade Users must buy at least 8 of anything in the Coaster category. (Admin Bypasses this requirement)', 'aura-dual-engine'); ?></p>
 	    </div>
 	   
 	    <?php

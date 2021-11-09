@@ -1,19 +1,110 @@
+.wooboi_table_container{ 
+    width: 100%;
+    display: grid;
+}
 
-.wooboi_table_container{ width: 70%;}
-.wooboi_table_container .wooboi_product{ width: 56%;}
+
+
+.wooboi_table_container .wooboi_product,
+.wooboi_table_container .wooboi_price,
+.wooboi_table_container .wooboi_quantity,
+.wooboi_table_container .t-row > div { 
+    width: 33.33%;
+    flex: 0 0 auto;
+}
+
+/*.wooboi_table_container .wooboi_product{ width: 56%;}
 .wooboi_table_container .wooboi_quantity{ width: 28%;}
-.wooboi_table_container .wooboi_price{ width: 28%;}
+.wooboi_table_container .wooboi_price{ width: 28%;}*/
 
-table.wooboi_table_container th {
+.wooboi_table_container .row-header {
     background-color: #f8f8f8;
+        font-weight: 600;
 }
-table.wooboi_table_container th {
-    font-weight: 600;
+.wooboi_table_container .row-header,
+.wooboi_table_container .t-row  {
+    display: flex;
 }
-table.wooboi_table_container td, table.wooboi_table_container th {
-    padding: 1em 1.41575em;
+.wooboi_table_container > div {
+    padding: 0.8rem 1.2rem;
     text-align: left;
     vertical-align: top;
 }
 
-.wooboi_add_more, .wooboi_add_more_total{text-align: right!important;}
+.wooboi_table_container .wooboi_add_more_row div {
+    width:  100%;
+}
+
+.wooboi_add_more, .wooboi_add_more_total {
+    text-align: right!important;
+}
+
+.wooboi_table_container .t-row.wooboi_records_total .wooboi_add_cart_button {
+    width:  60%;
+}
+
+.wooboi_table_container .t-row .wooboi_add_more_total {
+    width: 15%;
+}
+
+.wooboi_table_container .t-row .wooboi_add_more_total_amt {
+    width:  25%;
+    text-align: right;
+}
+
+@media (min-width:  1025px){
+    .wooboi_table_container .wooboi_price,
+    .wooboi_table_container .wooboi_sub_total {
+        text-align:  right;
+    }
+
+}
+
+@media (max-width:  1024px){
+    .wooboi_table_container .row-header,
+    .wooboi_table_container .t-row  {
+        flex-wrap:  wrap;
+    }
+    .wooboi_table_container .wooboi_product,
+    .wooboi_table_container .wooboi_quantity,
+    .wooboi_table_container .t-row > div { 
+        width: 50%;
+        flex: 0 0 auto;
+    }
+    .wooboi_table_container .wooboi_price {
+        display: none;
+    }
+    .wooboi_table_container .wooboi_sub_total,
+    .wooboi_table_container .wooboi_add_more_row div {
+
+        width:  100%!important;
+    }
+	.wooboi_table_container .wooboi_quantity {
+		text-align: right;
+	}
+	.wooboi_table_container .wooboi_quantity_input input {
+		margin: 0 0 0 auto;
+	}
+
+}
+
+@media (max-width: 640px){
+
+   .wooboi_table_container .wooboi_select,
+   .wooboi_table_container .wooboi_product {
+        width:  70%!important;
+   }
+   .wooboi_table_container .wooboi_quantity_input,
+   .wooboi_table_container .wooboi_quantity {
+        width: 30%!important;
+   }
+ 
+
+}
+
+@media (max-width: 420px){
+	.wooboi_table_container .wooboi_select select {
+		max-width: 165px; 
+	}
+}
+
