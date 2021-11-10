@@ -2,7 +2,7 @@
 
 /**
  * Snippet Name: Hide Category From User Type / Shop functions
- * Version: 1.1.0
+ * Version: 1.1.1
  * Description: These multiple functions exclude categories from users (except admin, trade, agent) when viewing front end archive, search and single templates. 
  * Dependency: WP Memberships
  *
@@ -569,21 +569,21 @@ function restict_by_category( $template ) {
 
 
 
-    // https://www.businessbloomer.com/woocommerce-exclude-category-from-products-shortcode/
+// https://www.businessbloomer.com/woocommerce-exclude-category-from-products-shortcode/
 
-    add_filter( 'woocommerce_shortcode_products_query' , 'bbloomer_exclude_cat_shortcodes');
+// add_filter( 'woocommerce_shortcode_products_query' , 'bbloomer_exclude_cat_shortcodes');
      
-    function bbloomer_exclude_cat_shortcodes($query_args){
+    // function bbloomer_exclude_cat_shortcodes($query_args){
      
-        $query_args['tax_query'] =  array(array( 
-                'taxonomy' => 'product_cat', 
-                'field' => 'slug', 
-                'terms' => array('MAGIC'), // Don't display products from this category
-                'operator' => 'NOT IN'
-            )); 
+    //     $query_args['tax_query'] =  array(array( 
+    //             'taxonomy' => 'product_cat', 
+    //             'field' => 'slug', 
+    //             'terms' => array('MAGIC'), // Don't display products from this category
+    //             'operator' => 'NOT IN'
+    //         )); 
      
-        return $query_args;
-    }
+    //     return $query_args;
+    // }
 
   
 }

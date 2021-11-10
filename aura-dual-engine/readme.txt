@@ -34,6 +34,9 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
+= 1.3.9  2021-11-10 =
+* Fix. Disabled a shortcode problem function in hide_cat_users snippet
+
 = 1.3.8  2021-11-09 =
 * Fix. Some WC warning messages
 

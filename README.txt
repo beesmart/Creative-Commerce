@@ -7,10 +7,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Creative Commerce (prev. Aura SuperCommerce) Plugin Suite consists of
 
-*  Creative Commerce - 1.3.16
+*  Creative Commerce
 *  Creative Agent
 *  Creative Conversion
-*  Creative Dual Engine - 1.3.6
+*  Creative Dual Engine
 *  Creative Publicity
 *  Creative Stock Maximiser
 *  Creative Time Saver
