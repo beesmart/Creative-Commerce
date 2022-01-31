@@ -34,6 +34,9 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
+= 1.3.10  2021-12-16 =
+* Fix. SKU Snippet - sku_show_cart_shop.php - check $product global exists
+
 = 1.3.9  2021-11-10 =
 * Fix. Disabled a shortcode problem function in hide_cat_users snippet
 

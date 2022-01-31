@@ -46,7 +46,7 @@ add_action( 'cc_monthly_stockist_callback', 'email_monthly_stockist_report' );
 add_action( 'admin_menu', 'submenu_reports_store_locator' );
 
 function submenu_reports_store_locator(){
-    add_submenu_page( 'edit.php?post_type=wpsl_stores', 'Monthly Report', 'Report', 'manage_options', 'wpsl_report', 'wpsl_reports_page_content', 1 );
+    add_submenu_page( 'edit.php?post_type=wpsl_stores', 'Monthly Report', 'Email Report', 'manage_options', 'wpsl_report', 'wpsl_reports_page_content', 1 );
 }
 
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Snippet Name: Show SKU on Cart and Shop Pages (Trade only)
- * Version: 1.0.0
+ * Version: 1.0.1
  * Description: Shows the SKU on cart and shop pages but only for trade customers
  * Dependency: WP Memberships
  *
@@ -35,13 +35,18 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 			add_filter( 'woocommerce_get_price_html', '_sku_after_price_loop' );
 			
 			function _sku_after_price_loop( $price ) { 
-			    global $product;
-			    if ( $product->get_sku() && !is_admin() && !is_product() ) {
-			        $sku = $product->get_sku();
-			        return $price . '<br /><p class="product-sku sku-sml-text"><span>SKU:</span> ' . $sku . '</p>';
-			    } else { 
-			        return $price; 
-			    } 
+			   global $product;
+
+			   if($product) {
+   					$sku = $product->get_sku();
+   				}
+   				
+   			    if ( $sku && $product && !is_admin() && !is_product() ) {
+   					$html = $price . '<br /><p class="product-sku sku-sml-text"><span>SKU:</span> ' . $sku . '</p>';
+   			        return $html;
+   			    } else { 
+   			       return $price; 
+   			    } 
 			}
 	
 

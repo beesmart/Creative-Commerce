@@ -52,7 +52,7 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 						}
 					}
 
-					if (!empty( $member_discount ) && ! wc_memberships()->get_member_discounts_instance()->is_product_excluded_from_member_discounts( $product_id )) {
+					if (!empty( $member_discount ) && !empty( $price ) && !wc_memberships()->get_member_discounts_instance()->is_product_excluded_from_member_discounts( $product_id )) {
 
 						if( $product->is_type( 'bundle' ) ) {
 						     $discount = (float) $member_discount/100; 

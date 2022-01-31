@@ -1,8 +1,10 @@
 <?php
 
+
 /**
+ * 
  * Snippet Name: New User Approve - Registration Fix
- * Version: 1.0.0
+ * Version: 1.0.1
  * Description: Fields and Fixes for NUA plugin
  * Dependency: new-user-approve 
  *
@@ -13,12 +15,8 @@
 **/
 
 
-
-if ( is_plugin_active( 'new-user-approve/new-user-approve.php' ) ) {
-
-
+if ( is_plugin_active( 'new-user-approve/new-user-approve.php' ) || is_plugin_active( 'new-user-approve-premium/new-user-approve.php' ) ) {
 	add_filter('nua_email_tags', 'mytheme_extras_nua_add_email_tags');
-
 	function mytheme_extras_nua_add_email_tags($email_tags) {
 	    
 	    // $email_tags[] = array(
@@ -49,7 +47,6 @@ if ( is_plugin_active( 'new-user-approve/new-user-approve.php' ) ) {
 	// function mytheme_extras_nua_email_tag_user_type($attributes) {   
 	//     return '' . isset($_POST['pm_customer_type'])?ucfirst($_POST['pm_customer_type']).' Customer':'';
 	// }
-
 	// function mytheme_extras_nua_email_tag_user_first_last_name($attributes) {
 	   
 	//   $full_name=isset($_POST['billing_first_name'])?$_POST['billing_first_name']:'' . ' ';
@@ -85,7 +82,5 @@ if ( is_plugin_active( 'new-user-approve/new-user-approve.php' ) ) {
 	    </div>
 	    <?php
 	}
-
 	add_action( 'admin_notices', 'nua_not_installed' );
 }
-

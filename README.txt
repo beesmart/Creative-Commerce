@@ -34,6 +34,12 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+= 1.4.0  2021-23-11 =
+* Addition. Switched status page to use dependencies from the licence sites REST API.
+
+= 1.3.17  2021-09-11 =
+* Fix. Some minor warning messages from WC
+
 = 1.3.16  2021-16-09 =
 * Addition. Added a new Snippet 'Shortcode - Show this products Taxonomy terms'
 

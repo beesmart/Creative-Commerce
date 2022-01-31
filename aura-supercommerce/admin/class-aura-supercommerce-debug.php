@@ -314,7 +314,7 @@ class Aura_Supercommerce_Debug {
 	}
 
 	/**
-	 * Use our dependency data from our CONST, to check which dependecies are activated or missing. Then output this as HTML feedback on the status page. Special shoutout to ACF which uses a slightly different naming format,
+	 * Use our dependency data from our Licence website - supercommerce.auracreativemedia.co.uk - REST JSON API - check which dependecies are activated or missing. Then output this as HTML feedback on the status page. Special shoutout to ACF + friends which use a slightly different naming format.
 	 *
 	 * @since    1.0.0
 	 * @return   HTML - Echo HTML feedback based on whether a dep. is or isn't installed/activated.
@@ -322,24 +322,127 @@ class Aura_Supercommerce_Debug {
 
 	public function check_plugin_dependencies(){
 
+
+		/* TRANSIENTS FOR CACHING THE JSON DATA */
+
+		$prod_url = 'https://supercommerce.auracreativemedia.co.uk/wp-json/aura_product/v1/post';
+		$plug_url = 'https://supercommerce.auracreativemedia.co.uk/wp-json/aura_plugin/v1/post';
+		// Namespace in case of collision, since transients don't support groups like object caching.
+		$cache_key = md5( 'remote_request_prod2|' . $prod_url );
+		$cache_key2 = md5( 'remote_request_plug2|' . $plug_url );
+		$request = get_transient( $cache_key );
+		$request2 = get_transient( $cache_key2 );
+	
+		if ( false == $request ) {
+
+			$request = wp_remote_get( $prod_url );
+		
+			if ( is_wp_error( $request ) ) {
+				// Cache failures for a short time, will speed up page rendering in the event of remote failure.
+				set_transient( $cache_key, $request, MINUTE_IN_SECONDS * 30 );
+				return false;
+			}
+
+			// Success, cache for a longer time.
+			set_transient( $cache_key, $request, HOUR_IN_SECONDS * 2 );
+
+		}
+
+		if ( is_wp_error( $request ) ) {
+			return false;
+		}
+
+		if ( false == $request2 ) {
+
+			$request2 = wp_remote_get( $plug_url );
+		
+			if ( is_wp_error( $request2 ) ) {
+				// Cache failures for a short time, will speed up page rendering in the event of remote failure.
+				set_transient( $cache_key2, $request2, MINUTE_IN_SECONDS * 30 );
+				return false;
+			}
+
+			// Success, cache for a longer time.
+			set_transient( $cache_key2, $request2, HOUR_IN_SECONDS * 2 );
+
+		}
+
+		if ( is_wp_error( $request2 ) ) {
+			return false;
+		}
+
+
+		/* END TRANSIENTS */
+
+		$product_resp = wp_remote_retrieve_body( $request );
+		$plug_resp = wp_remote_retrieve_body( $request2 );
+
+		$product_resp = json_decode( $product_resp ); 
+		$plug_resp = json_decode( $plug_resp ); 
+
+	 	$dependencies = array();
+
+	 	echo "<h3>Plugins with a <span style='color: gold;font-weight:bold;'>Gold</span> border are <strong>Premium</strong> Plugins</h3>";
+
 		foreach (AURA_SUPERCOMMERCE_PLUGINS as $plugin_name => $data ) {
+
 			$aura_sc_admin = new Aura_Supercommerce_Admin( $this->plugin_name, $this->version );
 			$_plugin_exists = $aura_sc_admin->check_child_plugin_exists( $plugin_name );
 
-			if($_plugin_exists && $data['dependencies']) :
+			if($_plugin_exists && $product_resp) :
 
-		 	echo "<p><strong style='text-transform: capitalize;'>" . $plugin_name . "</strong>: ";
+		 	echo "<p style='margin-top: 15px;'><strong style='text-transform: capitalize;text-decoration: underline;font-size: 16px;'>" . $plugin_name . "</strong>: ";
 
-			 	if($data['dependencies']) :
-			 	foreach ($data['dependencies'] as $value) {
-			 		
-			 		if ( !function_exists('is_plugin_active') || ( !is_plugin_active( $value . '/' . $value . '.php') && !is_plugin_active( $value . '/init.php') && !is_plugin_active( $value . '/acf.php')) ) {
-			 			echo "<a href='" . get_site_url() . "/wp-admin/plugin-install.php?s=" . $value . "&tab=search&type=term'><span class='disabled-red' style='color: red; text-transform: capitalize; padding-left: 6px;'><i class='fa fa-times'></i> " . $value . '</span></a>';
-			 		} else {
-			 			echo "<span class='active-green'  style='color: green; text-transform: capitalize; padding-left: 6px;'><i class='fa fa-check'></i> " . $value . '</span>';
+			 	foreach ((array) $product_resp as $item) {
+			 		if(property_exists($item, 'acf')) {
+			 		// Check if the existing plugin HTML element matches what is in JSON:products
+			 		if($item->acf->product_slug === $plugin_name && property_exists($item->acf, 'plugins_attached')){
+			 			// If so loop over the plugins attached to the JSON:product
+			 			foreach($item->acf->plugins_attached as $plugin){
+
+			 				// and for the JSON:plugin we match what is in JSON:product to grab some meta
+			 				foreach((array) $plug_resp as $plugin_json){
+
+			 					if($plugin_json->post_name === $plugin->post_name){
+
+			 						$slug = $plugin_json->acf->plugin_slug;
+			 						$paid_for = $plugin_json->acf->plugin_premium;
+			 						$paid_for_css = "";
+
+			 						if($paid_for === true){
+			 							$paid_for_css = "border: 2px solid gold;";
+			 						}
+
+			 						if ( !function_exists('is_plugin_active') || 
+			 							( !is_plugin_active( $slug . '/' . $slug . '.php') && 
+			 								(!is_plugin_active( $slug . '/init.php') && 
+			 								 !is_plugin_active( $slug . '/acf.php')  && 
+			 								 !is_plugin_active( $slug . '/fl-builder.php')  && 
+			 								 !is_plugin_active( $slug . '/wp-contact-form-7.php') 
+			 								)
+			 							 )
+			 							) 
+			 						{
+			 					
+			 						 	echo "<a href='" . get_site_url() . "/wp-admin/plugin-install.php?s=" . $slug . "&tab=search&type=term'><span class='disabled-red' style='" . $paid_for_css . "color: red; text-transform: capitalize; padding: 1px 6px;margin: 3px;display:inline-block;'><i class='fa fa-times'></i> " . $plugin->post_title . '</span></a>';
+
+			 						 } else {
+			 						 	echo "<span class='active-green' style='" . $paid_for_css . " color: green; text-transform: capitalize; padding: 1px 6px;margin: 4px;display:inline-block;'><i class='fa fa-check'></i> " . $plugin->post_title . '</span>';
+			 						}
+
+			 					}
+			 				}
+			 			}
+			 				
+
+				 			
+
+			 			}
 			 		}
+
+			 		
 			 	}
-			 	endif;
+			 
 			 echo "</p>";
 		 	endif;
 		 } 
