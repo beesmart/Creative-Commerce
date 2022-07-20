@@ -33,7 +33,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ftp.auracreativemedia.co.uk
+          server: ftpes://auracreativemedia.co.uk
           username: github@superdev.auracreativemedia.co.uk
           password: ${{ secrets.STAGING_FTP_PASSWORD }}
 
