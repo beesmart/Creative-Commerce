@@ -33,8 +33,10 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ftpes://auracreativemedia.co.uk
+          server: ftp.auracreativemedia.co.uk
           username: github@superdev.auracreativemedia.co.uk
           password: ${{ secrets.STAGING_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21 # todo replace with your web hosts ftps port
 
 
