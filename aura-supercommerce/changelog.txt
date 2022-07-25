@@ -2,6 +2,9 @@
 
 == Changelog ==
 
+= 1.4.2  2022-07-25 =
+* Issue with new WC Update and Pagi not showing. Snippet updated show_cat_products.
+
 = 1.4.1  2022-01-31 =
 * pm_reg snippet, New User Approve - add pro directory to admin notice check 
 
@@ -39,18 +42,14 @@
 = 1.2.2 - 2021-22-04 =
 * Update - Change inputs from labels to placholder text in add_reg_snippet
 
-
 = 1.1.2 - 2021-07-04 =
 * Fix - Bug in debug status checker
-
 
 = 1.1.1 - 2021-06-04 =
 * Update - Remove FMA Added Reg fields plugin and associated snippet due to bug in plugin and abandonment
 
-
 = 1.1.0 - 2021-11-02 =
 * Enhancement - Add Trade Only switch to Licence that adds a snippet which hides the store from retail (Dual Engine 'lite')
-
 
 = 1.0.0 - 2020-09-15 =
 * Notice - This is the first entry in the changelog and registers it as installed. #TICKETREFHERE.

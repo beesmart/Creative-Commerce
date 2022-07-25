@@ -17,6 +17,7 @@
 /keypress-ui
 /list-custom-taxonomy-widget
 /new-user-approve
+/oauth2-provider
 /product-bundles-variation-bundles
 /qty-increment-buttons-for-woocommerce
 /query-monitor
@@ -49,5 +50,7 @@
 /wpide
 /yith-woocommerce-barcodes-premium
 /yith-woocommerce-wishlist-premium
+/zest-likebox
+/zest-accelerator
 /hello.php
 /index.php

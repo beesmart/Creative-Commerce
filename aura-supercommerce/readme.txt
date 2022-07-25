@@ -42,6 +42,9 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.4.2  2022-07-25 =
+* Issue with new WC Update and Pagi not showing. Snippet updated show_cat_products.
+
 = 1.4.1  2022-01-31 =
 * pm_reg snippet, New User Approve - add pro directory to admin notice check 
 
