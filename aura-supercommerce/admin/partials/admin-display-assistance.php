@@ -48,8 +48,8 @@
 
 					<h1>Foundation</h1>
 
-					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=shop_coupon"><i class="fas fa-tags"></i> Create/Edit Coupons</a></div>
-					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>admin.php?page=wc-settings&tab=email"><i class="fas fa-envelope"></i> Default Notification Emails</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=shop_coupon"><i class="fas fa fa-tags"></i> Create/Edit Coupons</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>admin.php?page=wc-settings&tab=email"><i class="fas fa fa-envelope"></i> Default Notification Emails</a></div>
 
 				</div>
 
@@ -64,11 +64,11 @@
 
 					<h1>Dual Engine</h1>
 
-					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>admin.php?page=wc-settings&tab=products&section=ordervalue"><i class="fas fa-minus-circle"></i> Set Min. Order Amount</a></div>
-					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=product&page=aura_category_overview"><i class="fas fa-clipboard-list"></i> Category Overview</a></div>
-					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/bulk-order"><i class="fas fa-receipt"></i> Bulk Order</a></div>
-					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=wc_membership_plan"><i class="fas fa-users-cog"></i> Create/Edit Member Plans</a></div>
-					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=wc_user_memberships"><i class="fas fa-users"></i> Create/Edit Memberships</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>admin.php?page=wc-settings&tab=products&section=ordervalue"><i class="fas fa fa-minus-circle"></i> Set Min. Order Amount</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=product&page=aura_category_overview"><i class="fas fa fa-cog"></i> Category Overview</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/bulk-order"><i class="fas fa fa-cog"></i> Bulk Order</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=wc_membership_plan"><i class="fas fa fa-cog"></i> Create/Edit Member Plans</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=wc_user_memberships"><i class="fas fa fa-users"></i> Create/Edit Memberships</a></div>
 
 					
 
@@ -85,7 +85,7 @@
 
 				<div class="col col-lg-4">
 					<h1>Publicity</h1>
-					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/publicity"><i class="far fa-newspaper"></i> Publicity Page</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/publicity"><i class="far fa fa-newspaper"></i> Publicity Page</a></div>
 				</div>
 
 
@@ -105,7 +105,7 @@
 
 					<h1>Time Saver</h1>
 
-					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/product-barcodes/"><i class="fas fa-barcode"></i> Barcodes Page</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/product-barcodes/"><i class="fas fa fa-barcode"></i> Barcodes Page</a></div>
 
 				</div>
 
@@ -126,9 +126,9 @@
 
 					<h1>Trade Booster</h1>
 
-					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/shipping-addresses/"><i class="fas fa-dolly"></i> Shipping Addresses</a></div>
-					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>admin.php?page=advanced-notifications/"><i class="fas fa-mail-bulk"></i> Advanced Email Notifications</a></div>
-					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=wpsl_stores&page=wpsl_report"><i class="fas fa-mail-bulk"></i> Setup Monthly Stockist Reports</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_site_url(); ?>/shipping-addresses/"><i class="fas fa fa-cog"></i> Shipping Addresses</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>admin.php?page=advanced-notifications/"><i class="fas fa fa-cog"></i> Advanced Email Notifications</a></div>
+					<div class="aura-admin-btn"><a href="<?php echo get_admin_url(); ?>edit.php?post_type=wpsl_stores&page=wpsl_report"><i class="fas fa fa-cog"></i> Setup Monthly Stockist Reports</a></div>
 
 				</div>
 

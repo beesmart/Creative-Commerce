@@ -34,6 +34,11 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+= 1.4.5  2022-08-10 =
+* Added Tax exclusion warning to status page
+
+= 1.4.4  2022-08-09 =
+* Font awesome issue fixed, some update warnings, added ultimate dashboard pro
 
 = 1.4.2  2022-01-31 =
 * pm_reg snippet, New User Approve - add pro directory to admin notice check 

@@ -113,4 +113,234 @@ function add_address_settings($current_tab)
 
 }
 
+
+
+
+/**
+ * Register a custom menu page.
+ */
+function wpsl_duplicates_sub_menu_page() {
+
+    add_submenu_page(
+    	'edit.php?post_type=wpsl_stores',
+        __( 'Duplicates', 'wpsl_stockists' ),
+        'Duplicates',
+        'manage_options',
+        'wpsl-duplicates',
+        'wpsl_duplicates_page_callback',
+        2
+
+    );
+
+}
+
+
+add_action( 'admin_menu', 'wpsl_duplicates_sub_menu_page' );
+
+
+
+function wpsl_duplicates_page_callback() {
+    echo '<div class="wrap"><div id="icon-tools" class="icon32"></div>';
+        echo '<h2>Duplicates</h2>';
+    echo '</div>';
+
+    // Run a wordpress query on WPSL
+
+    // Check post code, name and first line of address all match if so display if not skip
+
+    function get_duplicates() {
+
+    $duplicates = array();
+    $dupe_ids = array();
+
+    echo '<br><table class="widefat fixed" cellspacing="0">';
+
+    $query_all = new WP_Query( array(
+
+	    'post_type' => 'wpsl_stores',
+	    'posts_per_page' => -1,
+   	    'fields' => 'ids',
+    ) );
+
+    $all_posts = $query_all->posts;
+   
+    foreach ( $all_posts as $post_id ) {
+
+       echo '<tr class="alternate">';
+
+    if ( in_array( $post_id, $duplicates ) ) {
+
+    continue;
+
+
+    }
+	    $args = array(
+		    'post_type' => 'wpsl_stores',
+		    'posts_per_page' => -1,
+
+		    'meta_query' => array(
+
+	    		array(
+	   				 'key' => 'wpsl_zip',
+	   				 'value' => get_post_meta( $post_id, 'wpsl_zip', true ),
+	   				 'compare' => '=',
+	   			 ),
+	   		 
+	   		 ),
+
+	   		 'post__not_in' => array( $post_id ),
+	   		 'fields' => 'ids',
+	    );
+
+	    $query = new WP_Query( $args );
+	   
+
+
+	     if($query->posts) {
+
+	     	$dupe_ids[] = $post_id;
+	     	
+	     	// Let's put all the ID's into their own array so we can sort by ASC/DESC order
+	     	foreach( $query->posts as $post ) {
+ 	     		//echo get_the_title( $post );
+ 	     		$dupe_ids[] = $post;
+ 	     	}
+
+ 	     
+ 	     	sort($dupe_ids);
+ 	     	$original = min($dupe_ids);
+ 	     	$dupes_remove = array_slice($dupe_ids, 1);
+
+
+
+			$html = '<td class="column-columnname">';
+	     		$html .= '<h3>' . get_the_title( $original ) . '</h3>';
+	     	$html .= '</td>';
+
+ 			$html .= '<td class="column-columnname">';
+
+ 	     		foreach( $dupes_remove as $dupe ) {
+ 	     			$html .= '<p>' . get_the_title( $dupe ) . ' - <a href="' . get_delete_post_link( $dupe ) . '">Delete</a></p>';
+ 	     		}
+
+ 	     	$html .= '</td>';
+	     	
+
+	     	echo $html;
+	     	
+	     }
+
+
+
+	    $duplicates = array_merge( $duplicates, $query->posts );
+	   // // $this_id = $query->posts;
+
+	   // $address_post_id = get_the_ID();
+	  // var_dump($address_post_id);
+
+	    
+	       echo '</tr>';
+    }
+
+    	array_unique( $duplicates );
+
+    
+    	echo '</table>';
+
+    	return $duplicates;
+
+    }
+
+   // get_duplicates();
+
+
+
+
+
+
+
+
+
+function aj_get_duplicates() {
+
+global $wpdb;
+
+	$args = array( 'post_type' => 'wpsl_stores', 'posts_per_page' => -1 );
+
+	$posts = get_posts( $args );
+
+	$post_ids_processed = array();
+
+	foreach( $posts as $post_data ){
+		$post_id = $post_data->ID;
+
+	if ( in_array( $post_id, $post_ids_processed ) ) {
+			continue;
+	}
+
+	$wpsl_zip = get_post_meta( $post_id, 'wpsl_zip', true );
+	$wpsl_address = get_post_meta( $post_id, 'wpsl_address', true );
+
+	$post_ids_processed[] = $post_id;
+
+	if( $wpsl_zip ){
+		$result = $wpdb->get_results( "SELECT post_id FROM ".$wpdb->prefix."postmeta WHERE meta_key = 'wpsl_zip' AND meta_value = '".$wpsl_zip."' " );
+		if( $result ){
+			foreach( $result as $row ){
+				$duplicate_ids[] = $row->post_id;
+			}
+		}
+	}
+
+
+
+	if( !empty( $duplicate_ids ) ){
+		$duplicate_arr[ $post_id ] = $duplicate_ids;
+		$post_ids_processed[] = $duplicate_ids;
+	}
+
+	array_unique( $duplicate_arr );
+	var_dump($duplicate_arr);
+	return $duplicate_arr;
+
+
+	}
+
+}
+
+
+
+aj_get_duplicates();
+
+
+
+}
+
+
+
+/*
+
+DELETE p, pm1
+FROM
+   sdc_posts p,
+   sdc_postmeta pm1,
+   sdc_postmeta pm2
+WHERE 
+    p.ID = pm1.post_id
+    AND p.post_type = 'wpsl_stores'
+    AND pm1.post_id > pm2.post_id 
+    AND pm1.meta_key = 'wpsl_zip' 
+    AND pm1.meta_key = pm2.meta_key 
+    AND pm1.meta_value = pm2.meta_value
+
+
+
+   */
+
+
+
+
+
+
+
 ?>

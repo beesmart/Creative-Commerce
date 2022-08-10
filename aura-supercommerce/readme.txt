@@ -42,6 +42,9 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.4.4  2022-08-09 =
+* Font awesome issue fixed, some update warnings, added ultimate dashboard pro
+
 = 1.4.2  2022-07-25 =
 * Issue with new WC Update and Pagi not showing. Snippet updated show_cat_products.
 

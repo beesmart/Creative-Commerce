@@ -34,6 +34,9 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
+= 1.4.0 2022-08-09 =
+* Addition. Add new snippet woo tax membership, to fix issues regarding excluding taxes for members
+
 = 1.3.10  2021-12-16 =
 * Fix. SKU Snippet - sku_show_cart_shop.php - check $product global exists
 

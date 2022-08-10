@@ -16,7 +16,7 @@
  * Plugin Name:       Creative Commerce - Dual-Engine
  * Plugin URI:        https://digitalzest.co.uk/
  * Description:       The Dual Engine adds additional B2B functionality to assist stores which wish to sell their products to both Trade and Retail customers.
- * Version:           1.3.10
+ * Version:           1.4.0
  * Author:            Digital Zest
  * Author URI:        https://digitalzest.co.uk/
  * License:           GPL-2.0+
@@ -38,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @FLAG : Migration, migrate
 */
 
-define( 'AURA_DUAL_ENGINE_VERSION', '1.3.10' );
+define( 'AURA_DUAL_ENGINE_VERSION', '1.4.0' );
 define( 'AURA_DUAL_ENGINE_DIR', 'aura-dual-engine/aura-dual-engine.php' );
 define( 'AURA_DUAL_ENGINE_SLUG', 'aura-dual-engine' );
 define( 'AURA_DUAL_ENGINE_TITLE', 'Dual Engine' );

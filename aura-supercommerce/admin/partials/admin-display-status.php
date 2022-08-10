@@ -76,6 +76,24 @@
 			    						}
 		    							?>
 		    							</div>
+
+		    							<h3>Tax Exclusion Settings</h3>
+
+		    							<?php $exclusion_option = $this::exclude_tax_options_check();
+
+		    							  ?>
+		 	    						<div class="postbox <?php if (!$exclusion_option) : echo 'status-fail'; else: echo 'status-pass'; endif; ?>">
+		 	    						<?php
+		 	    							if (!$exclusion_option) :
+		 	    								echo '<p>Warning: There are no tax exclusion options setup for WooCommerce / Memberships. Please confirm this is correct <a href="' . get_site_url() . "/wp-admin/admin.php?page=wc-settings&tab=tax" . '">here.</a></p>';
+		 	    							else :
+		 	    								echo '<p>Great, there is a Tax exclusion setup for at least one member plan.</p>';
+		 	    							endif;
+		 	    
+		 	    						?>
+
+		     							</div>
+
 		    							<h3>Unassigned Attributes</h3>
 		    							<?php // query all products to see if they are inside a bundle. If so check they have the correct attributes Pack Size. and single. If not echo. Also show bundles which dont have the attribute. 
 			    						$warning_products = $this::status_unassigned_attr_exist();
