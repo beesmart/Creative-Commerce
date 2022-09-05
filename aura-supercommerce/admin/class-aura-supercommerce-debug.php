@@ -165,6 +165,23 @@ class Aura_Supercommerce_Debug {
 
 
 	/**
+	 * Check that the option value for auto assigned memberships is assigned, it shoudl be set to a membership plan id
+	 *
+	 * @since    1.4.6
+	 * @return   Int
+	*/
+
+	public function get_auto_assigned_plan_id(){
+		$aa_def_membplan = get_option( 'aa_def_membplan' );
+		if ($aa_def_membplan) {
+			return $aa_def_membplan;
+		} else {
+			return false;
+		}
+	}
+
+
+	/**
 	 * Similar to status_req_attr_exist, this function checks if the relevant terms within the req. attribute exist as it's key to product bundles functioning.
 	 *
 	 * @since    1.0.0

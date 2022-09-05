@@ -220,7 +220,7 @@ class Aura_Supercommerce_Admin {
 	 * @return   string - The Output from the file contents (HTML or plaintext)
 	 */
 
-	private function get_plugin_text( $text = 'details', $slug ){
+	private function get_plugin_text( $slug, $text = 'details'  ){
 
 		$file = plugin_dir_path( __FILE__ ) . 'partials/files/' . $slug . '/' . $text . '.txt';
 
@@ -256,9 +256,11 @@ class Aura_Supercommerce_Admin {
 		foreach ($users_to_add_cap as $user) {
 
 			$user_obj = get_user_by( 'login', $user );
-
-			$priv_user = new WP_User( $user_obj->ID );
-			$priv_user->add_cap( 'manage_debug');
+			
+			if($user_obj) :
+				$priv_user = new WP_User( $user_obj->ID );
+				$priv_user->add_cap( 'manage_debug');
+			endif;
 
 		}
 

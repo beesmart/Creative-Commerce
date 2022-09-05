@@ -34,6 +34,12 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+= 1.4.7  2022-09-02 =
+* Created a new snippet called - On approval auto assign membership plan - also status page updated
+
+= 1.4.6  2022-09-01 =
+* reg_field snippet now includes a choice for customer or b2b customer role
+
 = 1.4.5  2022-08-10 =
 * Added Tax exclusion warning to status page
 

@@ -31,6 +31,7 @@
 		    			<div class="tab-content status-rows">
 		    				<div class="tab-inner">
 		    						<?php 
+
 		    						$aura_sc_admin = new Aura_Supercommerce_Admin( $this->plugin_name, $this->version );
 		    						$dualeng_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-dual-engine' );
 		    						$agent_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-agent' );
@@ -41,23 +42,63 @@
 		    						$trade_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-trade-booster' );
 		    						$is_admin = $aura_sc_admin->check_current_is_privileged_user();
 								    $trade_status = $aura_sc_admin->get_trade_status();
+
 		    						?>
 		    						<?php 
+
 		    						if ($is_admin) : ?>
+
 		    						<h1>Foundation</h1>
+
 									<?php if($trade_status === "TRUE" && $trade_status != 'FALSE') : echo 'Trade Status: Trade Only'; else : echo 'Trade Status: Dual'; endif;  ?>
+
 		    						<h2>Required Dependencies</h2>
 		    						<?php
 		    							$this->check_plugin_dependencies();
 		    						?>
 		    						<?php
+
 		    						endif;
+
+		    						?>	
+
+		    						<hr style="margin: 20px 0;">
+
+		    						<h2>Auto Assigned Membership Plan</h2>
+
+		    						<h3>Have you set a default membership plan for auto assignment?</h3>
+
+		    						<?php $plan_id = $this::get_auto_assigned_plan_id(); ?>
+
+		    						<div class="postbox <?php if (!$plan_id) : echo 'status-fail'; else: echo 'status-pass'; endif; ?>">
+		    							
+		    							<?php
+		    								if (!$plan_id) :
+		    									echo '<p>Warning: There is no default membership plan setup for auto assignment. Please go to this following page link and set a default plan: <a href="' . get_site_url() . "/wp-admin/admin.php?page=wc-settings&tab=memberships&section=auto-approve" . '">set here.</a></p>';
+		    								else :
+
+		    									$plan_obj = wc_memberships_get_membership_plan($plan_id);
+		    						
+		    									echo '<p>Great, you have a default plan: <strong>"' . $plan_obj->name  . '"</strong> already setup. <a href="' . get_site_url() . "/wp-admin/admin.php?page=wc-settings&tab=memberships&section=auto-approve" . '">View here.</a></p>';
+		    								endif;
+		    							
+		    							?>
+
+
+		    						</div>
+
+		    						<?php
+
 		    						if ($dualeng_plugin_exists) :
 		    						?>
 		    							<hr style="margin: 20px 0;">
+
 		    							<h1>Dual Engine</h1>
+
 		    							<h2>Products - Visbility Issues</h2>
+
 		    							<h3>Pack Attributes Exist?</h3>
+
 		    							<?php $taxonomy_exist = $this::status_req_attr_exist(); ?>
 		    							<div class="postbox <?php if ($taxonomy_exist) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
 			    						<?php 
@@ -110,8 +151,11 @@
 			    						endif;
 			    						//check these have attributes
 			    						?>
+
 		    							</div>
-		    							<hr>
+
+		    						<hr>
+
 		    						<h2>Products - Price Issues</h2>
 		    						<h3>Membership Price Tiers Applied to All Products</h3>
 		    						<?php 

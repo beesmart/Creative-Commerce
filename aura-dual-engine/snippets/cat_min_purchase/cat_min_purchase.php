@@ -283,15 +283,17 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) )
 	  		global $post;
 	  		$terms = get_the_terms( $post->ID, 'product_cat' );
 
-	  		$term_id = $terms[0]->term_id;
-	  		$term_name = $terms[0]->name;
-	  		$meta_min = get_term_meta($term_id, 'fccm_meta_minimum', true);
+	  		if(isset($terms[0])) :
+	  			$term_id = $terms[0]->term_id;
+	  			$term_name = $terms[0]->name;
+	  			$meta_min = get_term_meta($term_id, 'fccm_meta_minimum', true);
 
-	  		if($meta_min) :
-	  			$current_cat_html = "Minimum order for the " . $term_name . " category is " . $meta_min . " items.";
-	  			return $current_cat_html;
+
+		  		if($meta_min) :
+		  			$current_cat_html = "Minimum order for the " . $term_name . " category is " . $meta_min . " items.";
+		  			return $current_cat_html;
+		  		endif;
 	  		endif;
-	  		
 	  	}
 
 		
