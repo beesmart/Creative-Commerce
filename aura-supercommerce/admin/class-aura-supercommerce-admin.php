@@ -502,7 +502,7 @@ class Aura_Supercommerce_Admin {
 	public function aura_display_update_notice() {
 	 // Check the transient to see if we've just updated the plugin
 	 if( get_transient( 'aura_supercommerce_updated' ) ) {
-	  echo '<div class="notice notice-success">' . __( 'Thanks for updating', 'wp-upe' ) . '</div>';
+	  echo '<div class="notice notice-success">' . __( 'Thanks for updating', 'aura-supercommerce' ) . '</div>';
 	  delete_transient( 'aura_supercommerce_updated' );
 	 }
 	}

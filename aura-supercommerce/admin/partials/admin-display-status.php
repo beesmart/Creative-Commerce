@@ -1,6 +1,7 @@
 <?php
+
+
 /**
- * The main settings content for our beautiful plugin..
  *
  * Status screen for Admins only, helps users debug themselves
  *
@@ -10,6 +11,8 @@
  * @subpackage 	      Aura_Supercommerce/includes
  */
 ?>
+
+
 <div id="aura-body" class="wrap">
 	<div class="block-heading">
 		<img src="<?php echo plugins_url() . '/aura-supercommerce/admin/partials/images/acm-logo.png' ?>" alt="">
@@ -33,6 +36,7 @@
 		    						<?php 
 
 		    						$aura_sc_admin = new Aura_Supercommerce_Admin( $this->plugin_name, $this->version );
+		    						
 		    						$dualeng_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-dual-engine' );
 		    						$agent_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-agent' );
 		    						$conversion_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-conversion' );
@@ -100,22 +104,34 @@
 		    							<h3>Pack Attributes Exist?</h3>
 
 		    							<?php $taxonomy_exist = $this::status_req_attr_exist(); ?>
+
 		    							<div class="postbox <?php if ($taxonomy_exist) : echo 'status-pass'; else: echo 'status-fail'; endif; ?>">
+
 			    						<?php 
+
 			    						if ($taxonomy_exist) {
+
 			    							echo __( '<p style="color: green;">Good! Attribute "Pack Size" is Setup</p>', 'aura-supercommerce' );
 			    							$term_single = term_exists( 'single-item', 'pa_pack-size' );
+			    							
 			    							if ( $term_single !== 0 && $term_single !== null ) {
+
 			    							   	   echo __( '<p style="color: green;">Good! Single Pack is Setup!</p>', 'aura-supercommerce' );
+
 			    							} else { echo __( '<p>Warning! Single Pack is NOT Setup!</p>', 'aura-supercommerce' ); }
+
 			    							$term_multi = term_exists( 'multi-pack', 'pa_pack-size' );
+
 			    							if ( $term_multi !== 0 && $term_single !== null ) {
 			    							   	   echo __( '<p style="color: green;">Good! Multi Pack is Setup!</p>', 'aura-supercommerce' );
 			    							} else { echo __( '<p>Warning! Multi Pack is NOT Setup!</p>', 'aura-supercommerce' ); }
+
 			    						} else {
 			    							echo __( '<p>Warning! Please create an Attribute called "Pack Size", with 2 terms, Single Pack and Multi Pack</p>', 'aura-supercommerce' );
 			    						}
+
 		    							?>
+
 		    							</div>
 
 		    							<h3>Tax Exclusion Settings</h3>

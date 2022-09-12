@@ -135,10 +135,102 @@ class Aura_Supercommerce_Debug {
     color: #41a8d0;
     padding-right: 4px;"></span>Looking for Help?</h2>';
 	 	echo '<hr style="margin: 20px 0;">';
-	    echo '<a href="https://helpdesk.digitalzest.co.uk/home-cc/" target="_Blank"><button class="button-primary">Click here for  Help Desk</button></a>';
+	    echo '<a href="https://helpdesk.digitalzest.co.uk/home-cc/" target="_Blank"><button class="button-primary">Click here for Help Desk</button></a>';
 	}
 
 
+	/**
+	 * Counts the various status flags, splitting them into positive and negative flags. Used by the dashboard widget and REST API via option 'aura_status_flags'
+	 *
+	 * @since    1.0.0
+	 * @return   Int - A number which shows how many status warnings/notices a user has.
+	*/
+
+	public function store_counted_status_issues(){
+
+		$counter = 0;
+		$required = array();
+		$status_flags = array();
+		$aura_sc_admin = new Aura_Supercommerce_Admin($this->plugin_name, $this->version);
+		$dualeng_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-dual-engine' );
+	    $trade_status = $aura_sc_admin->get_trade_status();
+	    $status_store = array();
+
+		if ($dualeng_plugin_exists && (!$trade_status || $trade_status == "FALSE")) :
+
+			
+			// Positive Flags - Return true if 'passed'
+			$status_flags_pos[0]['flag_name'] = "Required Attributes Don\'t exist";
+			$status_flags_pos[0]['status'] = $this::status_req_attr_exist();
+			$status_flags_pos[1]['flag_name'] = 'Required Terms Don\'t exist';
+			$status_flags_pos[1]['status'] = $this::status_req_terms_exist();
+			$status_flags_pos[2]['flag_name'] = 'Tax exclusion has not been set';
+			$status_flags_pos[2]['status'] = $this::exclude_tax_options_check();
+			// Returns an INT
+			$status_flags_pos[3]['flag_name'] = 'Ensure default member plan is set';
+			$status_flags_pos[3]['status'] = $this::get_auto_assigned_plan_id();
+
+			// Negative flags - return false if 'passed'
+			$status_flags_neg[0]['flag_name'] = 'Attribute not assigned to products';
+			$status_flags_neg[0]['status'] = $this::status_unassigned_attr_exist();
+			$status_flags_neg[1]['flag_name'] = 'Global membership prices exist';
+			$status_flags_neg[1]['status'] = $this::global_membership_price_tier_exists();
+			$status_flags_neg[2]['flag_name'] = 'Products without images';
+			$status_flags_neg[2]['status'] = $this::missing_product_images_exist();
+			$status_flags_neg[3]['flag_name'] = 'There are Trade users with no membership';
+			$status_flags_neg[3]['status'] = $this::tradecust_no_attached_membership();
+
+
+
+		endif;
+
+		foreach ($status_flags_pos as $value) {
+
+			if ($value['status'] == false) : 
+				$counter++; 
+				$status_store[] = $value['flag_name'];
+
+			endif;
+		
+		}
+
+		foreach ($status_flags_neg as $value) {
+
+			if ($value['status'] == true) : 
+				$counter++; 
+				$status_store[] = $value['flag_name'];
+
+			endif;
+		}
+
+		update_option( 'aura_status_flags', $status_store);
+
+		return $counter;
+	}
+
+	/**
+	 * Gets the status option 'aura_status_flags' to count how many issues or will generate the option if none found
+	 *
+	 * @since    1.0.0
+	 * @return   Int - A number which shows how many status warnings/notices a user has.
+	*/
+
+	public function display_counted_status_issues(){
+
+		$aura_status_flags = get_option('aura_status_flags');
+
+		if($aura_status_flags){
+
+			return count($aura_status_flags);
+
+		} else {
+
+			return $this::display_counted_status_issues();
+
+		}
+		
+
+	}
 
 	/**
 	 * The following functions are used by the status page, they define whether a check or test is passed. These checks will only run if the required dependency is installed.
@@ -161,7 +253,6 @@ class Aura_Supercommerce_Debug {
 			return false;
 		}
 	}
-
 
 
 	/**
@@ -197,8 +288,6 @@ class Aura_Supercommerce_Debug {
 			return false;
 		}
 	}
-
-
 
 	/**
 	 * If an admin user has created a product bundle version of a product, which means you now have 2 versions of a product, a pack and a single. We need to make sure they have
@@ -323,9 +412,11 @@ class Aura_Supercommerce_Debug {
 	 * @return   Array - Array contains user data which are flagged as having a no agent
 	*/
 	public function tradecust_no_attached_agents(){
+
 		$user_data = array();
 		$user_query = new WP_User_Query( array( 'role' => 'tradecust' ) );
 		$trade_customers = $user_query->get_results();
+
 		if ( !empty( $trade_customers ) ) :
 			foreach($trade_customers as $user){
 				$user_meta = get_user_meta ( $user->ID, '_agent_user');
@@ -335,6 +426,7 @@ class Aura_Supercommerce_Debug {
 			}
 			return $user_data;
 		endif;
+		
 	}
 
 
@@ -347,14 +439,18 @@ class Aura_Supercommerce_Debug {
 	*/
 
 	public function agents_no_attached_customers(){
+		
 		$agent_ids = array();
 		$agent_query = new WP_User_Query( array( 'role' => 'store_agent' ) );
 		$agents = $agent_query->get_results();
+
 		if ( !empty( $agents ) ) :
 			foreach($agents as $agent){
 				$agent_ids[] = $agent->ID;
 			}
+
 		return $agent_ids;
+
 		endif;
 	}
 
@@ -384,50 +480,6 @@ class Aura_Supercommerce_Debug {
 
 
 
-
-
-
-	/**
-	 * Counts the various status flags, splitting them into positive and negative flags. Used by the dashboard widget
-	 *
-	 * @since    1.0.0
-	 * @return   Int - A number which shows how many status warnings/notices a user has.
-	*/
-
-	public function display_counted_status_issues(){
-
-		$counter = 0;
-		$required = array();
-		$status_flags = array();
-		$aura_sc_admin = new Aura_Supercommerce_Admin($this->plugin_name, $this->version);
-		$dualeng_plugin_exists = $aura_sc_admin->check_child_plugin_exists( 'aura-dual-engine' );
-	    $trade_status = $aura_sc_admin->get_trade_status();
-
-		if ($dualeng_plugin_exists && (!$trade_status || $trade_status == "FALSE")) :
-
-			// Positive Flags
-			$required[] = $this::status_req_attr_exist();
-			$required[] = $this::status_req_terms_exist();
-			$required[] = $this::exclude_tax_options_check();
-
-			// Negative flags
-			$status_flags[] = $this::status_unassigned_attr_exist();
-			$status_flags[] = $this::global_membership_price_tier_exists();
-			$status_flags[] = $this::missing_product_images_exist();
-			$status_flags[] = $this::tradecust_no_attached_membership();
-
-		endif;
-
-		foreach ($required as $req) {
-			if ($req == false) : $counter++; endif;
-		}
-
-		foreach ($status_flags as $value) {
-			if ($value == true) : $counter++; endif;
-		}
-
-		return $counter;
-	}
 
 
 	/**
@@ -499,6 +551,7 @@ class Aura_Supercommerce_Debug {
 
 	 	$dependencies = array();
 
+
 	 	echo "<h3>Plugins with a <span style='color: gold;font-weight:bold;'>Gold</span> border are <strong>Premium</strong> Plugins</h3>";
 
 		foreach (AURA_SUPERCOMMERCE_PLUGINS as $plugin_name => $data ) {
@@ -508,60 +561,158 @@ class Aura_Supercommerce_Debug {
 
 			if($_plugin_exists && $product_resp) :
 
-		 	echo "<p style='margin-top: 15px;'><strong style='text-transform: capitalize;text-decoration: underline;font-size: 16px;'>" . $plugin_name . "</strong>: ";
+		 	echo "<div style='margin-top: 15px;'><strong style='text-transform: capitalize;text-decoration: underline;font-size: 16px;'>" . $plugin_name . "</strong>: ";
 
-			 	foreach ((array) $product_resp as $item) {
-			 		if(property_exists($item, 'acf')) {
-			 		// Check if the existing plugin HTML element matches what is in JSON:products
-			 		if($item->acf->product_slug === $plugin_name && property_exists($item->acf, 'plugins_attached')){
-			 			// If so loop over the plugins attached to the JSON:product
-			 			foreach($item->acf->plugins_attached as $plugin){
+				$req_plugins = array_filter(
+				   $plug_resp,
+				   function($obj){ 
+				      return $obj->acf->is_optional == false;
+				   });
 
-			 				// and for the JSON:plugin we match what is in JSON:product to grab some meta
-			 				foreach((array) $plug_resp as $plugin_json){
+				$optional_plugins = array_filter(
+				   $plug_resp,
+				   function($obj){ 
+				      return $obj->acf->is_optional == true;
+				   });
 
-			 					if($plugin_json->post_name === $plugin->post_name){
+				 
+				if ($this::has_dependent_plugins($req_plugins, $product_resp, $plugin_name)) :
+				
+				echo "<div class='aura-plug-list' style='display: flex;padding: 6px 0;align-items: center;'>";
+			 		echo "<p class='dependents-title' style='text-transform:uppercase;padding-right: 12px;background: #0173b2;padding: 4px 7px;color: white;margin: 5px 5px 5px 0;'>Required: </p>";
 
-			 						$slug = $plugin_json->acf->plugin_slug;
-			 						$paid_for = $plugin_json->acf->plugin_premium;
-			 						$paid_for_css = "";
-
-			 						if($paid_for === true){
-			 							$paid_for_css = "border: 2px solid gold;";
-			 						}
-
-			 						if ( !function_exists('is_plugin_active') || 
-			 							( !is_plugin_active( $slug . '/' . $slug . '.php') && 
-			 								(!is_plugin_active( $slug . '/init.php') && 
-			 								 !is_plugin_active( $slug . '/acf.php')  && 
-			 								 !is_plugin_active( $slug . '/fl-builder.php')  && 
-			 								 !is_plugin_active( $slug . '/wp-contact-form-7.php') 
-			 								)
-			 							 )
-			 							) 
-			 						{
-			 					
-			 						 	echo "<a href='" . get_site_url() . "/wp-admin/plugin-install.php?s=" . $slug . "&tab=search&type=term'><span class='disabled-red' style='" . $paid_for_css . "color: red; text-transform: capitalize; padding: 1px 6px;margin: 3px;display:inline-block;'><i class='fa fa-times'></i> " . $plugin->post_title . '</span></a>';
-
-			 						 } else {
-			 						 	echo "<span class='active-green' style='" . $paid_for_css . " color: green; text-transform: capitalize; padding: 1px 6px;margin: 4px;display:inline-block;'><i class='fa fa-check'></i> " . $plugin->post_title . '</span>';
-			 						}
-
-			 					}
-			 				}
-			 			}
-			 				
-
-				 			
-
-			 			}
-			 		}
-
+			 		$this::display_dependent_plugins($req_plugins, $product_resp, $plugin_name);
 			 		
-			 	}
-			 
-			 echo "</p>";
+			 	echo "</div>";
+
+				endif;
+				
+				if ($this::has_dependent_plugins($optional_plugins, $product_resp, $plugin_name)) :
+			 	
+			 	
+			 	echo "<div class='aura-plug-list' style='display: flex;padding: 6px 0;align-items: center;'>";
+			 		echo "<p class='dependents-title' style='text-transform:uppercase;padding-right: 12px;'>Optional: </p>";
+			 		
+					$this::display_dependent_plugins($optional_plugins, $product_resp, $plugin_name);
+					
+				echo "</div>";
+
+				endif;
+				
+			 	
+			 echo "</div>";
+
 		 	endif;
 		 } 
+	}
+
+
+	/**
+	 * Output the list of dependent plugins
+	 *
+	 * @since    1.4.7
+	 * @param    $plugins - array of objects (products) from JSON req to licence site, filtered by $optional meta. $product_resp - same as $plugins but unfiltered. $plugin_name - iterative value from global to run through every 'product'
+	 * @return   HTML
+	*/
+
+	public function display_dependent_plugins($plugins, $product_resp, $plugin_name){
+
+		echo "<div class='aura-dependents'>";
+
+		foreach ((array) $product_resp as $item) {
+
+			if(property_exists($item, 'acf')) {
+				// Check if the existing plugin HTML element matches what is in JSON:products
+				if($item->acf->product_slug === $plugin_name && property_exists($item->acf, 'plugins_attached')){
+					// If so loop over the plugins attached to the JSON:product
+					foreach($item->acf->plugins_attached as $plugin){
+						
+						foreach((array) $plugins as $plugin_json){
+
+							if($plugin_json->post_name === $plugin->post_name){
+
+								$slug = $plugin_json->acf->plugin_slug;
+								$paid_for = $plugin_json->acf->plugin_premium;
+
+								$optional = "";
+
+								if(isset($plugin_json->acf->is_optional)) : $optional = $plugin_json->acf->is_optional; endif;
+
+								$paid_for_css = "";
+
+								if($paid_for === true){
+									$paid_for_css .= "border: 2px solid gold;";
+								}
+
+								if($optional === true){
+									$paid_for_css .= "opacity: 0.6;";
+								}
+
+								if ( !function_exists('is_plugin_active') || 
+									( !is_plugin_active( $slug . '/' . $slug . '.php') && 
+										(!is_plugin_active( $slug . '/init.php') && 
+										 !is_plugin_active( $slug . '/acf.php')  && 
+										 !is_plugin_active( $slug . '/fl-builder.php')  && 
+										 !is_plugin_active( $slug . '/wp-contact-form-7.php') 
+										)
+									 )
+									) 
+								{
+							
+								 	echo "<a href='" . get_site_url() . "/wp-admin/plugin-install.php?s=" . $slug . "&tab=search&type=term'><span class='disabled-red' style='" . $paid_for_css . "color: red; white-space: nowrap;text-transform: capitalize; padding: 1px 6px;margin: 3px;display:inline-block;'><i class='fa fa-times'></i> " . $plugin->post_title . '</span></a>';
+
+								 } else {
+								 	echo "<span class='active-green' style='" . $paid_for_css . " color: green;white-space: nowrap; text-transform: capitalize; padding: 1px 6px;margin: 4px;display:inline-block;'><i class='fa fa-check'></i> " . $plugin->post_title . '</span>';
+								}
+
+							}
+						}
+						
+					}
+						
+
+				}
+			}
+			
+		}
+
+		echo "</div>";
+
+	}
+
+
+	/**
+	 * Checks if the array at param 1 has plugins attached, helper function for dependents display
+	 *
+	 * @since    1.4.7
+	 * @param    $plugins - array of objects (products) from JSON req to licence site, filtered by $optional meta. $product_resp - same as $plugins but unfiltered. $plugin_name - iterative value from global to run through every 'product'
+	 * @return   Bool - def: false. True if plugins ofund in product
+	*/
+
+	public function has_dependent_plugins($plugins, $product_resp, $plugin_name){
+
+		$has_dependent_plugins = false;
+
+		foreach ((array) $product_resp as $item) {
+
+			if(property_exists($item, 'acf')) {
+				// Check if the existing plugin HTML element matches what is in JSON:products
+				if($item->acf->product_slug === $plugin_name && property_exists($item->acf, 'plugins_attached')){
+					// If so loop over the plugins attached to the JSON:product
+						
+						foreach($item->acf->plugins_attached as $plugin){
+							foreach((array) $plugins as $plugin_json){
+
+								if($plugin_json->post_name === $plugin->post_name){
+									$has_dependent_plugins = true;
+								}
+							}
+						}
+				} 
+
+			}
+		}
+
+		return $has_dependent_plugins;
 	}
 }

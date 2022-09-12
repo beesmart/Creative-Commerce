@@ -56,7 +56,7 @@ class Aura_Supercommerce {
 		if ( defined( 'AURA_SUPERCOMMERCE_VER' ) ) {
 			$this->version = AURA_SUPERCOMMERCE_VER;
 		} else {
-			$this->version = '1.4.7';
+			$this->version = '1.5.0';
 		}
 		$this->plugin_name = 'aura-supercommerce';
 
@@ -64,6 +64,7 @@ class Aura_Supercommerce {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->define_route_hooks();
 
 		$this->define_debug_hooks();
 		$this->define_custom_hooks();
@@ -122,6 +123,11 @@ class Aura_Supercommerce {
 		 * The class responsible for defining all actions that deal with Debug functions.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-aura-supercommerce-debug.php';
+
+		/**
+		 * The class responsible for defining all actions that deal with REST Route functions.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/api/class-aura-supercommerce-routes.php';
 
 		/**
 		 * The class responsible for defining all actions that deal with Snippet related functions.
@@ -185,6 +191,21 @@ class Aura_Supercommerce {
 
 		$this->loader->add_action( 'supercomm_cron_hourly_snippets', $plugin_admin, 'refresh_snippets_all_sc_plugins');
 
+
+	}
+
+	/**
+	 * Register all of the hooks related to the Routes functionality
+	 * of the plugin.
+	 *
+	 * @since    1.4.7
+	 * @access   private
+	 */
+	private function define_route_hooks() {
+
+		$plugin_routes = new Aura_Supercommerce_REST_Routes( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action( 'rest_api_init', $plugin_routes, 'aura_register_my_rest_routes' );
 
 	}
 

@@ -42,6 +42,10 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.5.0  2022-09-09 =
+* Utility: Added status overview connectors for licence site to watch all sites
+* Better status page dependency layout
+
 = 1.4.7  2022-09-02 =
 * Created a new snippet called - On approval auto assign membership plan - also status page updated
 

@@ -14,7 +14,7 @@
 
 
 // Dependency = WP Memberships & NUA
-if ( is_plugin_active( 'new-user-approve/new-user-approve.php' ) && is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) ) {
+if ( (is_plugin_active( 'new-user-approve/new-user-approve.php' ) || is_plugin_active( 'new-user-approve-premium/new-user-approve.php' )) && is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) ) {
 
 
 	/**
