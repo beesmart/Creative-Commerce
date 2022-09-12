@@ -191,6 +191,7 @@ class Aura_Supercommerce {
 
 		$this->loader->add_action( 'supercomm_cron_hourly_snippets', $plugin_admin, 'refresh_snippets_all_sc_plugins');
 
+		
 
 	}
 
@@ -227,6 +228,8 @@ class Aura_Supercommerce {
 
 		$this->loader->add_action( 'wp_dashboard_setup', $plugin_debug, 'aurasc_add_dashboard_status_widgets', 10);
 		$this->loader->add_action( 'wp_dashboard_setup', $plugin_debug, 'aurasc_add_dashboard_helpdesk_widgets', 10);
+
+		$this->loader->add_action( 'supercomm_cron_hourly_snippets', $plugin_debug, 'store_counted_status_issues');
 
 	}
 

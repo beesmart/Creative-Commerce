@@ -225,10 +225,9 @@ class Aura_Supercommerce_Debug {
 
 		} else {
 
-			return $this::display_counted_status_issues();
-
-		}
-		
+			return $this::store_counted_status_issues();
+			
+		}	
 
 	}
 
