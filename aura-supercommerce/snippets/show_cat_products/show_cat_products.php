@@ -59,7 +59,8 @@ function this_cat_products(){
 	 */
 
 	do_action( 'woocommerce_before_shop_loop' );
-
+	do_action( 'creative_commerce_fluid_view' );
+		
 	woocommerce_product_loop_start();
 
 	if ( wc_get_loop_prop( 'total' ) ) {

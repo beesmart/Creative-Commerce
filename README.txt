@@ -34,6 +34,11 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+= 1.6.0  2022-10-27 =
+* Added 2 new snippets
+* Snippet: Shop view switch, switch between grid and rows
+* Snippet: Quantity selector on shop and archive pages
+
 = 1.5.0  2022-09-09 =
 * Utility: Added status overview connectors for licence site to watch all sites
 * Better status page dependency layout

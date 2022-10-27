@@ -87,13 +87,22 @@ if ( is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) &
 
 
 // Shop and archives pages: we replace the button add to cart by a link to the product
-add_filter( 'woocommerce_loop_add_to_cart_link', 'custom_text_replace_button', 10, 2 );
 
-function custom_text_replace_button( $button, $product  ) {
-    $button_text = __("View product", "woocommerce");
 	
-    return '<a class="button" href="' . $product->get_permalink() . '">' . $button_text . '</a>';
-}
+	
+	
+	
+	
+// 2022 !!  I'm hiding this while trialling a new quick order screen, with this on the add to cart button is always 'View Product'
+// I can't recall why it's needed but possibly due to the fact trade were seeing single versions of products?
+//add_filter( 'woocommerce_loop_add_to_cart_link', 'custom_text_replace_button', 10, 2 );
+
+//function custom_text_replace_button( $button, $product  ) {
+   // $button_text = __("View product", "woocommerce");
+	
+
+     //return '<a class="button" href="' . $product->get_permalink() . '">' . $button_text . '</a>';
+//}
 
 
 // replacing add to cart button and quantities by a custom text
