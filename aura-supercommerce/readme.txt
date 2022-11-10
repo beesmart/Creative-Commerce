@@ -42,6 +42,12 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.6.2  2022-11-09 =
+* FIX: Custom Taxonomies not working with Shop view switch
+
+= 1.6.1  2022-11-07 =
+* FIX: Issue with admin plugin desciption and features no longer being shown
+
 = 1.6.0  2022-10-27 =
 * Added 2 new snippets
 * Snippet: Shop view switch, switch between grid and rows

@@ -188,7 +188,7 @@ foreach (AURA_SUPERCOMMERCE_PLUGINS as $value) {
 
 							<h2>Features</h2>			
 
-							<?php echo $this::get_plugin_text('features', $value['slug']); ?>
+							<?php echo $this::get_plugin_text( $value['slug'], 'features' ); ?>
 
 						</div>
 
@@ -198,7 +198,7 @@ foreach (AURA_SUPERCOMMERCE_PLUGINS as $value) {
 
 							<h2>Description</h2>
 
-							<?php echo $this::get_plugin_text('details', $value['slug']); ?>
+							<?php echo $this::get_plugin_text( $value['slug'], 'details' ); ?>
 
 						</div>
 

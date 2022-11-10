@@ -220,7 +220,7 @@ class Aura_Supercommerce_Admin {
 	 * @return   string - The Output from the file contents (HTML or plaintext)
 	 */
 
-	private function get_plugin_text( $slug, $text = 'details'  ){
+	public function get_plugin_text( $slug, $text = 'details'  ){
 
 		$file = plugin_dir_path( __FILE__ ) . 'partials/files/' . $slug . '/' . $text . '.txt';
 

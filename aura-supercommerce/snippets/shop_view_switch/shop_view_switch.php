@@ -1,7 +1,7 @@
 <?php
 /**
  * Snippet Name: Shop View Switch
- * Version: 1.0.0
+ * Version: 1.0.1
  * Description: UI feature that shows 2 icons which allow user to switch between products listed in rows or columns
  *
  * @link              https://auracreativemedia.co.uk
@@ -18,10 +18,10 @@ function shop_view_switch_scripts_styles() {
     
     global $post;
 
-    if ( is_object( $post ) && (is_shop() || is_product_category()) ) {
+    if ( is_object( $post ) && (is_shop() || is_product_category() || is_tax( 'range' ) || is_tax( 'theme' ) ) ) {
 
-        wp_register_style( 'shop_view_switch_css', plugins_url( '/css/switch.css' , __FILE__ ), true, '1.0.0', 'all' );
-        wp_register_script( 'shop_view_switch_script', plugins_url( '/js/switch.js' , __FILE__ ), array( 'jquery' ), '1.0.0', true );
+        wp_register_style( 'shop_view_switch_css', plugins_url( '/css/switch.css' , __FILE__ ), true, '1.0.1', 'all' );
+        wp_register_script( 'shop_view_switch_script', plugins_url( '/js/switch.js' , __FILE__ ), array( 'jquery' ), '1.0.1', true );
         
         wp_enqueue_style( 'shop_view_switch_css' );
         wp_enqueue_script( 'shop_view_switch_script' );

@@ -1,0 +1,37 @@
+/* admin_flag_product CSS */
+
+.admin-flag {
+    padding: 12px;
+    width: 75px;
+    margin-right: 10px;
+    font-size: 10px;
+    position: absolute;    
+    text-align: center;
+    top: 0;
+    font-weight: 700;	    
+
+}
+
+#admin-flag-trade {
+    background: #e68225;
+    color: white;
+}
+
+#admin-flag-retail {
+    background: #10bac5;
+      color: white;
+}
+
+#admin-flag-other {
+    background: #dfdfdf;
+    color: black;
+}
+
+@media (max-width: 639px){
+    .admin-flag {
+        display: flex;
+        bottom: 0;
+        align-items: center;
+        justify-content: center;
+    }
+}
