@@ -18,7 +18,7 @@ function shop_view_switch_scripts_styles() {
     
     global $post;
 
-    if ( is_object( $post ) && (is_shop() || is_product_category() || is_tax( 'range' ) || is_tax( 'theme' ) ) ) {
+    if ( is_object( $post ) && (is_shop() || is_product_category() || is_tax( 'range' ) || is_tax( 'theme' ) || is_tax( 'occasion' ) ) ) {
 
         wp_register_style( 'shop_view_switch_css', plugins_url( '/css/switch.css' , __FILE__ ), true, '1.0.1', 'all' );
         wp_register_script( 'shop_view_switch_script', plugins_url( '/js/switch.js' , __FILE__ ), array( 'jquery' ), '1.0.1', true );

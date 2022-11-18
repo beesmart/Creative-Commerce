@@ -34,6 +34,9 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+= 1.6.3  2022-11-18 =
+* FIX: show_cat_products - Pagination Fix, conditional change
+
 = 1.6.2  2022-11-09 =
 * FIX: Custom Taxonomies not working with Shop view switch
 

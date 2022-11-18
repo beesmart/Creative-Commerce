@@ -2,7 +2,7 @@
 
 /**
  *
- * Custom Routes for REST
+ * Custom Routes for REST - Used by the PWA App
  *
  * @since      1.4.7
  *
@@ -180,7 +180,7 @@ class Aura_Supercommerce_REST_Routes {
     }
 
 
-    # Echos out status flag titles for licence website to consume
+    # Echos out status flag titles for licence -supercommmerce- website to consume
 
     public function cce_get_status_flags( $request ) {
         
