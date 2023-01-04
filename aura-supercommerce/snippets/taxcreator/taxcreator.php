@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Snippet Name: Theme Taxonomy Setup
  * Version: 1.0.0
@@ -10,7 +9,6 @@
  * @package           Aura_Supercommerce
  *
 **/
-
 
 
 add_action( 'init', 'custom_taxonomy_Item', 999 );
@@ -113,7 +111,6 @@ function custom_taxonomy_Item()  {
 }
 
 
-
 // Thanks to : https://rudrastyh.com/woocommerce/columns.html - for the code 
 
 
@@ -168,8 +165,6 @@ function populate_customtax_occasion_column( $column_name ) {
  
 }
 
-
-
 	
 add_filter( 'manage_edit-product_columns', 'arrange_product_columns_after_name' );
 function arrange_product_columns_after_name( $product_columns ) {
@@ -193,7 +188,6 @@ function arrange_product_columns_after_name( $product_columns ) {
 	// Tip: Just "forget" to add some elements to array if you want to remove associated columns
  
 }
-
 
 
 add_action( 'woocommerce_before_shop_loop_item_title', 'occasions_display_before_shop_loop_title', 20, 0 ); 

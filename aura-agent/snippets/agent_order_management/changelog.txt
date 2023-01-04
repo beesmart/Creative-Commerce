@@ -1,0 +1,10 @@
+Dependencies AAM Manager, for promote user capability
+
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [Unreleased] - 2020-08-27
+
+
+### Fixed
+- LINE 161, fixed an issue whereby a user would be assigned an additional default 'trade customer' membersip on save of User Profile (action: profile_update)

@@ -147,7 +147,13 @@ class Aura_Supercommerce_Admin {
 
 	 
 	public function plugin_setup_menu_backend(){
-	    add_menu_page( 'Creative Commerce Page', 'Creative Commerce', 'manage_options', 'aura-supercommerce', array( $this, 'admin_page_display' ), 'dashicons-cclogo' ); 
+	    add_menu_page( 
+			'Creative Commerce Page', 
+			'Creative Commerce', 
+			'manage_options', 
+			'aura-supercommerce', 
+			array( $this, 'admin_page_display' ), 
+			'dashicons-cclogo' ); 
 	}
 
 	 

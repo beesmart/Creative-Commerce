@@ -42,6 +42,9 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.6.4  2022-01-04 =
+* HOTFIX: issue with address_2 filed - registration snippet
+
 = 1.6.3  2022-11-18 =
 * FIX: show_cat_products - Pagination Fix, conditional change
 
