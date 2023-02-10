@@ -18,6 +18,7 @@
 	add_action( 'woocommerce_register_form_start', 'aura_add_name_woo_account_registration' );
 	 
 	function aura_add_name_woo_account_registration() {
+	
 	    ?>
 	 
 	    <p class="form-row form-row-first">
@@ -70,6 +71,7 @@
 	add_filter( 'woocommerce_registration_errors', 'aura_validate_name_fields', 10, 3 );
 	 
 	function aura_validate_name_fields( $errors, $username, $email ) {
+		
 	    if ( isset( $_POST['billing_first_name'] ) && empty( $_POST['billing_first_name'] ) ) {
 	        $errors->add( 'billing_first_name_error', __( '<strong>Error</strong>: First name is required!', 'woocommerce' ) );
 	    }
@@ -79,24 +81,22 @@
 	  if ( isset( $_POST['billing_company'] ) && empty( $_POST['billing_company'] ) && !is_checkout() ) {
 	        $errors->add( 'billing_company_error', __( '<strong>Error</strong>: Company name is required!', 'woocommerce' ) );
 	    }
-	    if ( isset( $_POST['billing_phone'] ) && empty( $_POST['billing_phone'] ) ) {
+	    if ( isset( $_POST['billing_phone'] ) && empty( $_POST['billing_phone'] )  && !is_checkout() ) {
 	        $errors->add( 'billing_phone_error', __( '<strong>Error</strong>: Phone is required!', 'woocommerce' ) );
 	    }
 	    if ( isset( $_POST['billing_address_1'] ) && empty( $_POST['billing_address_1'] ) ) {
 	        $errors->add( 'billing_address_1_error', __( '<strong>Error</strong>: Address Line 1 is required!.', 'woocommerce' ) );
 	    }
-
-	// I've hidden these checks as they are now causing issues - JAN 2023 - we need to work out why
-	//
-	//     if ( isset( $_POST['billing_address_2'] ) && empty( $_POST['billing_address_2'] ) ) {
-	//        $errors->add( 'billing_address_2_error', __( '<strong>Error</strong>: address_2 is required!.', 'woocommerce' ) );
-	//    }
-	//     if ( isset( $_POST['billing_city'] ) && empty( $_POST['billing_city'] ) ) {
-	//         $errors->add( 'billing_city_error', __( '<strong>Error</strong>: city is required!', 'woocommerce' ) );
-	//     }
-	//     if ( isset( $_POST['billing_postcode'] ) && empty( $_POST['billing_postcode'] ) ) {
-	//         $errors->add( 'billing_postcode_error', __( '<strong>Error</strong>: Address Line 1 is required!.', 'woocommerce' ) );
-	//     }
+	
+	    if ( isset( $_POST['billing_address_2'] ) && empty( $_POST['billing_address_2'] ) && !is_checkout() ) {
+	       $errors->add( 'billing_address_2_error', __( '<strong>Error</strong>: address_2 is required!.', 'woocommerce' ) );
+	   }
+	    if ( isset( $_POST['billing_city'] ) && empty( $_POST['billing_city'] ) ) {
+	        $errors->add( 'billing_city_error', __( '<strong>Error</strong>: city is required!', 'woocommerce' ) );
+	     }
+	     if ( isset( $_POST['billing_postcode'] ) && empty( $_POST['billing_postcode'] ) ) {
+	         $errors->add( 'billing_postcode_error', __( '<strong>Error</strong>: Address Line 1 is required!.', 'woocommerce' ) );
+	    }
 
 	    return $errors;
 	}
