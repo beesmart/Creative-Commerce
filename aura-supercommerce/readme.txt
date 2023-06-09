@@ -42,6 +42,9 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.6.5  2022-02-13 =
+* Updated permissions for REST endpoints
+
 = 1.6.4  2022-01-04 =
 * HOTFIX: issue with address_2 filed - registration snippet
 

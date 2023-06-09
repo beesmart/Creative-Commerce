@@ -69,7 +69,9 @@ class Aura_Supercommerce_REST_Routes {
             array(
                 'methods'   => 'GET',
                 'callback'  => array( $this, 'cce_get_membership_plans' ),
-                'permission_callback' => '__return_true',
+                'permission_callback' => function () {
+                    return (current_user_can( 'create_posts' ) || current_user_can( 'create_shop_orders' ) || current_user_can( 'edit_posts' ));
+                }
             ),
   
         ) );
@@ -77,7 +79,9 @@ class Aura_Supercommerce_REST_Routes {
             array(
                 'methods'   => 'GET',
                 'callback'  => array( $this, 'cce_get_member_plan' ),
-                'permission_callback' => '__return_true',
+                'permission_callback' => function () {
+                    return (current_user_can( 'create_posts' ) || current_user_can( 'create_shop_orders' ) || current_user_can( 'edit_posts' ));
+                }
             ),
     
         ) );
@@ -86,12 +90,16 @@ class Aura_Supercommerce_REST_Routes {
             array(
                 'methods'   => 'GET',
                 'callback'  => array( $this, 'cce_get_user_addresses' ),
-                'permission_callback' => '__return_true',
+                'permission_callback' => function () {
+                    return (current_user_can( 'create_posts' ) || current_user_can( 'create_shop_orders' ) || current_user_can( 'edit_posts' ));
+                }
             ),
             array(
                 'methods'   => 'POST',
                 'callback'  => array( $this, 'cce_set_user_addresses' ),
-                'permission_callback' => '__return_true',
+                'permission_callback' => function () {
+                    return (current_user_can( 'create_posts' ) || current_user_can( 'create_shop_orders' ) || current_user_can( 'edit_posts' ));
+                }
             ),
 
         ) );
@@ -115,8 +123,6 @@ class Aura_Supercommerce_REST_Routes {
 
     public function get_aura_rest_permissions_check( $request ) {
         $testReq = $request->get_header('authorization');
-        
-        var_dump($testReq);
 
        //wp_validate_auth_cookie($cookie, 'logged_in')
         

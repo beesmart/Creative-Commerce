@@ -237,8 +237,8 @@ function save_user_agent_fields( $user_id ) {
 
 		if ( in_array( 'tradecust', $user_roles) ) {
 			$memberships = wc_memberships_get_user_active_memberships( $user_id );
-			$membership_plan=wc_memberships_get_membership_plans();
-			$plan_id=-'';
+			$membership_plan = wc_memberships_get_membership_plans();
+			$plan_id = '';
 
 			foreach($membership_plan as $plan){
 				if($plan->slug == 'trade-customer'){
