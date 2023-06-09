@@ -42,6 +42,9 @@ The Creative Commerce Foundation enables a variety of additional functions in Wo
 
 == Changelog ==
 
+= 1.6.6  2023-09-06 =
+* FIX: Pagination revert change from November due to WC change
+
 = 1.6.5  2022-02-13 =
 * Updated permissions for REST endpoints
 

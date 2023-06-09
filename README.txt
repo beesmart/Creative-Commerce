@@ -34,6 +34,9 @@ The Creative Commerce bundle is a suite of plugins which enable a variety of add
 
 == Changelog ==
 
+= 1.6.6  2023-09-06 =
+* FIX: Pagination revert change from November due to WC change
+
 = 1.6.4  2022-01-04 =
 * HOTFIX: issue with address_2 filed - registration snippet
 
