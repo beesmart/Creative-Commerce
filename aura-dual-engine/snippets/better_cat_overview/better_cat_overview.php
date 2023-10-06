@@ -2,7 +2,7 @@
 
 /**
  * Snippet Name: Better Category Overview
- * Version: 1.1.0
+ * Version: 1.1.1
  * Description: Displays a better overview of all categories including meta options, useful for admins to debug and maintain their store
  * Dependency: WP Memberships
  *
@@ -82,6 +82,8 @@ function aura_cat_overview_page_callback() {
 				$hide_field_trade = "";
 				$fccm_meta_minimum = "";
 				$exclude_field_shop = "";
+				$fccm_meta_min_trade = "";
+				$fccm_meta_min_retail = "";
 
 				if (get_field('hcu_hidden_user_trade', $category)) {
 				  $hide_field_trade = get_field('hcu_hidden_user_trade', $category );
@@ -98,6 +100,10 @@ function aura_cat_overview_page_callback() {
 			//	$display_fail = '<span class="dashicons dashicons-dismiss"></span>';
 				if (get_field('fccm_meta_minimum', $category)) {
 				   $fccm_meta_minimum = get_field('fccm_meta_minimum', $category);
+				   $fccm_meta_min_trade = get_field('fccm_meta_min_trade', $category);
+				   $fccm_meta_min_retail = get_field('fccm_meta_min_retail', $category);
+
+				
 				}
 				
 			?>
@@ -106,7 +112,11 @@ function aura_cat_overview_page_callback() {
 					<td class="row-title"><label for="tablecell"><?php echo $category_link ?></label></td>
 					<td><?php if($hide_field_retail) : echo $display_tick; /* else : echo $display_fail; */ endif; ?></td>
 					<td><?php if($hide_field_trade) : echo $display_tick; /* else : echo $display_fail; */ endif; ?></td>
-					<td><?php if ($fccm_meta_minimum) : ?> Must have <span style="color: red; font-weight: bold;"><?php echo $fccm_meta_minimum; ?></span> of any in this category <?php endif;?> </td>
+					<td>
+						<?php if ($fccm_meta_minimum) : ?> Must have <span style="color: red; font-weight: bold;"><?php echo $fccm_meta_minimum; ?></span> of any in this category <?php endif;?> 
+						<?php if ($fccm_meta_min_trade) : ?> <br><span class='dashicons dashicons-awards'></span> Applies to <span style="font-weight: bold;">Trade</span><?php endif;?> 
+						<?php if ($fccm_meta_min_retail) : ?> <br><span class='dashicons dashicons-groups'></span> Applies to <span style="font-weight: bold;">Retail</span><?php endif;?>  
+					</td>
 					<td><?php if($exclude_field_shop) : echo $display_tick; /* else : echo $display_fail; */ endif; ?></td>
 				</tr>
 

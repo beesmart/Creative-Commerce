@@ -1,0 +1,1342 @@
+# Copyright (C) 2023 Barn2 Plugins
+# This file is distributed under the GNU General Public License v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Product Filters 1.3.1\n"
+"Report-Msgid-Bugs-To: https://barn2.com/support-center/\n"
+"Last-Translator: Barn2 Plugins <support@barn2.com>\n"
+"Language-Team: Barn2 Plugins <support@barn2.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-05-18T00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: woocommerce-product-filters\n"
+
+#. Plugin Name of the plugin
+#: src/Admin/Admin_Controller.php:120
+#: src/Integrations/Plugin_Elementor.php:168
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/admin-layout-wrapper.js:51
+msgid "WooCommerce Product Filters"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://barn2.com/wordpress-plugins/woocommerce-product-filters/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Help customers to find what they want quickly and easily. Add product filters for price, color, category, size, attributes, and more."
+msgstr ""
+
+#. Author of the plugin
+msgid "Barn2 Plugins"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://barn2.com"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Admin/Settings_API_Helper.php:507
+#: dependencies/barn2/barn2-lib/src/WooCommerce/Admin/Custom_Settings_Fields.php:138
+msgid "Size"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Admin/Settings_Util.php:62
+#: src/Admin/Settings_Page.php:222
+msgid "Documentation"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Admin/Settings_Util.php:62
+#: src/Admin/Settings_Page.php:223
+msgid "Support"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/Admin/Admin_Links.php:47
+#: src/Admin/Settings_Controller.php:48
+msgid "Settings"
+msgstr ""
+
+#. translators: %s: The plugin name
+#: dependencies/barn2/barn2-lib/src/Plugin/Admin/Admin_Links.php:63
+msgid "View %s documentation"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/Admin/Admin_Links.php:64
+msgid "Docs"
+msgstr ""
+
+#. translators: 1: licence key link start, 2: license key link end
+#: dependencies/barn2/barn2-lib/src/Plugin/Admin/Plugin_Updater.php:156
+msgid "Activate %1$syour license key%2$s to enable updates."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/Admin/Plugin_Updater.php:211
+msgid "Auto-updates unavailable."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:58
+msgid "License key successfully activated."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:58
+msgid "There was an error activating your license key."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:62
+msgid "License key successfully deactivated."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:62
+msgid "There was an error deactivating your license key, please try again."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:65
+msgid "The license key looks good!"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:65
+msgid "There's a problem with your license key."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:107
+msgid "License key"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:109
+#: src/Admin/Wizard/Setup_Wizard.php:62
+msgid "The licence key is contained in your order confirmation email."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:112
+msgid "License Key"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:131
+msgid "Check"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:131
+msgid "Activate"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:131
+msgid "Deactivate"
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Key_Setting.php:139
+msgid "License key deactivated."
+msgstr ""
+
+#. translators: 1: the plugin name, 2: settings link start, 3: settings link end.
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Notices.php:90
+msgid "Thank you for installing %1$s. To get started, please %2$senter your license key%3$s."
+msgstr ""
+
+#. translators: 1: the plugin name, 2: renewal link start, 3: renewal link end.
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Notices.php:115
+msgid "Your license key for %1$s has expired. %2$sClick here to renew for 20%% discount%3$s."
+msgstr ""
+
+#. translators: 1: the plugin name, 2: renewal link start, 3: renewal link end.
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Notices.php:140
+msgid "You no longer have a valid license for %1$s. Please %2$spurchase a new license key%3$s to continue using the plugin."
+msgstr ""
+
+#. translators: 1: the plugin name, 2: settings link start, 3: settings link end.
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Admin/License_Notices.php:168
+msgid "%1$s - your site has moved to a new domain. Please %2$sreactivate your license key%3$s."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/EDD_Licensing.php:147
+msgid "An error has occurred, please try again."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:90
+msgid "Your license key is active."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:110
+msgid "Please enter your license key."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:112
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:332
+msgid "Your license key is invalid."
+msgstr ""
+
+#. translators: 1: account page link start, 2: account page link end
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:276
+msgid "Invalid license key - please check your order confirmation email or %1$sAccount%2$s."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:282
+msgid "No URL was supplied for activation, please contact support."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:285
+msgid "License key mismatch, please contact support."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:288
+msgid "This license is for a bundled product and cannot be activated."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:292
+msgid "Your license key is not valid for this plugin."
+msgstr ""
+
+#. translators: %s: The sites active description, e.g. '2 sites active'
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:301
+msgid "Your license key has reached its activation limit (%s)."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:302
+#: dependencies/barn2/barn2-lib/src/Util.php:32
+msgid "Read more"
+msgstr ""
+
+#. translators: support for RTL, 1: the license error, 2: a link
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:304
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:322
+msgid "%1$s %2$s"
+msgstr ""
+
+#. translators: %s: The license expiry date
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:317
+msgid "Your license key expired on %s."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:320
+msgid "Renew now for 20% discount."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:523
+msgid "Your license key is not active. Please reactivate or save the settings."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:527
+msgid "Your license key has expired."
+msgstr ""
+
+#. translators: 1: purchase link start, 2: purchase link end.
+#: dependencies/barn2/barn2-lib/src/Plugin/License/Plugin_License.php:533
+msgid "Your license key has been disabled. Please %1$spurchase a new license key%2$s to continue using the plugin."
+msgstr ""
+
+#. translators: %1$s: Plugin name. %2$s: Update Core <a> tag open. %3$s: <a> tag close. %4$s: WP Version required.
+#: dependencies/barn2/barn2-lib/src/Traits/Check_WP_Requirements.php:34
+msgid "The %1$s plugin requires WordPress %4$s or greater. Please %2$supdate%3$s your WordPress installation."
+msgstr ""
+
+#. translators: %1$s: Install WooCommerce <a> tag open. %2$s: <a> tag close. %3$s: Plugin name
+#: dependencies/barn2/barn2-lib/src/Traits/Check_WP_Requirements.php:62
+msgid "Please %1$sinstall WooCommerce%2$s in order to use %3$s."
+msgstr ""
+
+#. translators: %1$s: Plugin name. %2$s: Version required.
+#: dependencies/barn2/barn2-lib/src/Traits/Check_WP_Requirements.php:77
+msgid "The %1$s plugin requires WooCommerce %2$s or greater. Please update your WooCommerce setup first."
+msgstr ""
+
+#: dependencies/barn2/barn2-lib/src/WooCommerce/Admin/Plugin_Promo.php:95
+#: dependencies/barn2/barn2-lib/src/WooCommerce/Admin/Plugin_Promo.php:97
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-editor.js:114
+msgid "Save changes"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Api.php:152
+msgid "Could not find the appropriate step."
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Api.php:192
+msgid "Please enter a license key."
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Api.php:195
+msgid "Invalid action requested."
+msgstr ""
+
+#. translators: %s: The name of the plugin.
+#: dependencies/barn2/setup-wizard/src/Setup_Wizard.php:333
+msgid "%s setup wizard"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Setup_Wizard.php:423
+#: dependencies/barn2/setup-wizard/src/Setup_Wizard.php:496
+msgid "Warning: This will overwrite your existing settings for %s. Are you sure you want to continue?"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Setup_Wizard.php:473
+#: dependencies/barn2/setup-wizard/src/Setup_Wizard.php:481
+#: dependencies/barn2/setup-wizard/src/Setup_Wizard.php:531
+#: src/Admin/Settings_Page.php:227
+msgid "Setup wizard"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Setup_Wizard.php:476
+msgid "If you need to access the setup wizard again, please click on the button below."
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Steps/Cross_Selling.php:23
+#: src/Admin/Wizard/Steps/Upsell.php:20
+msgid "More"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Steps/Cross_Selling.php:24
+#: src/Admin/Wizard/Steps/Upsell.php:22
+msgid "Extra features"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Steps/Cross_Selling.php:25
+msgid "Enhance your site with these fantastic plugins from Barn2."
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Steps/Ready.php:23
+#: src/Admin/Wizard/Steps/Completed.php:22
+msgid "Ready"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Steps/Ready.php:24
+msgid "Setup Complete"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Steps/Welcome.php:25
+#: dependencies/barn2/setup-wizard/src/Steps/Welcome_Free.php:24
+#: src/Admin/Wizard/Steps/License_Verification.php:22
+msgid "Welcome"
+msgstr ""
+
+#: dependencies/barn2/setup-wizard/src/Util.php:28
+msgid "Select an option"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:68
+#: src/Admin/Admin_Ajax.php:151
+#: src/Admin/Admin_Ajax.php:191
+#: src/Admin/Admin_Ajax.php:223
+#: src/Admin/Admin_Ajax.php:254
+#: src/Admin/Admin_Ajax.php:310
+#: src/Admin/Admin_Ajax.php:338
+#: src/Admin/Admin_Ajax.php:495
+#: src/Admin/Admin_Ajax.php:531
+#: src/Admin/Admin_Ajax.php:651
+#: src/Admin/Admin_Ajax.php:671
+msgid "You are not authorized"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:82
+msgid "Please enter a name for this filter"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:93
+msgid "Something went wrong while updating the filter"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:137
+msgid "Something went wrong while creating the filter"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:197
+msgid "No records to update have been found."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:229
+#: src/Admin/Admin_Ajax.php:260
+#: src/Admin/Admin_Ajax.php:266
+msgid "No filter found matching the criteria."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:277
+msgid "Copy"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:344
+msgid "Please enter a name for the group."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:350
+#: src/Admin/Admin_Ajax.php:356
+msgid "Something went wrong: could not update the selected group"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:363
+#: src/Admin/Admin_Ajax.php:543
+msgid "Please add at least 1 filter to the group."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:501
+msgid "No group ID has been found."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:507
+msgid "Something went wrong, could not find the selected group."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:537
+msgid "Please enter a name for the group"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:561
+msgid "Something went wrong while creating the group"
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:585
+msgid "One or more filters have no name assigned. Please make sure all filters have a name."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:677
+msgid "No record found matching the criteria."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:683
+msgid "No group found matching the criteria."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:747
+msgid "The following filters are sharing the same data source: %s. Each filter in a group must have a unique data source. Please adjust the filters accordingly."
+msgstr ""
+
+#: src/Admin/Admin_Ajax.php:775
+msgid "The \"%1$s\" filter has been found. Please remove the following filters from the group: %2$s."
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:88
+#: src/Admin/Filters_Editor.php:45
+#: src/Admin/Settings_Page.php:144
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-editor.js:106
+msgid "Filters"
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:121
+#: src/Api.php:122
+#: assets/build/chunks-components/supervisor-message.js:1
+#: assets/js/frontend/components/supervisor-message.js:156
+msgid "Regenerating the index in the background. Product filtering and sorting may not be accurate until this finishes. It will take a few minutes and this notice will disappear when complete."
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:87
+#: src/Admin/Wizard/Steps/Filter_Display.php:22
+#: src/Admin/Wizard/Steps/Filter_Display.php:23
+msgid "Shop filters"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:95
+#: src/Admin/Wizard/Steps/Filter_Behavior.php:24
+msgid "Behavior"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:103
+msgid "Filter text"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:104
+msgid "Customize the text which appears on the filters."
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:122
+msgid "These settings control the filters that appear above the list of products in your store. You can also add filters to a sidebar by adding a <a href=\"%s\">Product Filters widget</a>."
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:133
+msgid "‘Show filters’ button"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:136
+#: src/Admin/Settings_Controller.php:142
+#: src/Display.php:149
+msgid "Filter"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:139
+msgid "Slide-out panel heading"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:145
+msgid "‘Apply filters’ button"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:148
+#: src/Admin/Settings_Controller.php:149
+#: src/Display.php:135
+msgid "Apply Filters"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:152
+msgid "‘Clear filters’ link"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:155
+#: src/Admin/Settings_Controller.php:156
+#: src/Display.php:144
+msgid "Clear filters"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:164
+msgid "Filter mode"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:169
+#: src/Admin/Wizard/Steps/Filter_Behavior.php:61
+msgid "Apply filters as soon as the customer makes a selection"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:170
+#: src/Admin/Wizard/Steps/Filter_Behavior.php:62
+msgid "Click a button to apply the filters"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:176
+msgid "Toggle filters"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:177
+msgid "Allow customers to toggle filters open or closed"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:178
+msgid "This applies to filter widgets, the slide-out panel, and filters using the vertical layout which are added using a shortcode."
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:184
+msgid "Default toggle state"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:189
+msgid "Open"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:190
+msgid "Closed"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:197
+#: src/Admin/Wizard/Steps/Filter_Behavior.php:66
+msgid "Product count"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:199
+#: src/Admin/Wizard/Steps/Filter_Behavior.php:73
+msgid "Display the number of products next to each option"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:209
+#: src/Widget.php:117
+msgid "Filter group"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:210
+msgid "Select a filter group to display above the lists of products in your store."
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:218
+#: src/Admin/Wizard/Steps/Filter_Visibility.php:25
+#: src/Admin/Wizard/Steps/Filter_Visibility.php:85
+msgid "Filter visibility"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:222
+#: src/Admin/Settings_Controller.php:233
+msgid "Always display filters"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:223
+#: src/Admin/Settings_Controller.php:234
+msgid "Click button to reveal filters"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:229
+#: src/Admin/Wizard/Steps/Filter_Visibility.php:86
+msgid "On mobile"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:241
+msgid "Number of filters per row"
+msgstr ""
+
+#: src/Admin/Settings_Controller.php:244
+msgid "Enter the number of filters to display per row within the horizontal layout."
+msgstr ""
+
+#: src/Admin/Settings_Page.php:158
+#: src/Admin/Settings_Page.php:189
+#: src/Plugin_Setup.php:109
+#: src/Widget.php:27
+msgid "Product Filters"
+msgstr ""
+
+#: src/Admin/Settings_Page.php:192
+msgid "The following options control the WooCommerce Product Filters extension."
+msgstr ""
+
+#: src/Admin/Settings_Page.php:203
+msgid "Save Changes"
+msgstr ""
+
+#: src/Admin/Terms/Color_Picker.php:60
+msgid "Clear"
+msgstr ""
+
+#: src/Admin/Terms/Color_Picker.php:61
+msgid "Default"
+msgstr ""
+
+#: src/Admin/Terms/Color_Picker.php:62
+msgid "Select Color"
+msgstr ""
+
+#: src/Admin/Terms/Color_Picker.php:63
+msgid "Current Color"
+msgstr ""
+
+#: src/Admin/Terms/Color_Picker.php:122
+#: src/Admin/Terms/Color_Picker.php:159
+msgid "If you are using this attribute in a color filter, select the exact color which will appear in the filter."
+msgstr ""
+
+#: src/Admin/Terms/Color_Picker.php:123
+#: src/Admin/Terms/Color_Picker.php:158
+msgid "Assign color"
+msgstr ""
+
+#: src/Admin/Terms/Term_Image.php:97
+#: src/Admin/Terms/Term_Image.php:196
+msgid "Thumbnail"
+msgstr ""
+
+#: src/Admin/Terms/Term_Image.php:101
+#: src/Admin/Terms/Term_Image.php:201
+#: assets/build/wcf-term-image.js:1
+#: assets/js/admin/terms/term-image-uploader.js:41
+msgid "Upload/Add image"
+msgstr ""
+
+#: src/Admin/Terms/Term_Image.php:102
+#: src/Admin/Terms/Term_Image.php:202
+#: assets/build/wcf-term-image.js:1
+#: assets/js/admin/components/image-upload.js:82
+msgid "Remove image"
+msgstr ""
+
+#: src/Admin/Terms/Term_Image.php:126
+#: src/Admin/Terms/Term_Image.php:226
+msgid "Choose an image"
+msgstr ""
+
+#: src/Admin/Terms/Term_Image.php:128
+#: src/Admin/Terms/Term_Image.php:228
+msgid "Use image"
+msgstr ""
+
+#: src/Admin/Wizard/Setup_Wizard.php:68
+msgid "Manage filters"
+msgstr ""
+
+#: src/Admin/Wizard/Setup_Wizard.php:72
+msgid "Create filter widgets"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Completed.php:23
+msgid "Ready!"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Filter_Behavior.php:25
+msgid "Filter behavior and content"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Filter_Behavior.php:26
+msgid "How do you want the filters to work?"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Filter_Display.php:24
+msgid "Would you like to display filters above the lists of products in your shop? (If not, then you can add filters manually using a widget or shortcode.)"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Filter_Display.php:27
+msgid "Select a filter group to display the same filters at the top of all your main store pages (to get you started, we’ve created a ‘Recommended Filters’ group for you)."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Filter_Display.php:47
+msgid "Select a filter group to appear at the top of your store (optional)"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Filter_Visibility.php:24
+msgid "Visibility"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Filter_Visibility.php:26
+msgid "Next, decide whether to show or hide the filters when the page first loads"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Filter_Visibility.php:102
+msgid "Allow customers to toggle filters open or closed."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/License_Verification.php:23
+msgid "Welcome to WooCommerce Product Filters"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/License_Verification.php:24
+msgid "Add product filters in no time"
+msgstr ""
+
+#: src/Admin/Wizard/Steps/License_Verification.php:25
+msgid "Use this setup wizard to quickly configure the options for your product filters. You can easily change these options later on the plugin settings page or by relaunching the setup wizard."
+msgstr ""
+
+#: src/Admin/Wizard/Steps/Upsell.php:21
+msgid "Enhance your store with these fantastic plugins from Barn2."
+msgstr ""
+
+#: src/Display.php:143
+msgid "Show filters"
+msgstr ""
+
+#: src/Display.php:189
+msgid "Sort"
+msgstr ""
+
+#: src/Integrations/Plugin_Acf.php:83
+#: src/Integrations/Plugin_Ept.php:60
+#: src/Model/Filters/Custom_Field.php:35
+msgid "Custom field"
+msgstr ""
+
+#: src/Integrations/Plugin_Acf.php:102
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:242
+msgid "Checkbox"
+msgstr ""
+
+#: src/Integrations/Plugin_Acf.php:107
+#: src/Integrations/Plugin_Ept.php:74
+msgid "Text input"
+msgstr ""
+
+#: src/Integrations/Plugin_Acf.php:112
+#: src/Utils/Settings.php:206
+msgid "Range slider"
+msgstr ""
+
+#: src/Integrations/Plugin_Elementor.php:176
+msgid "Enable filtering"
+msgstr ""
+
+#: src/Integrations/Plugin_Elementor.php:178
+msgid "Yes"
+msgstr ""
+
+#: src/Integrations/Plugin_Elementor.php:179
+msgid "No"
+msgstr ""
+
+#: src/Model/Filters/Color.php:38
+msgid "Color picker"
+msgstr ""
+
+#: src/Model/Filters/Price.php:28
+msgid "Slider"
+msgstr ""
+
+#: src/Model/Filters/Sale.php:41
+#: src/Utils/Settings.php:155
+msgid "On sale"
+msgstr ""
+
+#: src/Model/Filters/Stock.php:41
+#: src/Utils/Settings.php:154
+msgid "In stock"
+msgstr ""
+
+#. translators: %1$s: Install WooCommerce <a> tag open. %2$s: <a> tag close.
+#: src/Plugin.php:190
+msgid "Please %1$sinstall WooCommerce%2$s in order to use WooCommerce Product Filters."
+msgstr ""
+
+#. translators: %1$s: Plugin name.
+#: src/Plugin.php:212
+msgid "The %1$s plugin requires WooCommerce 3.7 or greater. Please update your WooCommerce setup first."
+msgstr ""
+
+#: src/Plugin_Setup.php:119
+msgid "Categories"
+msgstr ""
+
+#: src/Plugin_Setup.php:132
+msgid "Attributes"
+msgstr ""
+
+#: src/Plugin_Setup.php:146
+#: src/Utils/Settings.php:152
+msgid "Price"
+msgstr ""
+
+#: src/Plugin_Setup.php:157
+#: src/Utils/Settings.php:156
+msgid "Sort by"
+msgstr ""
+
+#: src/Utils/Products.php:96
+msgid "Default sorting"
+msgstr ""
+
+#: src/Utils/Products.php:97
+msgid "Sort by popularity"
+msgstr ""
+
+#: src/Utils/Products.php:98
+msgid "Sort by average rating"
+msgstr ""
+
+#: src/Utils/Products.php:99
+msgid "Sort by latest"
+msgstr ""
+
+#: src/Utils/Products.php:100
+msgid "Sort by price: low to high"
+msgstr ""
+
+#: src/Utils/Products.php:101
+msgid "Sort by price: high to low"
+msgstr ""
+
+#: src/Utils/Settings.php:147
+msgid "Category"
+msgstr ""
+
+#: src/Utils/Settings.php:148
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:188
+msgid "Attribute"
+msgstr ""
+
+#: src/Utils/Settings.php:149
+msgid "Color"
+msgstr ""
+
+#: src/Utils/Settings.php:150
+msgid "Tag"
+msgstr ""
+
+#: src/Utils/Settings.php:151
+msgid "Custom taxonomy"
+msgstr ""
+
+#: src/Utils/Settings.php:153
+msgid "Rating"
+msgstr ""
+
+#: src/Utils/Settings.php:157
+msgid "Search"
+msgstr ""
+
+#: src/Utils/Settings.php:186
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:244
+msgid "Dropdown"
+msgstr ""
+
+#: src/Utils/Settings.php:190
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:238
+msgid "Checkboxes"
+msgstr ""
+
+#: src/Utils/Settings.php:194
+msgid "Radio buttons"
+msgstr ""
+
+#: src/Utils/Settings.php:198
+msgid "Labels"
+msgstr ""
+
+#: src/Utils/Settings.php:202
+msgid "Images"
+msgstr ""
+
+#: src/Utils/Settings.php:230
+msgid "None"
+msgstr ""
+
+#: src/Widget.php:25
+msgid "Display a filter group created with the WooCommerce Product Filters plugin."
+msgstr ""
+
+#: src/Widget.php:78
+msgid "Your product filters will appear here."
+msgstr ""
+
+#: src/Widget.php:83
+msgid "Filters are only visible on the frontend"
+msgstr ""
+
+#: src/Widget.php:112
+msgid "Title"
+msgstr ""
+
+#: templates/filter-result-count.php:28
+#: assets/build/wcf-frontend.js:1
+#: assets/js/frontend/shop-top.js:64
+msgid "1 result"
+msgstr ""
+
+#. translators: %d: total results
+#: templates/filter-result-count.php:31
+#: templates/filter-result-count.php:33
+#: assets/build/wcf-frontend.js:1
+#: assets/js/frontend/shop-top.js:66
+#: assets/js/frontend/shop-top.js:68
+msgid "%d result"
+msgid_plural "%d results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/build/chunks-components/cf-checkboxes.js:1
+#: assets/build/chunks-components/cf-radio.js:1
+#: assets/build/chunks-components/cf-select.js:1
+#: assets/js/frontend/components/inputs/custom-fields/cf-checkboxes.js:61
+#: assets/js/frontend/components/inputs/custom-fields/cf-radio.js:62
+#: assets/js/frontend/components/inputs/custom-fields/cf-select.js:57
+msgid "No values found for this custom field."
+msgstr ""
+
+#: assets/build/chunks-components/cf-select.js:1
+#: assets/build/chunks-components/checkboxes.js:1
+#: assets/build/chunks-components/colors.js:1
+#: assets/build/chunks-components/terms-dropdown-hierarchical.js:1
+#: assets/build/chunks-components/terms-dropdown.js:1
+#: assets/build/chunks-components/terms-images.js:1
+#: assets/build/chunks-components/terms-labels.js:1
+#: assets/build/chunks-components/terms-radio.js:1
+#: assets/js/frontend/components/inputs/checkboxes.js:243
+#: assets/js/frontend/components/inputs/colors.js:190
+#: assets/js/frontend/components/inputs/custom-fields/cf-select.js:219
+#: assets/js/frontend/components/inputs/terms-dropdown-hierarchical.js:284
+#: assets/js/frontend/components/inputs/terms-dropdown.js:300
+#: assets/js/frontend/components/inputs/terms-images.js:300
+#: assets/js/frontend/components/inputs/terms-labels.js:210
+#: assets/js/frontend/components/inputs/terms-radio.js:270
+msgid "No options available"
+msgstr ""
+
+#: assets/build/chunks-components/layout-vertical.js:1
+#: assets/js/frontend/layouts/vertical.js:60
+msgid "More filters"
+msgstr ""
+
+#: assets/build/chunks-components/show-more.js:1
+#: assets/js/frontend/components/show-more.js:28
+msgid "Show more"
+msgstr ""
+
+#: assets/build/chunks-components/show-more.js:1
+#: assets/js/frontend/components/show-more.js:38
+msgid "Show less"
+msgstr ""
+
+#: assets/build/chunks-components/supervisor-message.js:1
+#: assets/js/frontend/components/supervisor-message.js:132
+msgid "This message is visible to Administrators and Store Managers Only. The following filters are using the same data source: %s. Filters must be unique and must not share the same source. <a href=\"%s\" target=\"_blank\">[Read more]</a>"
+msgstr ""
+
+#: assets/build/chunks-components/supervisor-message.js:1
+#: assets/js/frontend/components/supervisor-message.js:143
+msgid "This message is visible to Administrators and Store Managers Only. Please note, you cannot use the same filter group multiple times on a page. Please make sure groups are unique. <a href=\"%s\" target=\"_blank\">[Read more]</a>"
+msgstr ""
+
+#: assets/build/chunks-components/supervisor-message.js:1
+#: assets/js/frontend/components/supervisor-message.js:161
+msgid "This message is visible to Administrators and Store Managers Only."
+msgstr ""
+
+#: assets/build/chunks-components/terms-dropdown-hierarchical.js:1
+#: assets/build/chunks-components/terms-dropdown.js:1
+#: assets/build/chunks-components/terms-images.js:1
+#: assets/build/chunks-components/terms-labels.js:1
+#: assets/build/chunks-components/terms-radio.js:1
+#: assets/js/frontend/components/inputs/terms-dropdown-hierarchical.js:102
+#: assets/js/frontend/components/inputs/terms-dropdown.js:88
+#: assets/js/frontend/components/inputs/terms-images.js:84
+#: assets/js/frontend/components/inputs/terms-labels.js:85
+#: assets/js/frontend/components/inputs/terms-radio.js:83
+msgid "No terms found for the specified taxonomy."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/data-table.js:185
+msgid "of"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/build/wcf-elementor.js:1
+#: assets/build/wcf-frontend.js:1
+#: assets/build/wcf-product-table.js:1
+#: assets/build/wcf-restaurant-ordering.js:1
+#: assets/build/wcf-uncode.js:1
+#: assets/js/utils.js:43
+msgid "The request was made but no response was received."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/build/wcf-elementor.js:1
+#: assets/build/wcf-frontend.js:1
+#: assets/build/wcf-product-table.js:1
+#: assets/build/wcf-restaurant-ordering.js:1
+#: assets/build/wcf-uncode.js:1
+#: assets/js/utils.js:46
+msgid "Something went wrong while making the request."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/tables/delete-modal.js:83
+msgid "Are you sure you want to delete this filter group?"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/groups-row-actions.js:47
+#: assets/js/admin/components/tables/delete-modal.js:83
+msgid "Are you sure you want to delete the \"%s\" filter group?"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/filters-row-actions.js:106
+#: assets/js/admin/components/filters-row-actions.js:114
+#: assets/js/admin/components/groups-row-actions.js:97
+#: assets/js/admin/components/groups-row-actions.js:105
+#: assets/js/admin/components/tables/delete-filter-modal.js:58
+#: assets/js/admin/components/tables/delete-filter-modal.js:64
+#: assets/js/admin/components/tables/delete-modal.js:91
+#: assets/js/admin/components/tables/delete-modal.js:97
+msgid "Delete"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/groups-row-actions.js:46
+#: assets/js/admin/components/tables/delete-modal.js:94
+msgid "Delete filter group"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/tables/delete-modal.js:52
+msgid "Filter group successfully deleted."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/filters-row-actions.js:102
+#: assets/js/admin/components/groups-row-actions.js:93
+#: assets/js/admin/components/table-quick-actions.js:93
+msgid "Edit"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/table-quick-actions.js:75
+msgid "Filter group successfully duplicated."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/table-quick-actions.js:97
+msgid "Duplicate"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/tables/shortcode-cell.js:28
+msgid "Copied!"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/admin-table.js:32
+msgid "No groups added yet. Press the \"Add filter group\" button to create your first group."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/admin-table.js:219
+msgid "Filter Groups"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/admin-table.js:220
+msgid "Add New"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/admin-table.js:223
+msgid "Create product filters, structured into groups. You can then display each group using a widget, shortcode, or by selecting it on the <a href=\"%s\">settings page</a>."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/admin-table.js:234
+msgid "%d filter group"
+msgid_plural "%d filter groups"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/admin-table.js:236
+msgid "Drag and drop to re-order your filter groups. This will only be used for display purposes in the admin."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:1
+#: assets/js/admin/components/admin-table.js:205
+msgid "Filter groups successfully updated"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:116
+msgid "You should select an image on the <a href=\"%s\" target=\"_blank\">‘Add/Edit’ screen for each category</a>."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:118
+msgid "You should select an image on the <a href=\"%s\" target=\"_blank\">‘Add/Edit’ screen for each attribute</a>."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:120
+msgid "You should select an image on the ‘Add/Edit’ screen for each taxonomy."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:273
+#: assets/js/admin/components/group-filters-table.js:310
+#: assets/js/admin/components/tables/filter-form.js:157
+msgid "Filter name"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:274
+#: assets/js/admin/components/group-filters-table.js:321
+#: assets/js/admin/components/tables/filter-form.js:161
+msgid "Filter by"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:169
+msgid "You should select a color for each attribute under <a href=\"%s\" target=\"_blank\">Products > Attributes > Configure Terms</a>."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:176
+msgid "Select attributes"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:176
+msgid "By default, filters will automatically be added for all attributes relating to the current products. Alternatively, you can add a filter for an individual attribute."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:179
+msgid "Show filters for all available attributes"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:180
+msgid "Select attribute"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:198
+msgid "Select color attribute"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:212
+msgid "Display the name of each color next to the color swatch."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:219
+msgid "Select taxonomy"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:230
+msgid "Select custom field"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:275
+#: assets/js/admin/components/group-filters-table.js:324
+#: assets/js/admin/components/tables/filter-form.js:254
+msgid "Filter type"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:271
+msgid "List categories and subcategories within a single dropdown."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:277
+msgid "Display categories and sub-categories as separate dropdowns."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:288
+msgid "Display"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:293
+msgid "Image and name"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:299
+msgid "Image only"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/tables/filter-form.js:308
+msgid "Range unit"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/filters-row-actions.js:45
+#: assets/js/admin/components/tables/delete-filter-modal.js:61
+msgid "Delete filter"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/filters-row-actions.js:46
+#: assets/js/admin/components/tables/delete-filter-modal.js:62
+msgid "Are you sure you want to delete the \"%s\" filter?"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:257
+msgid "(no label)"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:263
+msgid "Drag and drop to re-order your filters."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:293
+msgid "Close filter"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:293
+msgid "Edit filter"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:236
+msgid "Pricing slider"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:240
+msgid "Star rating"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:341
+msgid "No filters. Click the \"Add filter\" button to create your first filter."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-filters-table.js:352
+msgid "Add filter"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-editor.js:47
+msgid "Filter group successfully updated"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-editor.js:47
+msgid "Filter group successfully created"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-editor.js:102
+msgid "Filter group name"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-editor.js:102
+msgid "Enter a name for the filter group. This will only be shown in the WordPress admin."
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/group-editor.js:114
+msgid "Add group"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/pages/add-group-page.js:35
+#: assets/js/admin/components/pages/edit-group-page.js:34
+msgid "Filter groups"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/pages/add-group-page.js:37
+msgid "Add new"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/components/pages/edit-group-page.js:36
+msgid "Edit filter group"
+msgstr ""
+
+#: assets/build/wcf-admin-editor.js:14
+#: assets/js/admin/admin-editor.js:56
+msgid "The database indexing has been successfully completed."
+msgstr ""
+
+#: assets/build/wcf-frontend.js:1
+#: assets/js/frontend/theme.js:294
+#: assets/js/frontend/theme.js:329
+msgid "From "
+msgstr ""
+
+#: assets/build/wcf-frontend.js:1
+#: assets/js/frontend/theme.js:294
+#: assets/js/frontend/theme.js:329
+msgid "To "
+msgstr ""
+
+#: assets/build/wcf-term-image.js:1
+#: assets/js/admin/components/image-upload.js:31
+msgid "Select or upload image"
+msgstr ""
+
+#: assets/build/wcf-term-image.js:1
+#: assets/js/admin/components/image-upload.js:33
+msgid "Select"
+msgstr ""
+
+#: assets/build/wcf-term-image.js:1
+#: assets/js/admin/terms/term-image-uploader.js:49
+#: assets/js/admin/terms/term-image-uploader.js:56
+msgid "Filter image"
+msgstr ""
+
+#: assets/js/admin/components/filters-row-actions.js:47
+msgid "The filter has been successfully deleted"
+msgstr ""
+
+#: assets/js/admin/components/filters-row-actions.js:75
+msgid "The filter has been successfully deleted. Database re-index is required. Please press the \"Rebuild index\" button."
+msgstr ""
+
+#: assets/js/admin/components/filters-selector.js:182
+msgid "No filters have been created yet. Please <a href=\"%s\">create at least one filter</a>."
+msgstr ""
+
+#: assets/js/admin/components/filters-selector.js:239
+msgid "Add filter to the group"
+msgstr ""
+
+#: assets/js/admin/components/groups-row-actions.js:48
+msgid "Successfully deleted the \"%s\" filter group"
+msgstr ""

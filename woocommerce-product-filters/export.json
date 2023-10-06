@@ -1,0 +1,15 @@
+{
+  "files": [
+	  "woocommerce-product-filters.php",
+	  "readme.txt",
+	  "license.txt"
+  ],
+  "folders": [
+	  "dependencies",
+	  "lib",
+	  "src",
+	  "vendor",
+	  "assets",
+	  "templates"
+  ]
+}

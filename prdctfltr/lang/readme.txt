@@ -1,0 +1,1 @@
+Language files. Use poEdit. Google "Translate WordPress plugin with poEdit".

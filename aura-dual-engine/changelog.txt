@@ -1,6 +1,9 @@
 
 == Changelog ==
 
+= 1.5.0 2023-10-06 =
+* Addition. Added B2B/B2C Switch to Category Min Purchase snippet. Also updated better cat overview.
+
 = 1.4.1 2023-02-10 =
 * Hotfix. Bug in hide_cat_users. Visibility broken. See file for more details
 

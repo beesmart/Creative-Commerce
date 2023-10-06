@@ -34,6 +34,9 @@ The Creative Commerce Dual Engine enables a variety of additional functions in W
 
 == Changelog ==
 
+= 1.5.0 2023-10-06 =
+* Addition. Added B2B/B2C Switch to Category Min Purchase snippet. https://superdev.auracreativemedia.co.uk/
+
 = 1.4.1 2023-02-10 =
 * Hotfix. Bug in hide_cat_users. Visibility broken. See file for more details
 
