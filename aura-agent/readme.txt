@@ -40,7 +40,7 @@ The Creative Commerce Agent enables a variety of additional functions in Wordpre
  
 == Upgrade Notice ==
  
-= 1.0 =
+= 1.1 =
 Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
  
  
